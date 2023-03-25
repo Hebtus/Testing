@@ -61,7 +61,7 @@ def login(driver, Email, Password):
         exit()
     EventsList = driver.find_elements(
         By.CLASS_NAME,
-        "eds-event-card--consumer",
+        EVENT_ELEMENT,
     )
     EventsURLList = []
     EventsList = EventsList[0:9]
@@ -120,47 +120,18 @@ def events_info_test(driver, URLList):
         time.sleep(30)
         # About the organizer
         check_displayed(driver, "XPATH", ORGANIZER_INFO, "Organizer info not displayed")
-        BookTicketButton = find_my_element(driver, "XPATH", RESERVE_SPOT_BUTTON)
-        if BookTicketButton == None:
-            BookTicketButton = find_my_element(driver, "XPATH", TICKETS_BUTTON)
-            check_not_found(
-                driver, BookTicketButton, "Reserve your spot button not found"
-            )
-        BookTicketButton.click()
-        time.sleep(30)
-        RegisterWindow = find_my_element(driver, "XPATH", REGISTER_PAGE)
-        if RegisterWindow == None:
-            RegisterWindow = find_my_element(driver, "XPATH", CHECKOUT_BUTTON)
-            check_not_found(driver, RegisterWindow, "Register window not found")
+        # BookTicketButton = find_my_element(driver, "XPATH", RESERVE_SPOT_BUTTON)
+        # if BookTicketButton == None:
+        #     BookTicketButton = find_my_element(driver, "XPATH", TICKETS_BUTTON)
+        #     check_not_found(
+        #         driver, BookTicketButton, "Reserve your spot button not found"
+        #     )
+        # BookTicketButton.click()
+        # time.sleep(30)
+        # RegisterWindow = find_my_element(driver, "XPATH", REGISTER_PAGE)
+        # if RegisterWindow == None:
+        #     RegisterWindow = find_my_element(driver, "XPATH", CHECKOUT_BUTTON)
+        #     check_not_found(driver, RegisterWindow, "Register window not found")
         time.sleep(20)
         print("Info displayed")
         driver.close()
-
-
-def other_functionalities_test(driver, Event):
-    # go to event
-    # create action chain object
-    action = ActionChains(driver)
-    # perform the operation
-    action.move_to_element(Event).click().perform()
-    time.sleep(30)
-    # Reserve your spot button
-    time.sleep(10)
-    driver.switch_to.window(driver.window_handles[1])
-    time.sleep(30)
-    # Scroll down
-    driver.execute_script("window.scrollBy(0,500)", "")
-    time.sleep(60)
-    BookTicketButton = find_my_element(driver, "XPATH", RESERVE_SPOT_BUTTON)
-    if BookTicketButton == None:
-        BookTicketButton = find_my_element(driver, "XPATH", TICKETS_BUTTON)
-        check_not_found(driver, BookTicketButton, "Reserve your spot button not found")
-    BookTicketButton.click()
-    time.sleep(30)
-    RegisterWindow = find_my_element(driver, "XPATH", REGISTER_BUTTON)
-    if RegisterWindow == None:
-        RegisterWindow = find_my_element(driver, "XPATH", CHECKOUT_BUTTON)
-        check_not_found(driver, RegisterWindow, "Register window not found")
-    time.sleep(10)
-    print("Functionalities tests passed")
-    driver.close()

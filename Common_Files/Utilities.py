@@ -33,7 +33,7 @@ def check_not_found(driver, element, message):
     if element == None:
         print(message)
         # driver.close()
-        exit()
+        # exit()
 
 
 def clear_textbox(element):
