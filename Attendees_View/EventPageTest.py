@@ -19,9 +19,11 @@ def event_page(driver):
 
 
 def login(driver, Email, Password):
+    # Open eventbrite
     driver.get("https://www.eventbrite.com/signin")
     driver.maximize_window()
     driver.implicitly_wait(5)
+    # login with email and password
     EmailTextbox = find_my_element(driver, "ID", EMAIL_TEXTBOX)
     check_not_found(driver, EmailTextbox, "Email textbox not found")
     EmailTextbox.send_keys(Email)
@@ -44,27 +46,33 @@ def login(driver, Email, Password):
     LandingPage = find_my_element(driver, "XPATH", LANDING_PAGE)
     check_not_found(driver, LandingPage, "Landing page not reached")
     time.sleep(30)
-    # Scroll down
+    # Scroll down to laod
     driver.execute_script("window.scrollBy(0,document.body.scrollHeight)")
     time.sleep(30)
-    try:
-        EventsList = WebDriverWait(driver, 20).until(
-            EC.presence_of_element_located(
-                (
-                    By.CLASS_NAME,
-                    "feed-events-bucket__content__cards-container",
-                )
-            )
-        )
-    except:
-        print("Element not found.")
-        exit()
+    # try:
+    #     EventsList = WebDriverWait(driver, 20).until(
+    #         EC.presence_of_element_located(
+    #             (
+    #                 By.CLASS_NAME,
+    #                 "feed-events-bucket__content__cards-container",
+    #             )
+    #         )
+    #     )
+    # except:
+    #     print("Element not found.")
+    #     exit()
+    # Get list of events
     EventsList = driver.find_elements(
         By.CLASS_NAME,
         EVENT_ELEMENT,
     )
+    if len(EventsList) == 0:
+        print("No events in the list")
+        driver.close()
+        exit()
     EventsURLList = []
     EventsList = EventsList[0:9]
+    # Get URLs of events page
     for element in EventsList:
         try:
             link = element.find_element(By.TAG_NAME, "a")
@@ -73,12 +81,11 @@ def login(driver, Email, Password):
         except:
             print("No Data Available!")
 
-    # Event = EventsList[0].find_element(By.TAG_NAME, "a")
-    # other_functionalities_test(driver, Event)
     events_info_test(driver, EventsURLList)
 
 
 def check_displayed(driver, type, value, message):
+    # ---------------------------------------------- Auxiliary function to check if element is displayed ---------------------------------------------- #
     element = find_my_element(driver, type, value)
     check_not_found(driver, element, message)
     if element.is_displayed() == False:
@@ -86,6 +93,7 @@ def check_displayed(driver, type, value, message):
 
 
 def events_info_test(driver, URLList):
+    # ---------------------------------------------- Testing Events info ---------------------------------------------- #
     for i in range(2):
         Link = URLList[i]
         driver.get(Link)
