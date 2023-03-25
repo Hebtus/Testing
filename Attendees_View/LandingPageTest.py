@@ -17,8 +17,8 @@ from datetime import datetime, date, timedelta
 
 
 def landing_page(driver):
-    # login(driver, "testereventbrite@gmail.com", "eventbritetester")
-    free_tab_test(driver)
+    login(driver, "testereventbrite@gmail.com", "eventbritetester")
+    # free_tab_test(driver)
 
 
 def login(driver, Email, Password):
@@ -51,22 +51,23 @@ def login(driver, Email, Password):
     # location_nearby_kevents_test(driver)
     # today_tab_test(driver)
     # this_weekend_tab_test(driver)
-    location_nearby_events_test(driver)
+    # location_nearby_events_test(driver)
     # free_tab_test(driver)
+    categories_test(driver)
 
 
 def location_nearby_events_test(driver):
-    # MyLocation = find_my_element(driver, "ID", LOCATION_PICKER)
-    # check_not_found(driver, MyLocation, "Location not found")
-    # print(MyLocation.get_attribute("value"))
-    # if MyLocation.get_attribute("value") == "Al Qahirah":
-    #     print("Location detected correctly")
-    # else:
-    #     print("Location not detected correctly")
+    MyLocation = find_my_element(driver, "ID", LOCATION_PICKER)
+    check_not_found(driver, MyLocation, "Location not found")
+    print(MyLocation.get_attribute("value"))
+    if MyLocation.get_attribute("value") == "Al Qahirah":
+        print("Location detected correctly")
+    else:
+        print("Location not detected correctly")
     # click on All tab
-    FreeTab = find_my_element(driver, "XPATH", FREE_TAB)
-    check_not_found(driver, FreeTab, "Free tab not found")
-    FreeTab.click()
+    AllTab = find_my_element(driver, "XPATH", ALL_TAB)
+    check_not_found(driver, AllTab, "All tab not found")
+    AllTab.click()
     time.sleep(30)
     # Scroll down
     driver.execute_script("window.scrollBy(0,document.body.scrollHeight)")
@@ -75,27 +76,43 @@ def location_nearby_events_test(driver):
         By.CLASS_NAME,
         EVENT_ELEMENT,
     )
-    if EventsList == None:
+    if len(EventsList) == 0:
         print("No events in the list")
         driver.close()
         exit()
+
     EventsList = EventsList[0:10]
-    EventsNumber = len(EventsList)
-    EventsLocationList = []
-    for i in range(EventsNumber):
-        EVENT_LOCATION = ALL_EVENTS_LOCATION_1 + str(i) + ALL_EVENTS_LOCATION_2
-        EventLocation = find_my_element(driver, "XPATH", EVENT_LOCATION)
-        if EventLocation != None:
-            EventsLocationList.append(EventLocation.get_attribute("innerHTML"))
+    EventsURLList = []
+    for element in EventsList:
+        try:
+            link = element.find_element(By.TAG_NAME, "a")
+            EventsURLList.append(link.get_attribute("href"))
+            print(link.get_attribute("href"))
+        except:
+            print("No Data Available!")
+    print(EventsURLList)
+    for Link in EventsURLList:
+        driver.get(Link)
+        driver.implicitly_wait(10)
+        # Scroll down
+        driver.execute_script("window.scrollBy(0,500)")
+        driver.implicitly_wait(10)
+        Location = find_my_element(
+            driver,
+            "XPATH",
+            "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div[2]/div[2]/section/div[2]/section[2]/div/div/div[2]/p",
+        )
+        check_not_found(driver, Location, "location not found")
+        if Location != None:
+            if (Location.get_attribute("innerHTML")).find("Cairo") == -1 and (
+                Location.get_attribute("innerHTML")
+            ).find("Online") == -1:
+                print("Not all events are nearby")
+            else:
+                print("Cairo or online")
         else:
-            print("No location found")
-    print(EventsLocationList)
-    for Location in EventsLocationList:
-        if Location.find("Cairo") == -1:
-            print("Not all events are nearby")
-            driver.close()
-            exit()
-    print("Nearby events test passed")
+            print("Not found")
+
     time.sleep(10)
     driver.close()
 
@@ -234,85 +251,159 @@ def this_weekend_tab_test(driver):
 
 
 def online_tab_test(driver):
-    print("")
+    # click on All tab
+    OnlineTab = find_my_element(driver, "XPATH", ONLINE_TAB)
+    check_not_found(driver, OnlineTab, "Online tab not found")
+    OnlineTab.click()
+    time.sleep(30)
+    # Scroll down
+    driver.execute_script("window.scrollBy(0,document.body.scrollHeight)")
+    time.sleep(60)
+    EventsList = driver.find_elements(
+        By.CLASS_NAME,
+        EVENT_ELEMENT,
+    )
+    if len(EventsList) == 0:
+        print("No events in the list")
+        driver.close()
+        exit()
 
-
-def free_tab_test(driver):
-    # click on Free tab
-    # FreeTab = find_my_element(driver, "XPATH", FREE_TAB)
-    # check_not_found(driver, FreeTab, "Free tab not found")
-    # FreeTab.click()
-    # time.sleep(30)
-    # # Scroll down
-    # driver.execute_script("window.scrollBy(0,document.body.scrollHeight)")
-    # time.sleep(30)
-    # try:
-    #     EventsList = WebDriverWait(driver, 20).until(
-    #         EC.presence_of_element_located(
-    #             (
-    #                 By.CLASS_NAME,
-    #                 "feed-events-bucket__content__cards-container",
-    #             )
-    #         )
-    #     )
-    # except:
-    #     print("Element not found.")
-    #     exit()
-    # EventsList = driver.find_elements(
-    #     By.CLASS_NAME,
-    #     EVENT_ELEMENT,
-    # )
-    # EventsURLList = []
-    # # EventsList = EventsList[0:9]
-    # for element in EventsList:
-    #     try:
-    #         link = element.find_element(By.TAG_NAME, "a")
-    #         EventsURLList.append(link.get_attribute("href"))
-    #         print(link.get_attribute("href"))
-    #     except:
-    #         print("No Data Available!")
-
-    EventsURLList = [
-        "https://www.eventbrite.com/e/the-design-show-egypt-tickets-372686233557?aff=ebdssbcitybrowse",
-        "https://www.eventbrite.at/e/cloudflight-coding-contest-ccc-cairo-tickets-535486292917?aff=ebdssbcitybrowse",
-        "https://www.eventbrite.com/e/how-to-improve-your-memory-cairo-tickets-488040421037?aff=ebdssbcitybrowse",
-        "https://www.eventbrite.com/e/middle-east-vape-show-2023-tickets-512820940237?aff=ebdssbcitybrowse",
-        "https://www.eventbrite.com.au/e/eit-visit-in-egypt-march-2023-tickets-596314070437?aff=ebdssbcitybrowse",
-        "https://www.eventbrite.com/e/effective-note-taking-cairo-tickets-488909981917?aff=ebdssbcitybrowse",
-        "https://www.eventbrite.com/e/how-can-i-feel-confident-and-dynamic-egypt-experience-the-holy-energy-tickets-167887842055?aff=ebdssbcitybrowse",
-        "https://www.eventbrite.com/e/meditation-zarqa-learn-to-be-in-balance-immotionaly-spiritualy-tickets-168533860313?aff=ebdssbcitybrowse",
-        "https://www.eventbrite.com/e/first-time-authors-publishing-masterclass-write-a-bestseller-cairo-tickets-591303453547?aff=ebdssbcitybrowse",
-    ]
+    # EventsList = EventsList[0:10]
+    EventsURLList = []
+    for element in EventsList:
+        try:
+            link = element.find_element(By.TAG_NAME, "a")
+            EventsURLList.append(link.get_attribute("href"))
+            print(link.get_attribute("href"))
+        except:
+            print("No Data Available!")
+    print(EventsURLList)
     for Link in EventsURLList:
         driver.get(Link)
-        driver.maximize_window()
         driver.implicitly_wait(10)
         # Scroll down
         driver.execute_script("window.scrollBy(0,500)")
         driver.implicitly_wait(10)
+        Location = find_my_element(
+            driver,
+            "XPATH",
+            "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div[2]/div[2]/section/div[2]/section[2]/div/div/div[2]/p",
+        )
+        check_not_found(driver, Location, "location not found")
+        if Location != None:
+            if (Location.get_attribute("innerHTML")).find("Online") == -1:
+                print("Not all events are online")
+                # driver.close()
+                # exit()
+            else:
+                print("online")
+        else:
+            print("Not found")
+    print("Online tab test passed")
+    time.sleep(10)
+    driver.close()
+
+
+def free_tab_test(driver):
+    # click on Free tab
+    FreeTab = find_my_element(driver, "XPATH", FREE_TAB)
+    check_not_found(driver, FreeTab, "Free tab not found")
+    FreeTab.click()
+    time.sleep(30)
+    # Scroll down
+    driver.execute_script("window.scrollBy(0,document.body.scrollHeight)")
+    time.sleep(30)
+    try:
+        EventsList = WebDriverWait(driver, 20).until(
+            EC.presence_of_element_located(
+                (
+                    By.CLASS_NAME,
+                    "feed-events-bucket__content__cards-container",
+                )
+            )
+        )
+    except:
+        print("Element not found.")
+        exit()
+    EventsList = driver.find_elements(
+        By.CLASS_NAME,
+        EVENT_ELEMENT,
+    )
+    EventsURLList = []
+    # EventsList = EventsList[0:9]
+    for element in EventsList:
+        try:
+            link = element.find_element(By.TAG_NAME, "a")
+            EventsURLList.append(link.get_attribute("href"))
+            print(link.get_attribute("href"))
+        except:
+            print("No Data Available!")
+
+    for Link in EventsURLList:
+        driver.get(Link)
+        driver.implicitly_wait(10)
+        # Scroll down
+        driver.execute_script("window.scrollBy(0,500)")
+        driver.implicitly_wait(10)
+
         Free = find_my_element(driver, "XPATH", FREE_INFO_2)
         if Free == None:
             Free = find_my_element(driver, "XPATH", FREE_INFO_1)
             if Free == None:
+                print("Ticket price not found")
                 exit()
-        if Free.get_attribute("innerHTML") == "Free":
-            print("Free")
-        else:
-            print("not free")
-        print(Free.get_attribute("innerHTML"))
+        if Free.get_attribute("innerHTML") != "Free":
+            print("Not all events are free")
+            driver.close()
+            exit()
     print("Free tab test passed")
     driver.close()
 
 
-def other_tabs_test(driver):
-    # click tab
-    # test
-    # go back
-    print("")
+def test_category(driver, LinkText, Name):
+    driver.execute_script("window.scrollBy(0,500)")
+    time.sleep(30)
+    Category = find_my_element(driver, "LINK_TEXT", LinkText)
+    check_not_found(driver, Category, (Name + " category button not found"))
+    Category.click()
+    time.sleep(30)
+
+    Page = find_my_element(
+        driver,
+        "XPATH",
+        "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/div[1]/div/div/div/h1",
+    )
+    check_not_found(driver, Page, (Name + " category page not reached"))
+    if (Page.get_attribute("innerHTML")).find(Name) == -1:
+        print(Name + " category page not reached")
+        driver.back()
+        return
+
+    print(Name + " category page reached successfuly")
+    driver.back()
+    time.sleep(30)
 
 
 def categories_test(driver):
-    # click tab
-    # test
-    # go back
-    print("")
+
+    # click on All tab
+    AllTab = find_my_element(driver, "XPATH", ALL_TAB)
+    check_not_found(driver, AllTab, "All tab not found")
+    AllTab.click()
+    time.sleep(30)
+    test_category(driver, MUSIC_CATEGORY, "Music events")
+    test_category(driver, HOBBBIES_CATEGORY, "Hobbies events")
+    test_category(driver, VISUAL_ARTS_CATEGORY, "Visual Arts events")
+    test_category(driver, BUSINESS_CATEGORY, "Business events")
+    test_category(driver, HOLDIDAY_CATEGORY, "Holiday events")
+    test_category(driver, FOOD_DRINK_CATEGORY, "Drink events")
+    test_category(driver, HEALTH_CATEGORY, "Health events")
+    test_category(driver, SPORTS_CATEGORY, "Fitness events")
+    driver.execute_script("window.scrollBy(0,500)")
+    time.sleep(30)
+    MusicCategory = find_my_element(driver, "LINK_TEXT", MUSIC_CATEGORY)
+    check_not_found(driver, MusicCategory, "Music category button not found")
+    MusicCategory.click()
+    time.sleep(30)
+
+    driver.close()

@@ -95,7 +95,6 @@ ALL_EVENT_DATE_1 = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/sec
 ALL_EVENT_DATE_2 = "]/div/div/article/div[1]/div[2]/div/div[1]/div"
 ALL_EVENTS_LOCATION_1 = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/div/div/div/section[1]/div/div/div[2]/div["
 ALL_EVENTS_LOCATION_2 = "]/div/div/article/div[1]/div[2]/div/div[2]/div[1]/div"
-
 # Tabs:
 ALL_TAB = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/nav/ul/li[1]/button"
 FOR_YOU_TAB = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/nav/ul/li[2]/button"
@@ -123,7 +122,7 @@ CHARITY_CAUSES_TAB = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/s
 # Categories:
 MUSIC_CATEGORY = "Music"
 HOBBBIES_CATEGORY = "Hobbies"
-VISUAL_ASRTS_CATEGORY = "Performing & Visual Arts"
+VISUAL_ARTS_CATEGORY = "Performing & Visual Arts"
 BUSINESS_CATEGORY = "Business"
 HOLDIDAY_CATEGORY = "Holiday"
 FOOD_DRINK_CATEGORY = "Food & Drink"

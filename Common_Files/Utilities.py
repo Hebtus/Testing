@@ -20,6 +20,10 @@ def find_my_element(Driver, type, val):
             item = WebDriverWait(Driver, 20).until(
                 EC.presence_of_element_located((By.LINK_TEXT, val))
             )
+        elif type == "CLASS":
+            item = WebDriverWait(Driver, 20).until(
+                EC.presence_of_element_located((By.CLASS_NAME, val))
+            )
         else:
             return None
     except:
@@ -33,7 +37,7 @@ def check_not_found(driver, element, message):
     if element == None:
         print(message)
         # driver.close()
-        # exit()
+        exit()
 
 
 def clear_textbox(element):
