@@ -7,6 +7,7 @@ from selenium.webdriver.chrome.options import Options
 # ----- Includes for Creator's view web pages ----- #
 from Creators_View.LogInToCreatorView import creator_view
 from Creators_View.BasicInfo import basic_info
+from Creators_View.EventList import event_list
 
 Coptions = Options()
 Coptions.add_experimental_option("detach", True)
@@ -21,5 +22,7 @@ s = Service(PATH)
 # ----- Navigation from Attendee's view to Creator's view ----- #
 
 # ------------- Creator's view web pages testing -------------- #
+driver.maximize_window()
 creator_view(driver)  # temporary
-basic_info(driver)
+#event_list(driver)
+basic_info(driver, 1)
