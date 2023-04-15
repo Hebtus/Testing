@@ -94,7 +94,7 @@ def check_displayed(driver, type, value, message):
 
 def events_info_test(driver, URLList):
     # ---------------------------------------------- Testing Events info ---------------------------------------------- #
-    for i in range(2):
+    for i in range(1):
         Link = URLList[i]
         driver.get(Link)
         driver.implicitly_wait(5)

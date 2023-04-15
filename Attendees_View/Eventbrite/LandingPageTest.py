@@ -17,7 +17,54 @@ from datetime import datetime, date, timedelta
 
 
 def landing_page(driver):
+    # call_location_test(driver)
+    # time.sleep(30)
+    # call_see_more_test(driver)
+    # time.sleep(30)
+    # call_today_tab_test(driver)
+    # time.sleep(30)
+    # call_weekend_tab(driver)
+    # time.sleep(30)
+    # call_online_tab(driver)
+    # time.sleep(30)
+    call_free_tab_test(driver)
+    # time.sleep(30)
+    # call_categories_test(driver)
+
+
+def call_location_test(driver):
     login(driver, "testereventbrite@gmail.com", "eventbritetester")
+    location_nearby_events_test(driver)
+
+
+def call_see_more_test(driver):
+    login(driver, "testereventbrite@gmail.com", "eventbritetester")
+    see_more_test(driver)
+
+
+def call_today_tab_test(driver):
+    login(driver, "testereventbrite@gmail.com", "eventbritetester")
+    today_tab_test(driver)
+
+
+def call_weekend_tab(driver):
+    login(driver, "testereventbrite@gmail.com", "eventbritetester")
+    this_weekend_tab_test(driver)
+
+
+def call_online_tab(driver):
+    login(driver, "testereventbrite@gmail.com", "eventbritetester")
+    online_tab_test(driver)
+
+
+def call_free_tab_test(driver):
+    login(driver, "testereventbrite@gmail.com", "eventbritetester")
+    free_tab_test(driver)
+
+
+def call_categories_test(driver):
+    login(driver, "testereventbrite@gmail.com", "eventbritetester")
+    categories_test(driver)
 
 
 def login(driver, Email, Password):
@@ -48,17 +95,14 @@ def login(driver, Email, Password):
     LandingPage = find_my_element(driver, "XPATH", LANDING_PAGE)
     check_not_found(driver, LandingPage, "Landing page not reached")
     time.sleep(30)
-    # see_more_test(driver)
-    # location_nearby_kevents_test(driver)
-    # today_tab_test(driver)
-    # this_weekend_tab_test(driver)
-    # location_nearby_events_test(driver)
-    # free_tab_test(driver)
-    # categories_test(driver)
+    AllTab = find_my_element(driver, "XPATH", ALL_TAB)
+    check_not_found(driver, AllTab, "All tab not found")
+    AllTab.click()
+    time.sleep(10)
 
 
 def location_nearby_events_test(driver):
-# ---------------------------------------------- Testing Detection of geolocation ---------------------------------------------- #
+    # ---------------------------------------------- Testing Detection of geolocation ---------------------------------------------- #
     # Get the detected location
     MyLocation = find_my_element(driver, "ID", LOCATION_PICKER)
     check_not_found(driver, MyLocation, "Location not found")
@@ -121,7 +165,7 @@ def location_nearby_events_test(driver):
                 print("Cairo or online")
         else:
             print("Not found")
-
+    print("Location test passed")
     time.sleep(10)
     driver.close()
 
@@ -187,6 +231,7 @@ def today_tab_test(driver):
 def is_this_weekend(Date):
     # ---------------------------------------------- Auxiliary function to check date is in this weekend  ---------------------------------------------- #
     # remove extra data
+    print(Date)
     Date = Date.split("+")[0]
     # if "today", add today's date
     if Date.find("Today") != -1:
@@ -218,7 +263,8 @@ def is_this_weekend(Date):
             MonthStr = "0" + str(MonthNum)
         else:
             MonthStr = str(MonthNum)
-            Date = date(2023, int(MonthStr), int(DayStr))
+        Date = date(2023, int(MonthStr), int(DayStr))
+    print(Date)
     # weekdays = 5,4 are weekends
     if Date.weekday() == 5 or Date.weekday() == 4:
         Difference = (Date - date.today()).days
@@ -312,8 +358,15 @@ def online_tab_test(driver):
         Location = find_my_element(
             driver,
             "XPATH",
-            "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div[2]/div[2]/section/div[2]/section[2]/div/div/div[2]/p",
+            ONLINE_INFO_1,
         )
+
+        if Location == None:
+            Location = find_my_element(
+                driver,
+                "XPATH",
+                ONLINE_INFO_2,
+            )
         check_not_found(driver, Location, "location not found")
         # check if online
         if Location != None:
@@ -366,7 +419,11 @@ def free_tab_test(driver):
         # Scroll down to load
         driver.execute_script("window.scrollBy(0,500)")
         driver.implicitly_wait(10)
-        Free = find_my_element(driver, "XPATH", FREE_INFO_2)
+        Free = find_my_element(
+            driver,
+            "XPATH",
+            '//*[@id="root"]/div/section/form/div/div/div/ul/li/div/div/div[2]/div/span',
+        )
         if Free == None:
             Free = find_my_element(driver, "XPATH", FREE_INFO_1)
             if Free == None:

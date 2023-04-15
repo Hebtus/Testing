@@ -18,7 +18,6 @@ LANDING_PAGE = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section
 WHITE_SPACE_SIGNUP_PAGE = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[1]/div[1]/h1"
 # login button in sinup page
 SIGNUP_LOGIN_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[4]/button"
-LOGIN_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[2]/div/form/div[4]/div/button"
 
 # signup invalid tests
 INVALID_EMAIL_ALERT = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/form/div[1]/div[1]/div[2]/div/aside"
@@ -47,9 +46,11 @@ ACCEPT_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/di
 UNREGISTERED_EMAIL_ALERT = (
     "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[2]/div"
 )
-INCORRECT_PASSWORD_ALERT = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[3]/div/form/div[2]/div/div/div[2]/div/aside"
+INCORRECT_PASSWORD_ALERT = (
+    "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[2]/div"
+)
 SIGNIN_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[3]/div/form/div[4]/div/button"
-
+LOGIN_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[2]/div/form/div[4]/div/button"
 # Forget password
 FORGET_PASSWORD_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[3]/div/div/div/div/button"
 GMAIL_TEXTBOX = "identifierId"

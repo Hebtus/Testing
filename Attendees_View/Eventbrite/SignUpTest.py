@@ -27,7 +27,7 @@ def sign_up(driver):
     # sign_up_valid_test(driver, Emails[0], Passwords[0])
     # sign_up_invalid_email(driver, Emails[2:14])
     # sign_up_invalid_tests(driver, Emails[1], Passwords)
-    # Sign_up_with_facebook(driver, Emails[16], Passwords[6])
+    Sign_up_with_facebook(driver, Emails[16], Passwords[6])
     # sign_up_with_google(driver)
     # go_to_login_page(driver)
 
