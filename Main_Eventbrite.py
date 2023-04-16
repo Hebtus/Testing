@@ -4,10 +4,10 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 # ----- Includes for Attendee's view web pages ----- #
-from Attendees_View.SignUpTest import sign_up
-from Attendees_View.SignInTest import sign_in
-from Attendees_View.EventPageTest import event_page
-from Attendees_View.LandingPageTest import landing_page
+from Attendees_View.Eventbrite.SignUpTest import sign_up
+from Attendees_View.Eventbrite.SignInTest import sign_in
+from Attendees_View.Eventbrite.EventPageTest import event_page
+from Attendees_View.Eventbrite.LandingPageTest import landing_page
 
 # ----- Includes for Creator's view web pages ----- #
 from Creators_View.LogInToCreatorView import creator_view

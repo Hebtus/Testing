@@ -33,11 +33,11 @@ def find_my_element(Driver, type, val):
 
 
 def check_not_found(driver, element, message):
-    # assert element != None, message
     if element == None:
         print(message)
+        assert element != None, message
         # driver.close()
-        exit()
+        # exit()
 
 
 def clear_textbox(element):

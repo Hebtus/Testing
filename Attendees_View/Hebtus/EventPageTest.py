@@ -8,14 +8,53 @@ import sys
 sys.path.append(".")  # To access modules in sibling directories
 
 from Common_Files.Utilities import *
-from Common_Files.RealReferences import *
+from Common_Files.RealReferences_Hebtus import *
 
 # import Action chains
 from selenium.webdriver.common.action_chains import ActionChains
 
 
 def event_page(driver):
-    login(driver, "testereventbrite@gmail.com", "eventbritetester")
+    # login(driver, "testereventbrite@gmail.com", "eventbritetester")
+    GetEvents(driver)
+
+
+def GetEvents(driver):
+    driver.get("https://www.hebtus.me/#")
+    driver.maximize_window()
+    driver.implicitly_wait(10)
+    time.sleep(5)
+    EventsList = driver.find_elements(
+        By.CLASS_NAME,
+        "col",
+    )
+    if EventsList == None:
+        print("No events in the today list")
+        driver.close()
+        exit()
+    else:
+        print(len(EventsList))
+
+    # EventsNum = len(EventsList)
+    EventsNum = 5
+    for i in range(1, EventsNum):
+        time.sleep(5)
+        EVENT = EVENT_LIST_1 + str(i) + EVENT_LIST_2
+        Event = find_my_element(driver, "XPATH", EVENT)
+        if Event != None:
+            driver.execute_script("arguments[0].scrollIntoView();", Event)
+            time.sleep(5)
+            # create action chain object
+            action = ActionChains(driver)
+            # perform the operation
+            action.move_to_element(Event).click().perform()
+            time.sleep(10)
+            # Test EventPage
+            events_info_test(driver)
+            driver.back()
+        else:
+            print("No event")
+    driver.close()
 
 
 def login(driver, Email, Password):
@@ -92,54 +131,28 @@ def check_displayed(driver, type, value, message):
         print(message)
 
 
-def events_info_test(driver, URLList):
+def events_info_test(driver):
     # ---------------------------------------------- Testing Events info ---------------------------------------------- #
-    for i in range(1):
-        Link = URLList[i]
-        driver.get(Link)
-        driver.implicitly_wait(5)
-        # Image
-        check_displayed(driver, "XPATH", IMAGE, "Image not displayed")
-        # Start date
-        check_displayed(driver, "XPATH", START_DATE, "Start date not displayed")
-        # Event title
-        check_displayed(driver, "XPATH", EVENT_TITLE, "Event title not displayed")
-        # Event Summary
-        check_displayed(driver, "XPATH", EVENT_SUMMARY, "Event summary not displayed")
-        # Simplified Organizer info
-        check_displayed(
-            driver,
-            "XPATH",
-            SIMPLIDIED_ORGANIZER_INFO,
-            "Simplified organizer info not displayed",
-        )
-        # Tickets
-        check_displayed(driver, "XPATH", TICKETS_INFO, "Tickets info not displayed")
-        # Date and time
-        check_displayed(driver, "XPATH", DATE_TIME, "Date and time not displayed")
-        # Location
-        check_displayed(driver, "XPATH", LOCATION, "Location not displayed")
-        # About this event
-        check_displayed(
-            driver, "XPATH", EVENTS_DETAILS, "Event's details not displayed"
-        )
-        # Scroll down
-        driver.execute_script("window.scrollBy(0,document.body.scrollHeight)")
-        time.sleep(30)
-        # About the organizer
-        check_displayed(driver, "XPATH", ORGANIZER_INFO, "Organizer info not displayed")
-        # BookTicketButton = find_my_element(driver, "XPATH", RESERVE_SPOT_BUTTON)
-        # if BookTicketButton == None:
-        #     BookTicketButton = find_my_element(driver, "XPATH", TICKETS_BUTTON)
-        #     check_not_found(
-        #         driver, BookTicketButton, "Reserve your spot button not found"
-        #     )
-        # BookTicketButton.click()
-        # time.sleep(30)
-        # RegisterWindow = find_my_element(driver, "XPATH", REGISTER_PAGE)
-        # if RegisterWindow == None:
-        #     RegisterWindow = find_my_element(driver, "XPATH", CHECKOUT_BUTTON)
-        #     check_not_found(driver, RegisterWindow, "Register window not found")
-        time.sleep(20)
-        print("Info displayed")
-        driver.close()
+    # Image
+    check_displayed(driver, "XPATH", IMAGE, "Image not displayed")
+    # Start date
+    check_displayed(driver, "XPATH", START_DATE, "Start date not displayed")
+    # Event title
+    check_displayed(driver, "XPATH", EVENT_TITLE, "Event title not displayed")
+    # Date and time
+    check_displayed(driver, "XPATH", DATE_TIME, "Date and time not displayed")
+    # Location
+    check_displayed(driver, "XPATH", LOCATION, "Location not displayed")
+    # About this event
+    check_displayed(driver, "XPATH", EVENTS_DETAILS, "Event's details not displayed")
+
+    # Tickets
+    check_displayed(driver, "XPATH", TICKETS_INFO, "Tickets info not displayed")
+    # Scroll down
+    driver.execute_script("window.scrollBy(0,document.body.scrollHeight)")
+    time.sleep(30)
+
+    BookTicketButton = find_my_element(driver, "XPATH", GET_TICKET_BUTTON)
+    check_not_found(driver, BookTicketButton, "Reserve your spot button not found")
+
+    print("Info displayed")

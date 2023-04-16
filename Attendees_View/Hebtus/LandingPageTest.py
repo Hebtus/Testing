@@ -8,7 +8,7 @@ import sys
 sys.path.append(".")  # To access modules in sibling directories
 
 from Common_Files.Utilities import *
-from Common_Files.RealReferences import *
+from Common_Files.RealReferences_Hebtus import *
 
 # import Action chains
 from selenium.webdriver.common.action_chains import ActionChains
@@ -21,19 +21,19 @@ def landing_page(driver):
     # time.sleep(30)
     # call_see_more_test(driver)
     # time.sleep(30)
-    # call_today_tab_test(driver)
+    call_today_tab_test(driver)
     # time.sleep(30)
     # call_weekend_tab(driver)
     # time.sleep(30)
     # call_online_tab(driver)
     # time.sleep(30)
-    call_free_tab_test(driver)
+    # call_free_tab_test(driver)
     # time.sleep(30)
     # call_categories_test(driver)
 
 
 def call_location_test(driver):
-    login(driver, "testereventbrite@gmail.com", "eventbritetester")
+    # login(driver, "testereventbrite@gmail.com", "eventbritetester")
     location_nearby_events_test(driver)
 
 
@@ -43,7 +43,7 @@ def call_see_more_test(driver):
 
 
 def call_today_tab_test(driver):
-    login(driver, "testereventbrite@gmail.com", "eventbritetester")
+    # login(driver, "testereventbrite@gmail.com", "eventbritetester")
     today_tab_test(driver)
 
 
@@ -103,68 +103,73 @@ def login(driver, Email, Password):
 
 def location_nearby_events_test(driver):
     # ---------------------------------------------- Testing Detection of geolocation ---------------------------------------------- #
+    driver.get("https://www.hebtus.me/#")
+    driver.maximize_window()
+    driver.implicitly_wait(10)
+    time.sleep(5)
     # Get the detected location
     MyLocation = find_my_element(driver, "ID", LOCATION_PICKER)
     check_not_found(driver, MyLocation, "Location not found")
-    print(MyLocation.get_attribute("value"))
+    # print(MyLocation.get_attribute("value"))
+    print(MyLocation.text)
     # Check if it's correct
-    if MyLocation.get_attribute("value") == "Al Qahirah":
+    if MyLocation.text == "Cairo":
         print("Location detected correctly")
     else:
         print("Location not detected correctly")
-    # Click on All tab to make sure home page is opened
-    AllTab = find_my_element(driver, "XPATH", ALL_TAB)
-    check_not_found(driver, AllTab, "All tab not found")
-    AllTab.click()
-    time.sleep(30)
-    # Scroll down to load
-    driver.execute_script("window.scrollBy(0,document.body.scrollHeight)")
-    time.sleep(60)
-    # ---------------------------------------------- Testing nearby events ---------------------------------------------- #
-    # Get list of events
-    EventsList = driver.find_elements(
-        By.CLASS_NAME,
-        EVENT_ELEMENT,
-    )
-    if len(EventsList) == 0:
-        print("No events in the list")
-        driver.close()
-        exit()
-    EventsList = EventsList[0:10]
-    EventsURLList = []
-    # Get URL of events pages
-    for element in EventsList:
-        try:
-            link = element.find_element(By.TAG_NAME, "a")
-            EventsURLList.append(link.get_attribute("href"))
-            print(link.get_attribute("href"))
-        except:
-            print("No Data Available!")
-    # loop over all URLs
-    for Link in EventsURLList:
-        # Open event oage
-        driver.get(Link)
-        driver.implicitly_wait(10)
-        # Scroll down to load
-        driver.execute_script("window.scrollBy(0,500)")
-        driver.implicitly_wait(10)
-        # Get location element
-        Location = find_my_element(
-            driver,
-            "XPATH",
-            "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div[2]/div[2]/section/div[2]/section[2]/div/div/div[2]/p",
-        )
-        check_not_found(driver, Location, "location not found")
-        # Check if the location is in Cairo or online
-        if Location != None:
-            if (Location.get_attribute("innerHTML")).find("Cairo") == -1 and (
-                Location.get_attribute("innerHTML")
-            ).find("Online") == -1:
-                print("Not all events are nearby")
-            else:
-                print("Cairo or online")
-        else:
-            print("Not found")
+    # # Click on All tab to make sure home page is opened
+    # AllTab = find_my_element(driver, "XPATH", ALL_TAB)
+    # check_not_found(driver, AllTab, "All tab not found")
+    # AllTab.click()
+    # time.sleep(30)
+    # # Scroll down to load
+    # driver.execute_script("window.scrollBy(0,document.body.scrollHeight)")
+    # time.sleep(60)
+    # # ---------------------------------------------- Testing nearby events ---------------------------------------------- #
+    # # Get list of events
+    # EventsList = driver.find_elements(
+    #     By.CLASS_NAME,
+    #     EVENT_ELEMENT,
+    # )
+    # if len(EventsList) == 0:
+    #     print("No events in the list")
+    #     driver.close()
+    #     exit()
+    # EventsList = EventsList[0:10]
+    # EventsURLList = []
+    # # Get URL of events pages
+    # for element in EventsList:
+    #     try:
+    #         link = element.find_element(By.TAG_NAME, "a")
+    #         EventsURLList.append(link.get_attribute("href"))
+    #         print(link.get_attribute("href"))
+    #     except:
+    #         print("No Data Available!")
+    # # loop over all URLs
+    # for Link in EventsURLList:
+    #     # Open event oage
+    #     driver.get(Link)
+    #     driver.implicitly_wait(10)
+    #     # Scroll down to load
+    #     driver.execute_script("window.scrollBy(0,500)")
+    #     driver.implicitly_wait(10)
+    #     # Get location element
+    #     Location = find_my_element(
+    #         driver,
+    #         "XPATH",
+    #         "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div[2]/div[2]/section/div[2]/section[2]/div/div/div[2]/p",
+    #     )
+    #     check_not_found(driver, Location, "location not found")
+    #     # Check if the location is in Cairo or online
+    #     if Location != None:
+    #         if (Location.get_attribute("innerHTML")).find("Cairo") == -1 and (
+    #             Location.get_attribute("innerHTML")
+    #         ).find("Online") == -1:
+    #             print("Not all events are nearby")
+    #         else:
+    #             print("Cairo or online")
+    #     else:
+    #         print("Not found")
     print("Location test passed")
     time.sleep(10)
     driver.close()
@@ -189,44 +194,109 @@ def see_more_test(driver):
     driver.close()
 
 
+def GetDate(Date):
+    # ---------------------------------------------- Auxiliary function to check date is in this weekend  ---------------------------------------------- #
+    # remove extra data
+    # Starts Monday, August 8, 2022
+    if "Starts" in Date:
+        Date = Date.split("Starts")[1]
+    else:
+        Date = Date.split("Ends")[1]
+    # Monday, August 8, 2022
+    # if "today", add today's date
+    if Date.find("Today") != -1:
+        Date = date.today()
+    # if tomorrow, add tomorrow's date
+    elif Date.find("Tomorrow") != -1:
+        Datestr = (str(datetime.today() + timedelta(days=1))).split()[0]
+        Datestr = Datestr.split("-")
+        Day = int(Datestr[2])
+        Month = int(Datestr[1])
+        Year = int(Datestr[0])
+        Date = date(Year, Month, Day)
+    else:
+        FullEventDateSeperated = Date.split()[1:]  # default is split at whitespaces
+        FullEventDateSeperated[1] = (FullEventDateSeperated[1].split(","))[
+            0
+        ]  # to get rid of comma next to day
+        MonthNum = datetime.strptime(
+            FullEventDateSeperated[0][0:3], "%b"
+        ).month  # to cast month from string to int (Note: Apr -> 4 (not 04))
+        # to change formats: 9/4/2023 7:00PM -> 09/04/2023 07:00PM
+        # Day
+        if int(FullEventDateSeperated[1]) < 10:
+            DayStr = "0" + FullEventDateSeperated[1]
+        else:
+            DayStr = FullEventDateSeperated[1]
+        # Month
+        if MonthNum < 10:
+            MonthStr = "0" + str(MonthNum)
+        else:
+            MonthStr = str(MonthNum)
+        Date = date(int(FullEventDateSeperated[2]), int(MonthStr), int(DayStr))
+    print(Date)
+    return Date
+
+
 def today_tab_test(driver):
     # ---------------------------------------------- Testing today tab ---------------------------------------------- #
+    driver.get("https://www.hebtus.me/#")
+    driver.maximize_window()
+    driver.implicitly_wait(10)
+    time.sleep(5)
     # click on Today tab
-    TodayTab = find_my_element(driver, "XPATH", TODAY_TAB)
+    TodayTab = find_my_element(driver, "ID", TODAY_TAB)
     check_not_found(driver, TodayTab, "Today tab not found")
     TodayTab.click()
-    time.sleep(30)
+    time.sleep(10)
     # Scroll down to load
-    driver.execute_script("window.scrollBy(0,document.body.scrollHeight)")
-    time.sleep(30)
+    # driver.execute_script("window.scrollBy(0,document.body.scrollHeight)")
+    time.sleep(10)
     # Get list of elements
     EventsList = driver.find_elements(
         By.CLASS_NAME,
-        EVENT_ELEMENT,
+        "col",
     )
     if EventsList == None:
         print("No events in the today list")
         driver.close()
         exit()
-    EventsNumber = len(EventsList)
-    EventsDateList = []
-    # Loop to get the date of all events
-    for i in range(EventsNumber):
-        EVENT_DATE = ALL_EVENT_DATE_1 + str(i) + ALL_EVENT_DATE_2
-        EventDate = find_my_element(driver, "XPATH", EVENT_DATE)
-        if EventDate != None:
-            EventsDateList.append(EventDate.get_attribute("innerHTML"))
-    # print(EventsDateList)
-    # Check if the date is today
-    for Date in EventsDateList:
-        if Date.find("Today") == -1:
-            print("Not all events are today")
-            driver.close()
-            exit()
+    else:
+        print(len(EventsList))
+    EventsNum = len(EventsList)
+    for i in range(1, EventsNum):
+        time.sleep(5)
+        START_DATE_XPATH = (
+            "/html/body/div/div/div[3]/div/div/div/div[" + str(i) + "]/div/div/h6[1]"
+        )
+        EventStartDate = find_my_element(driver, "XPATH", START_DATE_XPATH)
+        if EventStartDate != None:
+            driver.execute_script("arguments[0].scrollIntoView();", EventStartDate)
+            time.sleep(5)
+            StartDate = EventStartDate.text
+            # print(StartDate)
+            StartDate = GetDate(StartDate)
+            END_DATE_XPATH = (
+                "/html/body/div/div/div[3]/div/div/div/div["
+                + str(i)
+                + "]/div/div/h6[2]"
+            )
+            EventEndtDate = find_my_element(driver, "XPATH", END_DATE_XPATH)
+            if EventEndtDate != None:
+                EndDate = EventEndtDate.text
+                # print(EndDate)
+                EndDate = GetDate(EndDate)
+                assert StartDate <= date.today() <= EndDate, "Today Tab test failed"
+                # if StartDate <= date.today() <= EndDate:
+                #     print("Today")
+                # else:
+                #     print("Not today")
+
     print("Today tab test passed")
-    time.sleep(10)
     driver.close()
 
+#TODO: XPATH in references file
+#TODO: This weekend
 
 def is_this_weekend(Date):
     # ---------------------------------------------- Auxiliary function to check date is in this weekend  ---------------------------------------------- #
