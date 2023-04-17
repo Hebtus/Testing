@@ -75,6 +75,7 @@ LOCATION = (
 EVENTS_DETAILS = "/html/body/div/div/div[2]/div/div[2]/div[4]/p"  #! New
 TICKETS_INFO = "/html/body/div/div/div[2]/div/div[3]/div"  #! New
 GET_TICKET_BUTTON = "/html/body/div/div/div[2]/div/div[3]/div/div"  #! New
+
 EVENT_SUMMARY = "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div[2]/div[2]/div[1]/p"
 SIMPLIDIED_ORGANIZER_INFO = "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div[2]/div[2]/div[2]/div"
 SHARE_WITH_FRIENDS = "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div[2]/div[2]/div[2]/section[2]/div/div[2]/div/div"
@@ -108,11 +109,16 @@ ALL_EVENTS_LOCATION_1 = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/mai
 ALL_EVENTS_LOCATION_2 = "]/div/div/article/div[1]/div[2]/div/div[2]/div[1]/div"
 # Tabs:
 TODAY_TAB = "today-link"  #! New
-START_DATE_1 = "/html/body/div/div/div[3]/div/div/div/div["     #! New
-START_DATE_2 = "]/div/div/h6[1]" #! New 
-END_DATE_1 = "/html/body/div/div/div[3]/div/div/div/div["       #! New
-END_DATE_2 = "]/div/div/h6[2]"      #! New
+
+START_DATE_1 = "/html/body/div/div/div[3]/div[1]/div/div/div["  #! New
+START_DATE_2 = "]/div/div/h6[1]"  #! New
+
+END_DATE_1 = "/html/body/div/div/div[3]/div[1]/div/div/div["  #! New
+END_DATE_2 = "]/div/div/h6[2]"  #! New
 THIS_WEEKEND_TAB = "this-weekend-tab"  #! New
+PREV_PAGE_BUTTON = "previous-page-button"  #! New
+NEXT_PAGE_BUTTON = "next-page-button"  #! New
+
 
 ALL_TAB = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/nav/ul/li[1]/button"
 FOR_YOU_TAB = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/nav/ul/li[2]/button"

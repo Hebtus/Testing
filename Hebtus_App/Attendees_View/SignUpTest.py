@@ -1,14 +1,18 @@
 # To give us access to the enter key, escape key...etc. ex: when I write something in the search bar and want to press enter:
-from selenium.webdriver.common.keys import Keys
+from appium import webdriver
+from appium.webdriver.common.appiumby import AppiumBy
+from appium.webdriver.common.touch_action import TouchAction
+
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import time
-from selenium import webdriver
 import sys
 
 sys.path.append(".")  # To access modules in sibling directories
 
 from Common_Files.Utilities import *
-from Common_Files.RealReferences_Hebtus import *
+from Common_Files.RealReferences_App import *
 
 # import Action chains
 from selenium.webdriver.common.action_chains import ActionChains
@@ -16,18 +20,18 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 def sign_up(driver):
     # Get a list of emails and passwords to be tested
-    EmailFile = open("./Test_Cases/SignUpEmails.txt", "r")
-    PasswordFile = open("./Test_Cases/SignUpPasswords.txt", "r")
+    EmailFile = open("./Hebtus_App/Test_Cases/SignUpEmails.txt", "r")
+    PasswordFile = open("./Hebtus_App/Test_Cases/SignUpPasswords.txt", "r")
     Emails = EmailFile.readlines()
     Passwords = PasswordFile.readlines()
     for i in range(len(Emails)):
         Emails[i] = Emails[i].rstrip("\n")
     for i in range(len(Passwords)):
         Passwords[i] = Passwords[i].rstrip("\n")
-    # sign_up_valid_test(driver, Emails[0], Passwords[0])
+    sign_up_valid_test(driver, Emails[0], Passwords[0])
     # sign_up_invalid_email(driver, Emails[2:14])
     # sign_up_invalid_tests(driver, Emails[1], Passwords)
-    Sign_up_with_facebook(driver, Emails[16], Passwords[6])
+    # Sign_up_with_facebook(driver, Emails[16], Passwords[6])
     # sign_up_with_google(driver)
     # go_to_login_page(driver)
 
@@ -35,45 +39,82 @@ def sign_up(driver):
 # Valid test cases
 def sign_up_valid_test(driver, Email, Password):
     # ---------------------------------------------- Testing valid email ---------------------------------------------- #
-    # Open sign up page
-    driver.get("https://www.eventbrite.com/signin/signup")
-    driver.maximize_window()
-    driver.implicitly_wait(5)
+    # Click on sign up button
+    time.sleep(5)
+    x = 540.5
+    y = 1573
+    # tap on the location using the coordinates
+    action = TouchAction(driver)
+    action.tap(x=x, y=y).perform()
+    time.sleep(5)
     # Enter email
-    EmailTextbox = find_my_element(driver, "ID", EMAIL_TEXTBOX)
+    EmailTextbox = find_my_element(driver, "XPATH", SIGN_UP_EMAIL_TEXTBOX)
+    check_not_found(driver, EmailTextbox, "Email textbox not found")
+    EmailTextbox.click()
+    time.sleep(1)
+    EmailTextbox = find_my_element(driver, "XPATH", SIGN_UP_EMAIL_TEXTBOX)
     check_not_found(driver, EmailTextbox, "Email textbox not found")
     EmailTextbox.send_keys(Email)
+    # Enter first name
+    FirstNameTextbox = find_my_element(driver, "XPATH", FIRT_NAME_TEXTBOX)
+    check_not_found(driver, FirstNameTextbox, "First name textbox not found")
+    FirstNameTextbox.click()
+    time.sleep(1)
+    FirstNameTextbox = find_my_element(driver, "XPATH", FIRT_NAME_TEXTBOX)
+    check_not_found(driver, FirstNameTextbox, "First name textbox not found")
+    FirstNameTextbox.send_keys("UserFirstName")
+    driver.implicitly_wait(5)
+    # Enter last name
+    LastNameTextbox = find_my_element(driver, "XPATH", LAST_NAME_TEXTBOX)
+    check_not_found(driver, LastNameTextbox, "Last name textbox not found")
+    LastNameTextbox.click()
+    time.sleep(1)
+    LastNameTextbox = find_my_element(driver, "XPATH", LAST_NAME_TEXTBOX)
+    check_not_found(driver, LastNameTextbox, "Last name textbox not found")
+    LastNameTextbox.send_keys("UserLastName")
+    driver.implicitly_wait(5)
+    # enter password
+    PasswordTextbox = find_my_element(driver, "XPATH", SIGN_UP_PASSWORD_TEXTBOX)
+    check_not_found(driver, PasswordTextbox, "Password textbox not found")
+    PasswordTextbox.click()
+    time.sleep(1)
+    PasswordTextbox = find_my_element(driver, "XPATH", SIGN_UP_PASSWORD_TEXTBOX)
+    check_not_found(driver, PasswordTextbox, "Password textbox not found")
+    PasswordTextbox.send_keys(Password)
+    # Confirm password
+    ConfirmPasswordTextbox = find_my_element(driver, "XPATH", CONFIRM_PASSWORD_TEXTBOX)
+    check_not_found(
+        driver, ConfirmPasswordTextbox, "Confrim Password textbox not found"
+    )
+    ConfirmPasswordTextbox.click()
+    time.sleep(1)
+    ConfirmPasswordTextbox = find_my_element(driver, "XPATH", CONFIRM_PASSWORD_TEXTBOX)
+    check_not_found(
+        driver, ConfirmPasswordTextbox, "Confrim Password textbox not found"
+    )
+    ConfirmPasswordTextbox.send_keys(Password)
+
+    #! -------- Here -----------------------
+    driver.hide_keyboard()
+    CreateAcountButton = find_my_element(driver, "XPATH", CREATE_ACOUNT_BUTON)
+    check_not_found(driver, CreateAcountButton, "Sign up button not found")
+    CreateAcountButton.click()
+    time.sleep(5)
+
+    # check if landing page is reached
+    LandingPage = find_my_element(driver, "XPATH", LANDING_PAGE)
+    check_not_found(driver, LandingPage, "Landing page not reached")
+    time.sleep(10)
+    print("Signed up successfuly")
+    driver.quit()
+
+    exit()
     # create action chain object
     action = ActionChains(driver)
     ContinueButton = find_my_element(driver, "XPATH", CONTINUE_BUTTON)
     check_not_found(driver, ContinueButton, "Continue button not found")
     ContinueButton.click()
     driver.implicitly_wait(10)
-    # Confirm email
-    EmailConfirmationTextbox = find_my_element(driver, "ID", EMAIL_CONFIRMATION_TEXTBOX)
-    check_not_found(
-        driver, EmailConfirmationTextbox, "Confirmation email page is not found"
-    )
-    EmailConfirmationTextbox.send_keys(Email)
-    # Enter first and last name
-    FirstNameTextbox = find_my_element(driver, "ID", FIRT_NAME_TEXTBOX)
-    check_not_found(driver, FirstNameTextbox, "First name textbox not found")
-    FirstNameTextbox.send_keys("UserFirstName")
-    driver.implicitly_wait(5)
-    LastNameTextbox = find_my_element(driver, "ID", LAST_NAME_TEXTBOX)
-    check_not_found(driver, LastNameTextbox, "Last name textbox not found")
-    LastNameTextbox.send_keys("UserLastName")
-    driver.implicitly_wait(5)
-    # enter password
-    PasswordTextbox = find_my_element(driver, "ID", PASSWORD_TEXTBOX)
-    check_not_found(driver, PasswordTextbox, "Password textbox not found")
-    PasswordTextbox.send_keys(Password)
-    time.sleep(30)
-    CreateAcountButton = find_my_element(driver, "XPATH", CREATE_ACOUNT_BUTON)
-    check_not_found(driver, CreateAcountButton, "Create acount button not found")
-
-    # perform the operation
-    action.move_to_element(CreateAcountButton).click().perform()
 
     time.sleep(10)
     # Agrree on terms and conditions
@@ -106,12 +147,6 @@ def sign_up_valid_test(driver, Email, Password):
         if LeaveButton != None:
             LeaveButton.click()
             time.sleep(10)
-    # check if landing page is reached
-    LandingPage = find_my_element(driver, "XPATH", LANDING_PAGE)
-    check_not_found(driver, LandingPage, "Landing page not reached")
-    driver.implicitly_wait(30)
-    print("Signed up successfuly")
-    driver.close()
 
 
 def sign_up_invalid_email(driver, Emails):
@@ -166,7 +201,7 @@ def sign_up_invalid_email(driver, Emails):
     )
     time.sleep(2)
     print("Invalid emails testcases passed")
-    driver.close()
+    driver.quit()
 
 
 def sign_up_invalid_tests(driver, Email, Passwords):
@@ -273,7 +308,7 @@ def sign_up_invalid_tests(driver, Email, Passwords):
 
     print("Invalid testcases passed")
     time.sleep(10)
-    driver.close()
+    driver.quit()
 
 
 def Sign_up_with_facebook(driver, Email, Password):
@@ -347,7 +382,7 @@ def Sign_up_with_facebook(driver, Email, Password):
     driver.implicitly_wait(30)
     print("Successfully Signed up with facebook account")
     time.sleep(20)
-    driver.close()
+    driver.quit()
 
 
 def sign_up_with_google(driver):
@@ -375,4 +410,4 @@ def go_to_login_page(driver):
     LoginPage = find_my_element(driver, "XPATH", LOGIN_BUTTON)
     check_not_found(driver, LoginPage, "Login page not reached")
     print("Login page reached successfuly")
-    driver.close()
+    driver.quit()

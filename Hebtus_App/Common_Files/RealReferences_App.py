@@ -1,23 +1,40 @@
 # ---------------- This file is used to easily map references for elements to the ones already used ----------------#
-
 # ---------------- Attendee's View ----------------#
-# ---------------- This file is used to easily map references for elements to the ones already used ----------------#
+# Login page
+# "//android.view.View//android.widget.TextView[@text='Location/Online' and @class='android.widget.TextView']"
+PASSWORD_TEXTBOX = "//android.view.View//android.widget.EditText[@class='android.widget.EditText'][position() = 2]"  #! New
+EMAIL_TEXTBOX = "//android.view.View//android.widget.EditText[@class='android.widget.EditText'][position() = 1]"  #! New
+LOGIN_BUTTON = "//android.widget.Button[@content-desc='Log In']"  #! New
+LANDING_PAGE = "//android.view.View//android.widget.ScrollView[@class='android.widget.ScrollView'][position() = 1]"  #! New
+PROFILE_ICON = "//android.view.View//android.view.View[@class='android.view.View'][position() = 2]"  #! New
+SIGN_OUT_BUTTON = (
+    "//android.view.View//android.widget.Button[@content-desc='Sign out']"  #! New
+)
+# Invalid Login email or password
+ERROR_WINDOW_OK_BUTTON = (
+    "//android.view.View//android.widget.Button[@content-desc='OK']"  #! New
+)
+# ---------------------------------------------------------------------------------------------------
+# sign up button in login page
+SIGN_UP_BUTTON_LP = "//android.widget.LinearLayout//android.widget.FrameLayout//android.widget.FrameLayout//android.view.View//android.view.View//android.view.View//android.view.View//android.view.View//android.widget.Button[@content-desc='Don't have an account? Sign Up.'][position() = 8]"  #! New
 
-# ---------------- Attendee's View ----------------#
-# Sign up page
-EMAIL_TEXTBOX = "email"
+# ---------------------------------------------------------------------------------------------------
+SIGN_UP_EMAIL_TEXTBOX = "//android.widget.ScrollView//android.widget.EditText[@class='android.widget.EditText'][position() = 1]"  #! New
+FIRT_NAME_TEXTBOX = "//android.widget.ScrollView//android.widget.EditText[@class='android.widget.EditText'][position() = 2]"  #! New
+LAST_NAME_TEXTBOX = "//android.widget.ScrollView//android.widget.EditText[@class='android.widget.EditText'][position() = 3]"  #! New
+SIGN_UP_PASSWORD_TEXTBOX = "//android.widget.ScrollView//android.widget.EditText[@class='android.widget.EditText'][position() = 4]"  #! New
+CONFIRM_PASSWORD_TEXTBOX = "//android.widget.ScrollView//android.widget.EditText[@class='android.widget.EditText'][position() = 5]"  #! New
+CREATE_ACOUNT_BUTON = "//android.widget.ScrollView//android.widget.Button[@content-desc='Sign Up']"  #! New
+# ---------------------------------------------------------------------------------------------------
+
+
 CONTINUE_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/form/div[2]/div/button"
 EMAIL_CONFIRMATION_TEXTBOX = "emailConfirmation"
-FIRT_NAME_TEXTBOX = "firstName"
-LAST_NAME_TEXTBOX = "lastName"
-PASSWORD_TEXTBOX = "password"  
-CREATE_ACOUNT_BUTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/form/div[3]/div/button"
 TERMS_CONDITIONS_POPUP_WINDOW = "edsModalContentChildren"
 AGREE_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[3]/div/div/div/div/div[1]/div/div/main/div/div/div/div/div/div[2]/button[2]"
 START_ATTENDING_BUTTON = "/html/body/div[1]/div/div[2]/div/div[3]/div[1]/div[3]/button"
 EXIT_BUTTON_1 = "/html/body/div[1]/div/div[2]/div/div/div/div[2]/div/button[1]"
 EXIT_BUTTON_2 = "/html/body/div[1]/div/div[3]/div/div/div/div[1]/div/div/main/div/div/div/div[1]/button"
-LANDING_PAGE = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]"
 WHITE_SPACE_SIGNUP_PAGE = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[1]/div[1]/h1"
 # login button in sinup page
 SIGNUP_LOGIN_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[4]/button"
@@ -52,8 +69,8 @@ UNREGISTERED_EMAIL_ALERT = (
 INCORRECT_PASSWORD_ALERT = (
     "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[2]/div"
 )
-SIGNIN_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[3]/div/form/div[4]/div/button"
-LOGIN_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[2]/div/form/div[4]/div/button"
+# SIGNIN_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[3]/div/form/div[4]/div/button"
+# LOGIN_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[2]/div/form/div[4]/div/button"
 # Forget password
 FORGET_PASSWORD_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[3]/div/div/div/div/button"
 GMAIL_TEXTBOX = "identifierId"
@@ -108,10 +125,10 @@ ALL_EVENTS_LOCATION_1 = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/mai
 ALL_EVENTS_LOCATION_2 = "]/div/div/article/div[1]/div[2]/div/div[2]/div[1]/div"
 # Tabs:
 TODAY_TAB = "today-link"  #! New
-START_DATE_1 = "/html/body/div/div/div[3]/div/div/div/div["     #! New
-START_DATE_2 = "]/div/div/h6[1]" #! New 
-END_DATE_1 = "/html/body/div/div/div[3]/div/div/div/div["       #! New
-END_DATE_2 = "]/div/div/h6[2]"      #! New
+START_DATE_1 = "/html/body/div/div/div[3]/div/div/div/div["  #! New
+START_DATE_2 = "]/div/div/h6[1]"  #! New
+END_DATE_1 = "/html/body/div/div/div[3]/div/div/div/div["  #! New
+END_DATE_2 = "]/div/div/h6[2]"  #! New
 THIS_WEEKEND_TAB = "this-weekend-tab"  #! New
 
 ALL_TAB = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/nav/ul/li[1]/button"

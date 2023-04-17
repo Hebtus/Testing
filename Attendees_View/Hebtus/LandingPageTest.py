@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 import time
 from selenium import webdriver
 import sys
+from math import ceil
 
 sys.path.append(".")  # To access modules in sibling directories
 
@@ -18,17 +19,12 @@ from datetime import datetime, date, timedelta
 
 def landing_page(driver):
     # call_location_test(driver)
-    # time.sleep(30)
     # call_see_more_test(driver)
-    # time.sleep(30)
     # call_today_tab_test(driver)
-    # time.sleep(30)
-    call_weekend_tab(driver)
-    # time.sleep(30)
+    # call_weekend_tab(driver)
+    paginations_test(driver)
     # call_online_tab(driver)
-    # time.sleep(30)
     # call_free_tab_test(driver)
-    # time.sleep(30)
     # call_categories_test(driver)
 
 
@@ -234,8 +230,46 @@ def GetDate(Date):
         else:
             MonthStr = str(MonthNum)
         Date = date(int(FullEventDateSeperated[2]), int(MonthStr), int(DayStr))
-    print(Date)
+    # print(Date)
     return Date
+
+
+def check_today_list(driver, Num):
+    for i in range(1, ceil(Num / 12) + 1):
+        for j in range(1, 13):
+            time.sleep(5)
+            START_DATE_XPATH = START_DATE_1 + str(j) + START_DATE_2
+            EventStartDate = find_my_element(driver, "XPATH", START_DATE_XPATH)
+            if EventStartDate != None:
+                driver.execute_script("arguments[0].scrollIntoView();", EventStartDate)
+                time.sleep(5)
+                StartDate = EventStartDate.text
+                StartDate = GetDate(StartDate)
+                END_DATE_XPATH = END_DATE_1 + str(j) + END_DATE_2
+                EventEndtDate = find_my_element(driver, "XPATH", END_DATE_XPATH)
+                if EventEndtDate != None:
+                    EndDate = EventEndtDate.text
+                    EndDate = GetDate(EndDate)
+                    assert StartDate <= date.today() <= EndDate, "Today Tab test failed"
+                    print(
+                        str(j)
+                        + ": "
+                        + str(StartDate)
+                        + " --> "
+                        + str(EndDate)
+                        + " : Today"
+                    )
+            else:
+                break
+        # check if more pages
+        NextPageButton = find_my_element(driver, "ID", PREV_PAGE_BUTTON)
+        check_not_found(driver, NextPageButton, "Next page button not found")
+        driver.execute_script("arguments[0].scrollIntoView();", NextPageButton)
+        time.sleep(20)
+        if NextPageButton.is_enabled():
+            NextPageButton.click()
+        else:
+            break
 
 
 def today_tab_test(driver):
@@ -264,123 +298,74 @@ def today_tab_test(driver):
     else:
         print(len(EventsList))
     EventsNum = len(EventsList)
-    for i in range(1, EventsNum):
-        time.sleep(5)
-        START_DATE_XPATH = (
-            START_DATE_1 + str(i) + START_DATE_2
-        )
-        EventStartDate = find_my_element(driver, "XPATH", START_DATE_XPATH)
-        if EventStartDate != None:
-            driver.execute_script("arguments[0].scrollIntoView();", EventStartDate)
-            time.sleep(5)
-            StartDate = EventStartDate.text
-            StartDate = GetDate(StartDate)
-            END_DATE_XPATH = (END_DATE_1+ str(i)+ END_DATE_2)
-            EventEndtDate = find_my_element(driver, "XPATH", END_DATE_XPATH)
-            if EventEndtDate != None:
-                EndDate = EventEndtDate.text
-                EndDate = GetDate(EndDate)
-                assert StartDate <= date.today() <= EndDate, "Today Tab test failed"
-                # if StartDate <= date.today() <= EndDate:
-                #     print("Today")
-                # else:
-                #     print("Not today")
-
+    check_today_list(driver, EventsNum)
     print("Today tab test passed")
     driver.close()
 
-# TODO: XPATH in references file
-# TODO: This weekend
 
 def is_this_weekend(StartDate, EndDate):
-# ---------------------------------------------- Auxiliary function to check date is in this weekend  ---------------------------------------------- #
-# Monday: 0
-# Tuesday: 1
-# Wednesday: 2
-# Thursday: 3
-# Friday: 4
-# Saturday: 5
-# Sunday: 6
+    # ---------------------------------------------- Auxiliary function to check date is in this weekend  ---------------------------------------------- #
+    # Monday: 0
+    # Tuesday: 1
+    # Wednesday: 2
+    # Thursday: 3
+    # Friday: 4
+    # Saturday: 5
+    # Sunday: 6
 
     Today = date.today()
     Weekend1 = Today
     Weekend2 = Today
-    if Today.weekday() == 4:    # Friday
+    if Today.weekday() == 4:  # Friday
         Weekend2 = Today + timedelta(days=1)
     elif Today.weekday() == 5:  # Saturday
         Weekend2 = "None"
-    elif Today.weekday() == 6:  #Sunday
+    elif Today.weekday() == 6:  # Sunday
         Weekend1 = Today + timedelta(days=5)
         Weekend2 = Weekend1 + timedelta(days=1)
     else:
-        Weekend1 = Today + timedelta(days=(4-Today.weekday()))
+        Weekend1 = Today + timedelta(days=(4 - Today.weekday()))
         Weekend2 = Weekend1 + timedelta(days=1)
 
     if Weekend2 == "None":
         return StartDate <= Weekend1 <= EndDate
     else:
-        return StartDate <= Weekend1 <= EndDate and StartDate <= Weekend2 <= EndDate
+        return StartDate <= Weekend1 <= EndDate or StartDate <= Weekend2 <= EndDate
     # print(Weekend1)
     # print(Weekend2)
 
-    # if Date.weekday() == 5 or Date.weekday() == 4:
-    #     Difference = (Date - date.today()).days
-    #     # check if saturday and event day is next friday
-    #     if Difference == 6 and date.today().weekday() == 5:
-    #         return False
-    #     # check if the difference is < 6 (means it is in the same week as today)
-    #     if Difference > 6 or Difference < 0:
-    #         return False
-    #     else:
-    #         return True
 
-
-    # # remove extra data
-    # print(Date)
-    # Date = Date.split("+")[0]
-    # # if "today", add today's date
-    # if Date.find("Today") != -1:
-    #     Date = date.today()
-    # # if tomorrow, add tomorrow's date
-    # elif Date.find("Tomorrow") != -1:
-    #     Datestr = (str(datetime.today() + timedelta(days=1))).split()[0]
-    #     Datestr = Datestr.split("-")
-    #     Day = int(Datestr[2])
-    #     Month = int(Datestr[1])
-    #     Year = int(Datestr[0])
-    #     Date = date(Year, Month, Day)
-    # else:
-    #     FullEventDateSeperated = Date.split()[1:]  # default is split at whitespaces
-    #     FullEventDateSeperated[1] = (FullEventDateSeperated[1].split(","))[
-    #         0
-    #     ]  # to get rid of comma next to day
-    #     MonthNum = datetime.strptime(
-    #         FullEventDateSeperated[0], "%b"
-    #     ).month  # to cast month from string to int (Note: Apr -> 4 (not 04))
-    #     # to change formats: 9/4/2023 7:00PM -> 09/04/2023 07:00PM
-    #     # Day
-    #     if int(FullEventDateSeperated[1]) < 10:
-    #         DayStr = "0" + FullEventDateSeperated[1]
-    #     else:
-    #         DayStr = FullEventDateSeperated[1]
-    #     # Month
-    #     if MonthNum < 10:
-    #         MonthStr = "0" + str(MonthNum)
-    #     else:
-    #         MonthStr = str(MonthNum)
-    #     Date = date(2023, int(MonthStr), int(DayStr))
-    # print(Date)
-    # # weekdays = 5,4 are weekends
-    # if Date.weekday() == 5 or Date.weekday() == 4:
-    #     Difference = (Date - date.today()).days
-    #     # check if saturday and event day is next friday
-    #     if Difference == 6 and date.today().weekday() == 5:
-    #         return False
-    #     # check if the difference is < 6 (means it is in the same week as today)
-    #     if Difference > 6 or Difference < 0:
-    #         return False
-    #     else:
-    #         return True
+def check_this_weekend_list(driver, Num):
+    for i in range(1, ceil(Num / 12) + 1):
+        for j in range(1, 13):
+            time.sleep(5)
+            START_DATE_XPATH = START_DATE_1 + str(j) + START_DATE_2
+            EventStartDate = find_my_element(driver, "XPATH", START_DATE_XPATH)
+            if EventStartDate != None:
+                driver.execute_script("arguments[0].scrollIntoView();", EventStartDate)
+                time.sleep(5)
+                StartDate = EventStartDate.text
+                StartDate = GetDate(StartDate)
+                END_DATE_XPATH = END_DATE_1 + str(j) + END_DATE_2
+                EventEndtDate = find_my_element(driver, "XPATH", END_DATE_XPATH)
+                if EventEndtDate != None:
+                    EndDate = EventEndtDate.text
+                    EndDate = GetDate(EndDate)
+                    assert is_this_weekend(
+                        StartDate, EndDate
+                    ), "This weekend Tab test failed"
+                    print(str(j) + ": " + str(StartDate) + " --> " + str(EndDate))
+            else:
+                break
+        # check if more pages
+        NextPageButton = find_my_element(driver, "ID", PREV_PAGE_BUTTON)
+        check_not_found(driver, NextPageButton, "Next page button not found")
+        driver.execute_script("arguments[0].scrollIntoView();", NextPageButton)
+        time.sleep(20)
+        if NextPageButton.is_enabled():
+            NextPageButton.click()
+        else:
+            break
 
 
 def this_weekend_tab_test(driver):
@@ -406,65 +391,53 @@ def this_weekend_tab_test(driver):
     else:
         print(len(EventsList))
     EventsNum = len(EventsList)
-    for i in range(1, EventsNum):
-        time.sleep(5)
-        START_DATE_XPATH = (
-            START_DATE_1 + str(i) + START_DATE_2
-        )
-        EventStartDate = find_my_element(driver, "XPATH", START_DATE_XPATH)
-        if EventStartDate != None:
-            driver.execute_script("arguments[0].scrollIntoView();", EventStartDate)
-            time.sleep(5)
-            StartDate = EventStartDate.text
-            StartDate = GetDate(StartDate)
-            print(StartDate)
-            END_DATE_XPATH = (END_DATE_1+ str(i)+ END_DATE_2)
-            EventEndtDate = find_my_element(driver, "XPATH", END_DATE_XPATH)
-            if EventEndtDate != None:
-                EndDate = EventEndtDate.text
-                EndDate = GetDate(EndDate)
-                print(EndDate)
-                # Check if this weekend
-                assert is_this_weekend(StartDate, EndDate), "This weekend Tab test failed"
-                print("This weekend")
-                # assert StartDate <= date.today() <= EndDate, "Today Tab test failed"
-    
-    
-    
-    # click on Today tab
-    TodayTab = find_my_element(driver, "XPATH", THIS_WEEKEND_TAB)
-    check_not_found(driver, TodayTab, "This weekend tab not found")
-    TodayTab.click()
+    check_this_weekend_list(driver, EventsNum)
+    print("This weekend tab test passed")
+    driver.close()
+
+
+def paginations_test(driver):
+    driver.get("https://www.hebtus.me/#")
+    driver.maximize_window()
+    driver.implicitly_wait(10)
     time.sleep(30)
-    # Scroll down to load
-    driver.execute_script("window.scrollBy(0,document.body.scrollHeight)")
-    time.sleep(30)
-    # Get events list
+    # prev button disabled in first page
+    PrevPageButton = find_my_element(driver, "ID", NEXT_PAGE_BUTTON)
+    check_not_found(driver, PrevPageButton, "Next page button not found")
+    driver.execute_script("arguments[0].scrollIntoView();", PrevPageButton)
+    time.sleep(20)
+    assert not (PrevPageButton.is_enabled()), "Previous page button is not disabled"
+
+    # get number of events
     EventsList = driver.find_elements(
         By.CLASS_NAME,
-        EVENT_ELEMENT,
+        "col",
     )
     if EventsList == None:
-        print("No events in the weekend list")
+        print("No events in the today list")
         driver.close()
         exit()
-    EventsNumber = len(EventsList)
-    EventsDateList = []
-    # Get date of all events
-    for i in range(EventsNumber):
-        EVENT_DATE = WEEKEND_EVENT_DATE_1 + str(i) + WEEKEND_EVENT_DATE_2
-        EventDate = find_my_element(driver, "XPATH", EVENT_DATE)
-        if EventDate != None:
-            EventsDateList.append(EventDate.get_attribute("innerHTML"))
-    # print(EventsDateList)
-    # Check if the date is in this weekend
-    for Date in EventsDateList:
-        if is_this_weekend(Date) == False:
-            print("Not all events are this weekend")
-            driver.close()
-            exit()
-    print("This weekend tab test passed")
-    time.sleep(10)
+    EventsNum = len(EventsList)
+
+    # reach last page
+    for i in range(1, ceil(EventsNum / 12)):
+        # check if more pages
+        NextPageButton = find_my_element(driver, "ID", PREV_PAGE_BUTTON)
+        check_not_found(driver, NextPageButton, "Next page button not found")
+        driver.execute_script("arguments[0].scrollIntoView();", NextPageButton)
+        time.sleep(20)
+        assert NextPageButton.is_enabled(), "Next page button is not enabled"
+        NextPageButton.click()
+        time.sleep(5)
+
+    # next page button disabled in the last page
+    NextPageButton = find_my_element(driver, "ID", PREV_PAGE_BUTTON)
+    check_not_found(driver, NextPageButton, "Next page button not found")
+    driver.execute_script("arguments[0].scrollIntoView();", NextPageButton)
+    time.sleep(20)
+    assert not (NextPageButton.is_enabled()), "Next page button is not disabled"
+
+    print("Pagination test passed")
     driver.close()
 
 

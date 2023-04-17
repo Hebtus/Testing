@@ -1,41 +1,36 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from appium import webdriver
+from appium.webdriver.common.appiumby import AppiumBy
+from appium.webdriver.common.touch_action import TouchAction
+
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 # ----- Includes for Attendee's view web pages ----- #
-from Attendees_View.Hebtus.SignUpTest import sign_up
-from Attendees_View.Hebtus.SignInTest import sign_in
-from Attendees_View.Hebtus.EventPageTest import event_page
-from Attendees_View.Hebtus.LandingPageTest import landing_page
+from Attendees_View.SignUpTest import sign_up
+from Attendees_View.SignInTest import sign_in
+from Attendees_View.EventPageTest import event_page
+from Attendees_View.LandingPageTest import landing_page
 
-# ----- Includes for Creator's view web pages ----- #
-# from Creators_View.LogInToCreatorView import creator_view
-# from Creators_View.BasicInfo import basic_info
+import time
 
-Coptions = Options()
-Coptions.add_experimental_option("detach", True)
-driver = webdriver.Chrome(options=Coptions)
+desired_cap = {
+    "deviceName": "MyDevice",
+    "udid": "emulator-5554",
+    "platformName": "Android",
+    "platformVersion": "10.0",
+    "appActivity": "com.example.hebtus_crossplatform.MainActivity",
+    "appPackage": "com.example.hebtus_crossplatform",
+}
 
-PATH = "C:\Program Files (x86)\chromedriver.exe"  # edit depending on your chromedriver path
-s = Service(PATH)
-
-caps = DesiredCapabilities().CHROME
-caps["pageLoadStrategy"] = "none"
-chrome_options = Options()
-chrome_options.add_argument("--disable-notifications")
-chrome_options.add_experimental_option("excludeSwitches", ["enable-logging"])
-chrome_options.add_argument("--headless")
-chrome_options.add_argument("--no-sandbox")
-chrome_options.add_argument("--disable-dev-shm-usage")
-
-
+driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_cap)
+driver.implicitly_wait(120)
 # ---------------------------------------------------------------- Start ---------------------------------------------------------------- #
 # ------------- Attendee's view web pages testing ------------- #
-# sign_up(driver)
+sign_up(driver)
 # sign_in(driver)
 # event_page(driver)
-landing_page(driver)
+# landing_page(driver)
 # ----- Navigation from Attendee's view to Creator's view ----- #
 
 # ------------- Creator's view web pages testing -------------- #
