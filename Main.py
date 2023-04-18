@@ -24,5 +24,5 @@ s = Service(PATH)
 # ------------- Creator's view web pages testing -------------- #
 driver.maximize_window()
 creator_view(driver)  # temporary
-#event_list(driver)
-basic_info(driver, 1)
+event_list(driver)
+#basic_info(driver, 1)

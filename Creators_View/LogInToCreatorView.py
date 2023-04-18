@@ -16,7 +16,7 @@ def creator_view(driver):
     LogInBtn = driver.find_element(By.XPATH, "//button[@type='submit']")
     LogInBtn.click()
 
-    time.sleep(2)
+    time.sleep(4)
 
     try:
         SessionExpired = driver.find_element(By.XPATH,SESSION_EXPIRED_TITLE)
@@ -34,19 +34,26 @@ def creator_view(driver):
         time.sleep(2)
     except:
         print("No navigation to session expired tab")
-        # Navigate to creator's view
-        try: # Random AD that appears
-            Ad = driver.find_element(By.XPATH,RANDOM_AD_SKIP)
-            while(Ad.is_displayed()):
-                Ad.click()
-                time.sleep(2)
-                Ad = driver.find_element(By.XPATH,RANDOM_AD_SKIP)
-                Ad.click()
-                time.sleep(2)
-        except:
-            print("No Ad displayed when logged in")
-            creatorView = find_my_element(driver, "LINK_TEXT", "Create an event")
-            creatorView.click()
+        
+    # Navigate to creator's view
+    AdExitButton = find_my_element(driver, "XPATH", AD_EXIT_BUTTON)
+    if AdExitButton != None:
+        AdExitButton.click()
+        time.sleep(5)
+        LeaveButton = find_my_element(driver, "XPATH", AD_WANT_TO_LEAVE_BUTTON)
+        if LeaveButton != None:
+            LeaveButton.click()
+            time.sleep(5)
 
-    RandomTaxFillInfo=find_my_element(driver,"XPATH","//*[@id='cross-chunky_svg__eds-icon--cross-chunky_base']")
-    RandomTaxFillInfo.click()
+    creatorView = find_my_element(driver, "LINK_TEXT", "Create an event")
+    creatorView.click()
+
+    time.sleep(3)
+
+    try:
+        RandomTaxFillInfo=driver.find_element(By.XPATH,"//*[@id='cross-chunky_svg__eds-icon--cross-chunky_base']")
+        time.sleep(1)
+        RandomTaxFillInfo.click()
+        time.sleep(2)
+    except:
+        print("No tax info filling pop-up")

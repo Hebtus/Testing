@@ -219,7 +219,7 @@ def event_list(driver, mode=0):
     # Test 1: Promote on Eventbrite
     ThreeDots=find_my_element(driver,"ID",THREE_DOTS_EVENT_BUTTON)
     ThreeDots.click()
-    time.sleep(1)
+    time.sleep(10)
     PromoteChoice=find_my_element(driver,"XPATH",EVENT_PROMOTE_ON_EVENTBRITE_CHOICE)
     PromoteChoice.click()
     time.sleep(3)

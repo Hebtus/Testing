@@ -5,7 +5,8 @@
 
 # ---------------- Creator's View ----------------#
 # Navigation to creator's view
-RANDOM_AD_SKIP = "//*[@id='edsModalContentChildren']/div/div[2]/button[1]" #XPATH
+AD_EXIT_BUTTON = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/div/div/div/div/div/div[2]/span/button"
+AD_WANT_TO_LEAVE_BUTTON = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/div/div/div/div/div/div[1]/div/div/main/div/div/div/div[2]/button[1]"
 SESSION_EXPIRED_TITLE = "//*[@id='content']/table/tbody/tr/td[2]/h2" # XPATH
 # Basic Info Web Page
 EVENT_TITLE_FIELD = "event-basicInfo-title"  # ID

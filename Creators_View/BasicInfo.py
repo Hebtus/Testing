@@ -270,8 +270,25 @@ def basic_info(driver, mode = 0):
         LocationTitle=find_my_element(driver,"XPATH",VENUE_LOCATION_TITLE)
         driver.execute_script("arguments[0].scrollIntoView();",LocationTitle)
         # Venue
+        # Test 1 if Venue is option is chosen (default) then searching a location is mandatory
+        VenueButton=find_my_element(driver,"XPATH",VENUE_LOCATION_BUTTON_FIELD)
+        VenueButton.click()
+        time.sleep(2)
+        SaveAndContinueButton=find_my_element(driver,"XPATH",SAVE_AND_CONTINUE_BUTTON)
+        driver.execute_script("arguments[0].scrollIntoView();",SaveAndContinueButton)
+        SaveAndContinueButton.click()
+        time.sleep(1)
+        VenueErrorMsg = find_my_element(driver,"XPATH",VENUE_ERROR_MSG)
+        assert VenueErrorMsg.get_attribute('innerHTML') == "Location is required."
+
+        # Test 2, filling venue option
+        # Scroll back
+        LocationTitle=find_my_element(driver,"XPATH",VENUE_LOCATION_TITLE)
+        driver.execute_script("arguments[0].scrollIntoView();",LocationTitle)
+        time.sleep(1)
         VenueField=find_my_element(driver,"ID",VENUE_LOCATION_FIELD)
         driver.execute_script("arguments[0].scrollIntoView();",VenueField)
+        time.sleep(1)
         if VenueField.is_enabled() == False:
             print("Error: Venue location field is not enabled")
         time.sleep(1)
@@ -280,7 +297,7 @@ def basic_info(driver, mode = 0):
         VenueField.send_keys(Keys.BACK_SPACE)
         VenueFieldChoice = find_my_element(driver,"XPATH",VENUE_OPTION_ONE_BUTTON)
         VenueFieldChoice.click()
-        # Test 1 checking if Address 1 field and postal code field are enabled
+            # Test 1 checking if Address 1 field and postal code field are enabled
         VenueAddress1=find_my_element(driver,"XPATH",VENUE_ADDRESS1_FIELD)
         PostalCode=find_my_element(driver,"ID",VENUE_POSTAL_CODE_FIELD)
         if VenueAddress1.is_enabled() == False:
@@ -288,71 +305,71 @@ def basic_info(driver, mode = 0):
         if PostalCode.is_enabled() == False:
             print("Error: Postal code field is not enabled")
         
-        # Test 2 Address 1 mandatory (should display "Address 1 is required.")
-        # Case 1
-        # Clicking on Address 1 field and not writing anything
+            # Test 2 Address 1 mandatory (should display "Address 1 is required.")
+                # Case 1
+                # Clicking on Address 1 field and not writing anything
         VenueAddress1.click()
         time.sleep(1)
-        # Then clicking somewhere else 
+                # Then clicking somewhere else 
         VenueAddress2=find_my_element(driver,"XPATH",VENUE_ADDRESS2_FIELD)
         VenueAddress2.click()
         time.sleep(1)
-        # check that error message appears
+                # check that error message appears
         AddressErrorMsg = find_my_element(driver,"XPATH",VENUE_ADDRESS1_ERROR_MSG)
         assert AddressErrorMsg.text == "Address 1 is required." # if condition not true then this line will produce AssertionError 
-        # Case 2
-        # Clicking on Address 1 field writing something
+                # Case 2
+                # Clicking on Address 1 field writing something
         VenueAddress1.click()
         time.sleep(1)
         VenueAddress1.send_keys("test text")
         time.sleep(1)
-        # Clicking somewhere else
+                # Clicking somewhere else
         VenueAddress2.click()
         time.sleep(1)
-        # Clicking again on address 1, deleting what is written
+                # Clicking again on address 1, deleting what is written
         VenueAddress1.click()
         time.sleep(1)
         my_clear(VenueAddress1)
-        # And then clicking somewhere else
+                # And then clicking somewhere else
         VenueAddress2.click()
-        # check that error message appears
+                # check that error message appears
         AddressErrorMsg = find_my_element(driver,"XPATH",VENUE_ADDRESS1_ERROR_MSG)
         assert AddressErrorMsg.text == "Address 1 is required." # if condition not true then this line will produce AssertionError
-        # Write in Address 1 Normally
+                # Write in Address 1 Normally
         VenueAddress1.send_keys("38 Mahmoud Khalil Al Housarei")
-        # Test 3 Not filling Postal Code
-        # Case 1
-        # Clicking on Postal Code field and not writing anything
+            # Test 3 Not filling Postal Code
+                # Case 1
+                # Clicking on Postal Code field and not writing anything
         PostalCode.click()
         time.sleep(1)
-        # Then clicking somewhere else 
+                # Then clicking somewhere else 
         VenueAddress2.click()
         time.sleep(1)
-        # check that error message appears
+                # check that error message appears
         PostalCodeErrorMsg = find_my_element(driver,"XPATH",VENUE_POSTAL_CODE_ERROR_MSG)
         assert PostalCodeErrorMsg.text == "ZIP code is required." # if condition not true then this line will produce AssertionError
-        # Case 2
-        # Clicking on Postal Code field writing something
+                # Case 2
+                # Clicking on Postal Code field writing something
         PostalCode.click()
         time.sleep(1)
         PostalCode.send_keys("1")
         time.sleep(1)
-        # Clicking somewhere else
+                # Clicking somewhere else
         VenueAddress2.click()
         time.sleep(1)
-        # Clicking again on Postal Code field, deleting what is written
+                # Clicking again on Postal Code field, deleting what is written
         PostalCode.click()
         time.sleep(1)
         my_clear(PostalCode)
-        # And then clicking somewhere else
+                # And then clicking somewhere else
         VenueAddress2.click()
-        # check that error message appears
+                # check that error message appears
         PostalCodeErrorMsg = find_my_element(driver,"XPATH",VENUE_POSTAL_CODE_ERROR_MSG)
         assert PostalCodeErrorMsg.text == "ZIP code is required." # if condition not true then this line will produce AssertionError
-        # Write in Postal Code Normally
+                # Write in Postal Code Normally
         PostalCode.send_keys("12654")
         time.sleep(1)
-        # Test 4 check if all other fields are enabled
+            # Test 4 check if all other fields are enabled
         CityField=find_my_element(driver,"ID",VENUE_CITY_FIELD)
         if CityField.is_enabled() == False:
             print("Error: City field is not enabled")
@@ -366,7 +383,7 @@ def basic_info(driver, mode = 0):
         if SearchLocation.is_enabled() == False:
             print("Error: Search location button is not enabled")
 
-        # Test 5: clicking on search location button takes me back to previous tab
+            # Test 5: clicking on search location button takes me back to previous tab
         SearchLocation.click()
         time.sleep(1)
         if SearchLocation.is_displayed() == False:
@@ -425,18 +442,41 @@ def basic_info(driver, mode = 0):
 
         DateErrorMsg = find_my_element(driver,"XPATH",EVENT_END_DATE_MSG)
         assert DateErrorMsg.get_attribute('innerHTML') == "End date must be after start date."
-
-        # Test 2: same day start hour after end hour
+        
+        # Put dates correctly so message dissapears
         my_clear(StartDateField)
         time.sleep(1) 
-        StartDateField.send_keys("07/24/2023")
+        StartDateField.send_keys("05/19/2023")
         StartDateField.click()
+        time.sleep(1) 
+        my_clear(EndDateField)
+        time.sleep(1) 
+        EndDateField.send_keys("05/19/2023")
+        EndDateField.click()
+        time.sleep(1)  
+        my_clear(StartTimeField)
+        time.sleep(1) 
+        StartTimeField.send_keys("5:30 PM")
+        StartTimeField.send_keys(Keys.RETURN)
         time.sleep(1) 
         my_clear(EndTimeField)
         time.sleep(1) 
         EndTimeField.send_keys("4:00 PM")
         EndTimeField.send_keys(Keys.RETURN)
-        time.sleep(1)
+        time.sleep(2)
+
+
+        # Test 2: same day start hour after end hour 
+        my_clear(StartTimeField)
+        time.sleep(1) 
+        StartTimeField.send_keys("5:30 PM")
+        StartTimeField.send_keys(Keys.RETURN)
+        time.sleep(1) 
+        my_clear(EndTimeField)
+        time.sleep(1) 
+        EndTimeField.send_keys("4:00 PM")
+        EndTimeField.send_keys(Keys.RETURN)
+        time.sleep(2)
         # assert that error message is displayed
         DateErrorMsg = find_my_element(driver,"XPATH",EVENT_START_DATE_MSG)
         assert DateErrorMsg.get_attribute('innerHTML') == "End date must be after start date."
@@ -444,6 +484,8 @@ def basic_info(driver, mode = 0):
         DateErrorMsg = find_my_element(driver,"XPATH",EVENT_END_DATE_MSG)
         assert DateErrorMsg.get_attribute('innerHTML') == "End date must be after start date." 
 
+        # Make it correct again so we can better test the event field is mandatory at the end
+        my_clear(EndTimeField)
         time.sleep(1)
         EndTimeField.send_keys("7:00 PM")
         EndTimeField.send_keys(Keys.RETURN)
