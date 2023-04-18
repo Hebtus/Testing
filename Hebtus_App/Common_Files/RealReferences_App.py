@@ -16,8 +16,9 @@ ERROR_WINDOW_OK_BUTTON = (
 )
 # ---------------------------------------------------------------------------------------------------
 # sign up button in login page
-SIGN_UP_BUTTON_LP = "//android.widget.LinearLayout//android.widget.FrameLayout//android.widget.FrameLayout//android.view.View//android.view.View//android.view.View//android.view.View//android.view.View//android.widget.Button[@content-desc='Don't have an account? Sign Up.'][position() = 8]"  #! New
-
+WELCOME_OK_BUTTON = (
+    "//android.view.View//android.widget.Button[@content-desc='OK']"  #! New
+)
 # ---------------------------------------------------------------------------------------------------
 SIGN_UP_EMAIL_TEXTBOX = "//android.widget.ScrollView//android.widget.EditText[@class='android.widget.EditText'][position() = 1]"  #! New
 FIRT_NAME_TEXTBOX = "//android.widget.ScrollView//android.widget.EditText[@class='android.widget.EditText'][position() = 2]"  #! New
@@ -26,28 +27,21 @@ SIGN_UP_PASSWORD_TEXTBOX = "//android.widget.ScrollView//android.widget.EditText
 CONFIRM_PASSWORD_TEXTBOX = "//android.widget.ScrollView//android.widget.EditText[@class='android.widget.EditText'][position() = 5]"  #! New
 CREATE_ACOUNT_BUTON = "//android.widget.ScrollView//android.widget.Button[@content-desc='Sign Up']"  #! New
 # ---------------------------------------------------------------------------------------------------
-
-
-CONTINUE_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/form/div[2]/div/button"
-EMAIL_CONFIRMATION_TEXTBOX = "emailConfirmation"
-TERMS_CONDITIONS_POPUP_WINDOW = "edsModalContentChildren"
-AGREE_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[3]/div/div/div/div/div[1]/div/div/main/div/div/div/div/div/div[2]/button[2]"
-START_ATTENDING_BUTTON = "/html/body/div[1]/div/div[2]/div/div[3]/div[1]/div[3]/button"
-EXIT_BUTTON_1 = "/html/body/div[1]/div/div[2]/div/div/div/div[2]/div/button[1]"
-EXIT_BUTTON_2 = "/html/body/div[1]/div/div[3]/div/div/div/div[1]/div/div/main/div/div/div/div[1]/button"
-WHITE_SPACE_SIGNUP_PAGE = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[1]/div[1]/h1"
-# login button in sinup page
-SIGNUP_LOGIN_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[4]/button"
-
 # signup invalid tests
-INVALID_EMAIL_ALERT = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/form/div[1]/div[1]/div[2]/div/aside"
+EMPTY_EMAIL_ALERT = '//android.widget.EditText//android.view.View[@content-desc="Email field can\'t be empty."]'  #! New
+INVALID_EMAIL_ALERT = "//android.widget.EditText//android.view.View[@content-desc='Please Enter a valid email']"  #! New
+FIRST_NAME_REQUIRED_ALERT = '//android.widget.EditText//android.view.View[@content-desc="First Name can\'t be empty"]'  #! New
+LAST_NAME_REQUIRED_ALERT = '//android.widget.EditText//android.view.View[@content-desc="Last Name can\'t be empty"]'  #! New
+PASSWORD_REQUIRED_ALERT = '//android.widget.EditText//android.view.View[@content-desc="Password field can\'t be empty"]'  #! New
+INVALID_PASSWORD_ALERT = '//android.widget.EditText//android.view.View[@content-desc="Password must be at least 8 characters"]'  #! New
+PASSWORD_MISMATCH_ALERT = '//android.widget.EditText//android.view.View[@content-desc="Password doesn\'t match"]'  #! New
+# ---------------------------------------------------------------------------------------------------
+
 EMAIL_ALREADY_USED_ALERT = (
     "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[2]/div"
 )
 EMAIL_DONT_MATCH_ALERT = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/form/div[1]/div[2]/div/div[2]/div/aside"
-LAST_NAME_REQUIRED_ALERT = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/form/div[1]/div[3]/div[1]/div[2]/div/div[2]/div/aside"
-FIRST_NAME_REQUIRED_ALERT = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/form/div[1]/div[3]/div[1]/div[1]/div/div[2]/div/aside"
-PASSWORD_REQUIRED_ALERT = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/form/div[1]/div[3]/div[2]/div[1]/div/div[2]/div/aside"
+
 
 # login with google and facebook
 SIGNUP_WITH_FACEBOOK_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[3]/div[1]/div[2]/div/ul/li/div/div/button"
@@ -81,17 +75,24 @@ FIRST_EMAIL = "/html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]
 SET_NEW_PASSWORD_LINK = "Set a New Password"
 UPDATE_PASSWORD_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/form/div[2]/button"
 
+#! ________________________________HERE_______________________________________
 # Events Page
-IMAGE = "/html/body/div/div/div[2]/div/div[1]/img"  #! New
-START_DATE = "/html/body/div/div/div[2]/div/div[2]/div[1]/time"  #! New
-EVENT_TITLE = "/html/body/div/div/div[2]/div/div[2]/div[2]/h1"  #! New
-DATE_TIME = "/html/body/div/div/div[2]/div/div[2]/div[3]/div/div[1]/div[2]/p"  #! New
-LOCATION = (
-    "/html/body/div/div/div[2]/div/div[2]/div[3]/div/div[2]/div[2]/p/strong"  #! New
-)
-EVENTS_DETAILS = "/html/body/div/div/div[2]/div/div[2]/div[4]/p"  #! New
-TICKETS_INFO = "/html/body/div/div/div[2]/div/div[3]/div"  #! New
-GET_TICKET_BUTTON = "/html/body/div/div/div[2]/div/div[3]/div/div"  #! New
+EVENT = "//android.view.View[@index='0']//android.widget.ImageView[@index='0'and @class='android.widget.ImageView'][1]"  #! New
+IMAGE = "//android.view.View[@index='0']//android.widget.ScrollView[@index='1'and @class='android.widget.ScrollView']"  #! New
+TICKETS_INFO = "//android.widget.ScrollView[@index='1']//android.view.View[@index='2']"
+GET_TICKET_BUTTON = "//android.view.View[@index='2']//android.widget.Button[@index='2' and @content-desc='Reserve a spot' and @class='android.widget.Button']"  #! New
+PLUS_BUTTON = "//android.view.View[@index='2']//android.widget.Button[@index='0' and @class='android.widget.Button']"  #! New
+MINUS_BUTTON = "//android.view.View[@index='2']//android.widget.Button[@index='1' and @class='android.widget.Button']"  #! New
+START_DATE = "//android.view.View[@index='0']//android.widget.ScrollView[@index='1']//android.view.View[@index='2'and @class='android.view.View']"  #! New
+EVENT_TITLE = "//android.view.View[@index='0']//android.widget.ScrollView[@index='1']//android.view.View[@index='3'and @class='android.view.View']"  #! New
+DATE_TIME = "//android.view.View[@index='0']//android.widget.ScrollView[@index='1']//android.view.View[@index='6'and @class='android.view.View']"  #! New
+LOCATION = "//android.view.View[@index='0']//android.widget.ScrollView[@index='1']//android.view.View[@index='8'and @class='android.view.View']"  #! New
+
+
+EVENTS_DETAILS_1 = "//android.view.View[@index='0']//android.widget.ScrollView[@index='1']//android.view.View[@index='4'and @class='android.view.View']"  #! New
+EVENTS_DETAILS_2 = "//android.view.View[@index='0']//android.widget.ScrollView[@index='1']//android.view.View[@index='5'and @class='android.view.View']"  #! New
+# ---------------------------------------------------------------------------------------------------
+
 EVENT_SUMMARY = "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div[2]/div[2]/div[1]/p"
 SIMPLIDIED_ORGANIZER_INFO = "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div[2]/div[2]/div[2]/div"
 SHARE_WITH_FRIENDS = "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div[2]/div[2]/div[2]/section[2]/div/div[2]/div/div"

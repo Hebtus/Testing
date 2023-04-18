@@ -1,4 +1,4 @@
-eventbrite_user1@gmail.com
+hebtustester@gmail.com
 eventbrite_user2@gmail.com
 eventbrite_user3@gmail.com
 name

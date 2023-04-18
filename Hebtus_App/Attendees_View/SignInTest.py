@@ -17,14 +17,6 @@ from Common_Files.RealReferences_App import *
 # # import Action chains
 from selenium.webdriver.common.action_chains import ActionChains
 
-# App:
-# ayausamakhalifa@gmail.com
-# 123456789
-
-# Website:
-# irushbullet@gmail.com
-# 123456789
-
 
 def sign_in(driver):
     # Get a list of emails and passwords to be tested

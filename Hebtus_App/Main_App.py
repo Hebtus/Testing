@@ -21,15 +21,17 @@ desired_cap = {
     "platformVersion": "10.0",
     "appActivity": "com.example.hebtus_crossplatform.MainActivity",
     "appPackage": "com.example.hebtus_crossplatform",
+    "newCommandTimeout": 1000,
 }
+
 
 driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_cap)
 driver.implicitly_wait(120)
 # ---------------------------------------------------------------- Start ---------------------------------------------------------------- #
 # ------------- Attendee's view web pages testing ------------- #
-sign_up(driver)
+# sign_up(driver)
 # sign_in(driver)
-# event_page(driver)
+event_page(driver)
 # landing_page(driver)
 # ----- Navigation from Attendee's view to Creator's view ----- #
 

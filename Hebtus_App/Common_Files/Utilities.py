@@ -14,7 +14,7 @@ def find_my_element(Driver, type, val):
     try:
         if type == "ID":
             item = WebDriverWait(Driver, 20).until(
-                EC.element_to_be_clickable((AppiumBy.ID, val))
+                EC.presence_of_element_located((AppiumBy.ID, val))
             )
         elif type == "XPATH":
             item = WebDriverWait(Driver, 30).until(
