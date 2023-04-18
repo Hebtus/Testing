@@ -114,11 +114,11 @@ EVENT_ELEMENT = "card Events_event-card__4cxKy"  #! New
 EVENT_LIST_1 = "/html/body/div/div/div[3]/div/div/div/div["  #! New
 EVENT_LIST_2 = "]/div"  #! New
 
+SEE_MORE_BUTTON = "//android.view.View[@index='0']//android.widget.ScrollView[@index='1']//android.widget.Button[@content-desc='See more' and @index='2'and @class='android.widget.Button']"  #! New
+HEBTUS_BUTTON = "//android.view.View[@index='0']//android.widget.Button[@content-desc='Hebtus' and @index='0'and @class='android.widget.Button']"  #! New
+SEE_MORE_PAGE = "//android.widget.ScrollView[@index='1']//android.view.View[@index='0']//android.view.View[@index='0']//android.view.View[@index='0']//android.widget.ImageView[@index='0'and @class='android.widget.ImageView']"  #! New
+
 LOCATION_PICKER = "location-text"
-SEE_MORE_BUTTON = "See more"
-SEE_MORE_PAGE = (
-    "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/div/div/section[1]"
-)
 
 ALL_EVENT_DATE_1 = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/div/div/div/section/div/div[1]/div/div["
 ALL_EVENT_DATE_2 = "]/div/div/article/div[1]/div[2]/div/div[1]/div"
@@ -132,7 +132,12 @@ END_DATE_1 = "/html/body/div/div/div[3]/div/div/div/div["  #! New
 END_DATE_2 = "]/div/div/h6[2]"  #! New
 THIS_WEEKEND_TAB = "this-weekend-tab"  #! New
 
-ALL_TAB = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/nav/ul/li[1]/button"
+ALL_TAB = "//android.view.View[@index='0']//android.widget.Button[@content-desc='All' and @index='0'and @class='android.widget.Button']"  #! New
+MUSIC_TAB = "//android.view.View[@index='1']//android.widget.Button[@content-desc='Music' and @index='0'and @class='android.widget.Button']"  #! New
+FOOD_DRINK_TAB = "//android.view.View[@index='2']//android.widget.Button[@content-desc='Food & Drink' and @index='0'and @class='android.widget.Button']"  #! New
+CHARITY_CAUSES_TAB = "//android.view.View[@index='3']//android.widget.Button[@content-desc='Charity & Causes' and @index='0'and @class='android.widget.Button']"  #! New
+# ----------------------------------------------------------------
+
 FOR_YOU_TAB = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/nav/ul/li[2]/button"
 ONLINE_TAB = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/nav/ul/li[3]/button"
 ONLINE_INFO_1 = "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div[2]/div[2]/section/div[2]/section[2]/div/div/div[2]/p"
@@ -150,9 +155,6 @@ FREE_INFO_1 = "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div/ma
 FREE_INFO_2 = (
     "/html/body/div[1]/div/section/form/div/div/div/ul/li/div/div/div[2]/div/span"
 )
-MUSIC_TAB = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/nav/ul/li[9]/button"
-FOOD_DRINK_TAB = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/nav/ul/li[10]/button"
-CHARITY_CAUSES_TAB = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/nav/ul/li[11]/button"
 # Categories:
 MUSIC_CATEGORY = "Music"
 HOBBBIES_CATEGORY = "Hobbies"

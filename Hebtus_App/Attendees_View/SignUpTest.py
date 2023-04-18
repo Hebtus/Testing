@@ -29,6 +29,8 @@ def sign_up(driver):
         Emails[i] = Emails[i].rstrip("\n")
     for i in range(len(Passwords)):
         Passwords[i] = Passwords[i].rstrip("\n")
+    # sign_in_new_account(driver, Emails[0], Passwords[0])
+    # exit()
 
     # Click on sign up button
     time.sleep(5)
@@ -38,14 +40,152 @@ def sign_up(driver):
     action = TouchAction(driver)
     action.tap(x=x, y=y).perform()
     time.sleep(5)
-
-    sign_up_valid_test(driver, Emails[0], Passwords[0])
-    # sign_in_new_account(driver, Emails[0], Passwords[0])
+    # login_button_test(driver)
+    # sign_up_valid_test(driver, Emails[0], Passwords[0])
+    # sign_up_No_Verification_test(driver, Emails[1], Passwords[0])
     # sign_up_invalid_email(driver, Emails[2:14])
-    # sign_up_invalid_tests(driver, Emails[1], Passwords)
+    sign_up_invalid_tests(driver, Emails[1], Passwords)
     # Sign_up_with_facebook(driver, Emails[16], Passwords[6])
     # sign_up_with_google(driver)
     # go_to_login_page(driver)
+
+
+#! New
+def sign_up_No_Verification_test(driver, Email, Password):
+    # Enter email
+    EmailTextbox = find_my_element(driver, "XPATH", SIGN_UP_EMAIL_TEXTBOX)
+    check_not_found(driver, EmailTextbox, "Email textbox not found")
+    EmailTextbox.click()
+    time.sleep(1)
+    EmailTextbox = find_my_element(driver, "XPATH", SIGN_UP_EMAIL_TEXTBOX)
+    check_not_found(driver, EmailTextbox, "Email textbox not found")
+    EmailTextbox.send_keys(Email)
+    # Enter first name
+    FirstNameTextbox = find_my_element(driver, "XPATH", FIRT_NAME_TEXTBOX)
+    check_not_found(driver, FirstNameTextbox, "First name textbox not found")
+    FirstNameTextbox.click()
+    time.sleep(1)
+    FirstNameTextbox = find_my_element(driver, "XPATH", FIRT_NAME_TEXTBOX)
+    check_not_found(driver, FirstNameTextbox, "First name textbox not found")
+    FirstNameTextbox.send_keys("UserFirstName")
+    driver.implicitly_wait(5)
+    # Enter last name
+    LastNameTextbox = find_my_element(driver, "XPATH", LAST_NAME_TEXTBOX)
+    check_not_found(driver, LastNameTextbox, "Last name textbox not found")
+    LastNameTextbox.click()
+    time.sleep(1)
+    LastNameTextbox = find_my_element(driver, "XPATH", LAST_NAME_TEXTBOX)
+    check_not_found(driver, LastNameTextbox, "Last name textbox not found")
+    LastNameTextbox.send_keys("UserLastName")
+    driver.implicitly_wait(5)
+    # enter password
+    PasswordTextbox = find_my_element(driver, "XPATH", SIGN_UP_PASSWORD_TEXTBOX)
+    check_not_found(driver, PasswordTextbox, "Password textbox not found")
+    PasswordTextbox.click()
+    time.sleep(1)
+    PasswordTextbox = find_my_element(driver, "XPATH", SIGN_UP_PASSWORD_TEXTBOX)
+    check_not_found(driver, PasswordTextbox, "Password textbox not found")
+    PasswordTextbox.send_keys(Password)
+    # Confirm password
+    ConfirmPasswordTextbox = find_my_element(driver, "XPATH", CONFIRM_PASSWORD_TEXTBOX)
+    check_not_found(
+        driver, ConfirmPasswordTextbox, "Confrim Password textbox not found"
+    )
+    ConfirmPasswordTextbox.click()
+    time.sleep(1)
+    ConfirmPasswordTextbox = find_my_element(driver, "XPATH", CONFIRM_PASSWORD_TEXTBOX)
+    check_not_found(
+        driver, ConfirmPasswordTextbox, "Confrim Password textbox not found"
+    )
+    ConfirmPasswordTextbox.send_keys(Password)
+
+    driver.hide_keyboard()
+    CreateAcountButton = find_my_element(driver, "XPATH", CREATE_ACOUNT_BUTON)
+    check_not_found(driver, CreateAcountButton, "Sign up button not found")
+    CreateAcountButton.click()
+    time.sleep(5)
+    # CLick ok
+    OkButton = find_my_element(driver, "XPATH", WELCOME_OK_BUTTON)
+    check_not_found(driver, OkButton, "Welcome window did not appear")
+    OkButton.click()
+    time.sleep(2)
+    # check if Login page is reached
+    LoginPage = find_my_element(driver, "XPATH", EMAIL_TEXTBOX)
+    check_not_found(driver, LoginPage, "Login page not reached")
+    time.sleep(3)
+    print("Signed up successfuly")
+    # Go to sign up page again
+    # Click on sign up button
+    time.sleep(3)
+    x = 540.5
+    y = 1573
+    # tap on the location using the coordinates
+    action = TouchAction(driver)
+    action.tap(x=x, y=y).perform()
+    time.sleep(5)
+    # Enter email
+    EmailTextbox = find_my_element(driver, "XPATH", SIGN_UP_EMAIL_TEXTBOX)
+    check_not_found(driver, EmailTextbox, "Email textbox not found")
+    EmailTextbox.click()
+    time.sleep(1)
+    EmailTextbox = find_my_element(driver, "XPATH", SIGN_UP_EMAIL_TEXTBOX)
+    check_not_found(driver, EmailTextbox, "Email textbox not found")
+    EmailTextbox.send_keys(Email)
+    # Enter first name
+    FirstNameTextbox = find_my_element(driver, "XPATH", FIRT_NAME_TEXTBOX)
+    check_not_found(driver, FirstNameTextbox, "First name textbox not found")
+    FirstNameTextbox.click()
+    time.sleep(1)
+    FirstNameTextbox = find_my_element(driver, "XPATH", FIRT_NAME_TEXTBOX)
+    check_not_found(driver, FirstNameTextbox, "First name textbox not found")
+    FirstNameTextbox.send_keys("UserFirstName")
+    driver.implicitly_wait(5)
+    # Enter last name
+    LastNameTextbox = find_my_element(driver, "XPATH", LAST_NAME_TEXTBOX)
+    check_not_found(driver, LastNameTextbox, "Last name textbox not found")
+    LastNameTextbox.click()
+    time.sleep(1)
+    LastNameTextbox = find_my_element(driver, "XPATH", LAST_NAME_TEXTBOX)
+    check_not_found(driver, LastNameTextbox, "Last name textbox not found")
+    LastNameTextbox.send_keys("UserLastName")
+    driver.implicitly_wait(5)
+    # enter password
+    PasswordTextbox = find_my_element(driver, "XPATH", SIGN_UP_PASSWORD_TEXTBOX)
+    check_not_found(driver, PasswordTextbox, "Password textbox not found")
+    PasswordTextbox.click()
+    time.sleep(1)
+    PasswordTextbox = find_my_element(driver, "XPATH", SIGN_UP_PASSWORD_TEXTBOX)
+    check_not_found(driver, PasswordTextbox, "Password textbox not found")
+    PasswordTextbox.send_keys(Password)
+    # Confirm password
+    ConfirmPasswordTextbox = find_my_element(driver, "XPATH", CONFIRM_PASSWORD_TEXTBOX)
+    check_not_found(
+        driver, ConfirmPasswordTextbox, "Confrim Password textbox not found"
+    )
+    ConfirmPasswordTextbox.click()
+    time.sleep(1)
+    ConfirmPasswordTextbox = find_my_element(driver, "XPATH", CONFIRM_PASSWORD_TEXTBOX)
+    check_not_found(
+        driver, ConfirmPasswordTextbox, "Confrim Password textbox not found"
+    )
+    ConfirmPasswordTextbox.send_keys(Password)
+
+    driver.hide_keyboard()
+    CreateAcountButton = find_my_element(driver, "XPATH", CREATE_ACOUNT_BUTON)
+    check_not_found(driver, CreateAcountButton, "Sign up button not found")
+    CreateAcountButton.click()
+    time.sleep(5)
+    # CLick ok
+    OkButton = find_my_element(driver, "XPATH", WELCOME_OK_BUTTON)
+    check_not_found(driver, OkButton, "Welcome window did not appear")
+    OkButton.click()
+    time.sleep(2)
+    # check if Login page is not reached
+    SignupPage = find_my_element(driver, "XPATH", CREATE_ACOUNT_BUTON)
+    check_not_found(driver, SignupPage, "Did not stay in sign up page")
+    time.sleep(2)
+    print("Signed up without verification test passed")
+    driver.quit()
 
 
 #! New

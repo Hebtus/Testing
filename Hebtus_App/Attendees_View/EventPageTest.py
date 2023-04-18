@@ -137,13 +137,13 @@ def events_info_test(driver):
     # Get the screen dimensions
     screen_width = driver.get_window_size()["width"]
     screen_height = driver.get_window_size()["height"]
-    # EVENT2 = "']//android.widget.ImageView[@index='0'and @class='android.widget.ImageView'][1]"
-    # Scroll down using TouchAction
     swipe_action = TouchAction(driver)
     swipe_action.press(x=screen_width * 0.5, y=screen_height * 0.8).move_to(
         x=screen_width * 0.5, y=screen_height * 0.2
     ).release().perform()
 
+    # EVENT2 = "']//android.widget.ImageView[@index='0'and @class='android.widget.ImageView'][1]"
+    # Scroll down using TouchAction
     Event = find_my_element(driver, "XPATH", EVENT)
     check_not_found(driver, Event, "Event Not Found")
     Event.click()
@@ -176,7 +176,7 @@ def events_info_test(driver):
     check_displayed(driver, "XPATH", START_DATE, "Start date not displayed")
     element = find_my_element(driver, "XPATH", START_DATE)
     print(element.get_attribute("content-desc"))
-    # TODO Check if it is a valid date ?
+
     # Event title
     check_displayed(driver, "XPATH", EVENT_TITLE, "Event title not displayed")
     # Date and time
@@ -197,4 +197,6 @@ def events_info_test(driver):
     check_displayed(driver, "XPATH", EVENTS_DETAILS_1, "Event's details not displayed")
     check_displayed(driver, "XPATH", EVENTS_DETAILS_2, "Event's details not displayed")
 
+    time.sleep(3)
     print("Info displayed")
+    driver.quit()

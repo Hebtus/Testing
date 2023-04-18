@@ -1,8 +1,12 @@
 # To give us access to the enter key, escape key...etc. ex: when I write something in the search bar and want to press enter:
-from selenium.webdriver.common.keys import Keys
+from appium import webdriver
+from appium.webdriver.common.appiumby import AppiumBy
+from appium.webdriver.common.touch_action import TouchAction
+
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import time
-from selenium import webdriver
 import sys
 
 sys.path.append(".")  # To access modules in sibling directories
@@ -17,88 +21,131 @@ from datetime import datetime, date, timedelta
 
 
 def landing_page(driver):
-    # call_location_test(driver)
-    # time.sleep(30)
-    # call_see_more_test(driver)
-    # time.sleep(30)
-    # call_today_tab_test(driver)
-    # time.sleep(30)
-    call_weekend_tab(driver)
-    # time.sleep(30)
-    # call_online_tab(driver)
-    # time.sleep(30)
-    # call_free_tab_test(driver)
-    # time.sleep(30)
-    # call_categories_test(driver)
+    sign_in_valid(driver, "ayausamakhalifa@gmail.com", "123456789")
+    # see_more_test(driver)
+    tabs_test(driver)
+
+    # location_nearby_events_test(driver)
+
+    # today_tab_test(driver)
+
+    # this_weekend_tab_test(driver)
+
+    # online_tab_test(driver)
+
+    # free_tab_test(driver)
+
+    # categories_test(driver)
 
 
-def call_location_test(driver):
-    # login(driver, "testereventbrite@gmail.com", "eventbritetester")
-    location_nearby_events_test(driver)
+def tabs_test(driver):
+    # All, music, food, charity
+    MusicTab = find_my_element(driver, "XPATH", MUSIC_TAB)
+    check_not_found(driver, MusicTab, "Music tab not found")
+    assert MusicTab.is_enabled(), "Music tab is not enabled"
+    MusicTab.click()
+    time.sleep(2)
+    # food
+    FoodTab = find_my_element(driver, "XPATH", FOOD_DRINK_TAB)
+    check_not_found(driver, FoodTab, "food tab not found")
+    assert FoodTab.is_enabled(), "food tab is not enabled"
+    FoodTab.click()
+    time.sleep(2)
+    # Charity
+    CharityTab = find_my_element(driver, "XPATH", CHARITY_CAUSES_TAB)
+    check_not_found(driver, CharityTab, "Charity tab not found")
+    assert CharityTab.is_enabled(), "Charity tab is not enabled"
+    CharityTab.click()
+    time.sleep(2)
+    # All
+    AllTab = find_my_element(driver, "XPATH", ALL_TAB)
+    check_not_found(driver, AllTab, "All tab not found")
+    assert AllTab.is_enabled(), "All tab is not enabled"
+    AllTab.click()
+
+    print("Tabs test passed")
+    time.sleep(5)
+    driver.quit()
 
 
-def call_see_more_test(driver):
-    login(driver, "testereventbrite@gmail.com", "eventbritetester")
-    see_more_test(driver)
+def see_more_test(driver):
+    # ---------------------------------------------- Testing see more button ---------------------------------------------- #
+    # Scroll down to see more button
+    # get the size of the window
+    window_size = driver.get_window_size()
 
+    # starting coordinates for the swipe gesture
+    start_x = window_size["width"] // 2
+    start_y = window_size["height"] - 100
 
-def call_today_tab_test(driver):
-    # login(driver, "testereventbrite@gmail.com", "eventbritetester")
-    today_tab_test(driver)
+    # ending coordinates for the swipe gesture
+    end_x = start_x
+    end_y = 100
 
+    # initialize the old page source
+    old_page_source = None
 
-def call_weekend_tab(driver):
-    # login(driver, "testereventbrite@gmail.com", "eventbritetester")
-    this_weekend_tab_test(driver)
+    # perform the swipe gesture until the end of page is reached
+    while True:
+        action = TouchAction(driver)
+        action.press(x=start_x, y=start_y).move_to(x=end_x, y=end_y).release().perform()
+        if old_page_source is not None and driver.page_source == old_page_source:
+            break
+        old_page_source = driver.page_source
 
+    # Click see more button
+    time.sleep(2)
+    SeeMoreButton = find_my_element(driver, "XPATH", SEE_MORE_BUTTON)
+    check_not_found(driver, SeeMoreButton, "See more button not found")
+    SeeMoreButton.click()
 
-def call_online_tab(driver):
-    login(driver, "testereventbrite@gmail.com", "eventbritetester")
-    online_tab_test(driver)
+    time.sleep(2)
 
+    SeeMorePge = find_my_element(driver, "XPATH", SEE_MORE_PAGE)
+    check_not_found(driver, SeeMorePge, "See more page not reached")
 
-def call_free_tab_test(driver):
-    login(driver, "testereventbrite@gmail.com", "eventbritetester")
-    free_tab_test(driver)
+    # Click on home page
+    HomeButton = find_my_element(driver, "XPATH", HEBTUS_BUTTON)
+    check_not_found(driver, HomeButton, "Hebtus home button not found")
+    HomeButton.click()
+    time.sleep(2)
+    # check if landing page is reached
+    LandingPage = find_my_element(driver, "XPATH", LANDING_PAGE)
+    check_not_found(driver, LandingPage, "Landing page not reached")
 
-
-def call_categories_test(driver):
-    login(driver, "testereventbrite@gmail.com", "eventbritetester")
-    categories_test(driver)
-
-
-def login(driver, Email, Password):
-    # Open eventbrite
-    driver.get("https://www.eventbrite.com/signin")
-    driver.maximize_window()
-    driver.implicitly_wait(5)
-    # Login with email and password
-    EmailTextbox = find_my_element(driver, "ID", EMAIL_TEXTBOX)
-    check_not_found(driver, EmailTextbox, "Email textbox not found")
-    EmailTextbox.send_keys(Email)
-    PasswordTextbox = find_my_element(driver, "ID", PASSWORD_TEXTBOX)
-    check_not_found(driver, PasswordTextbox, "Password textbox not found")
-    PasswordTextbox.send_keys(Password)
     time.sleep(10)
+    print("See more test passed")
+    driver.quit()
+
+
+def sign_in_valid(driver, Email, Password):
+    # ---------------------------------------------- Testing valid log in ---------------------------------------------- #
+    # enter email and password
+    EmailTextbox = find_my_element(driver, "XPATH", EMAIL_TEXTBOX)
+    check_not_found(driver, EmailTextbox, "Email textbox not found")
+    EmailTextbox.click()
+    time.sleep(1)
+    EmailTextbox = find_my_element(driver, "XPATH", EMAIL_TEXTBOX)
+    check_not_found(driver, EmailTextbox, "Email textbox not found 2")
+    EmailTextbox.send_keys(Email)
+    time.sleep(1)
+
+    PasswordTextbox = find_my_element(driver, "XPATH", PASSWORD_TEXTBOX)
+    check_not_found(driver, PasswordTextbox, "Password textbox not found")
+    PasswordTextbox.click()
+    time.sleep(1)
+    PasswordTextbox = find_my_element(driver, "XPATH", PASSWORD_TEXTBOX)
+    check_not_found(driver, PasswordTextbox, "Password textbox not found 2")
+    PasswordTextbox.send_keys(Password)
+    time.sleep(1)
     LoginButton = find_my_element(driver, "XPATH", LOGIN_BUTTON)
     check_not_found(driver, LoginButton, "Login button not found")
     LoginButton.click()
-    time.sleep(30)
-    AdExitButton = find_my_element(driver, "XPATH", AD_EXIT_BUTTON)
-    if AdExitButton != None:
-        AdExitButton.click()
-        time.sleep(10)
-        LeaveButton = find_my_element(driver, "XPATH", AD_WANT_TO_LEAVE_BUTTON)
-        if LeaveButton != None:
-            LeaveButton.click()
-            time.sleep(10)
+    time.sleep(4)
+    # check if landing page is reached
     LandingPage = find_my_element(driver, "XPATH", LANDING_PAGE)
     check_not_found(driver, LandingPage, "Landing page not reached")
-    time.sleep(30)
-    AllTab = find_my_element(driver, "XPATH", ALL_TAB)
-    check_not_found(driver, AllTab, "All tab not found")
-    AllTab.click()
-    time.sleep(10)
+    print("signed in successfuly")
 
 
 def location_nearby_events_test(driver):
@@ -133,7 +180,7 @@ def location_nearby_events_test(driver):
     # )
     # if len(EventsList) == 0:
     #     print("No events in the list")
-    #     driver.close()
+    #     driver.quit()
     #     exit()
     # EventsList = EventsList[0:10]
     # EventsURLList = []
@@ -172,26 +219,7 @@ def location_nearby_events_test(driver):
     #         print("Not found")
     print("Location test passed")
     time.sleep(10)
-    driver.close()
-
-
-def see_more_test(driver):
-    # ---------------------------------------------- Testing see more button ---------------------------------------------- #
-    # Scroll down to load
-    driver.execute_script("window.scrollBy(0,document.body.scrollHeight)")
-    time.sleep(30)
-    SeeMoreButton = find_my_element(driver, "LINK_TEXT", SEE_MORE_BUTTON)
-    check_not_found(driver, SeeMoreButton, "See more button not found")
-    # create action chain object
-    action = ActionChains(driver)
-    # perform the operation
-    action.move_to_element(SeeMoreButton).click().perform()
-    time.sleep(30)
-    SeeMorePge = find_my_element(driver, "XPATH", SEE_MORE_PAGE)
-    check_not_found(driver, SeeMorePge, "See more page not reached")
-    time.sleep(10)
-    print("See more test passed")
-    driver.close()
+    driver.quit()
 
 
 def GetDate(Date):
@@ -259,23 +287,21 @@ def today_tab_test(driver):
     )
     if EventsList == None:
         print("No events in the today list")
-        driver.close()
+        driver.quit()
         exit()
     else:
         print(len(EventsList))
     EventsNum = len(EventsList)
     for i in range(1, EventsNum):
         time.sleep(5)
-        START_DATE_XPATH = (
-            START_DATE_1 + str(i) + START_DATE_2
-        )
+        START_DATE_XPATH = START_DATE_1 + str(i) + START_DATE_2
         EventStartDate = find_my_element(driver, "XPATH", START_DATE_XPATH)
         if EventStartDate != None:
             driver.execute_script("arguments[0].scrollIntoView();", EventStartDate)
             time.sleep(5)
             StartDate = EventStartDate.text
             StartDate = GetDate(StartDate)
-            END_DATE_XPATH = (END_DATE_1+ str(i)+ END_DATE_2)
+            END_DATE_XPATH = END_DATE_1 + str(i) + END_DATE_2
             EventEndtDate = find_my_element(driver, "XPATH", END_DATE_XPATH)
             if EventEndtDate != None:
                 EndDate = EventEndtDate.text
@@ -287,33 +313,31 @@ def today_tab_test(driver):
                 #     print("Not today")
 
     print("Today tab test passed")
-    driver.close()
+    driver.quit()
 
-# TODO: XPATH in references file
-# TODO: This weekend
 
 def is_this_weekend(StartDate, EndDate):
-# ---------------------------------------------- Auxiliary function to check date is in this weekend  ---------------------------------------------- #
-# Monday: 0
-# Tuesday: 1
-# Wednesday: 2
-# Thursday: 3
-# Friday: 4
-# Saturday: 5
-# Sunday: 6
+    # ---------------------------------------------- Auxiliary function to check date is in this weekend  ---------------------------------------------- #
+    # Monday: 0
+    # Tuesday: 1
+    # Wednesday: 2
+    # Thursday: 3
+    # Friday: 4
+    # Saturday: 5
+    # Sunday: 6
 
     Today = date.today()
     Weekend1 = Today
     Weekend2 = Today
-    if Today.weekday() == 4:    # Friday
+    if Today.weekday() == 4:  # Friday
         Weekend2 = Today + timedelta(days=1)
     elif Today.weekday() == 5:  # Saturday
         Weekend2 = "None"
-    elif Today.weekday() == 6:  #Sunday
+    elif Today.weekday() == 6:  # Sunday
         Weekend1 = Today + timedelta(days=5)
         Weekend2 = Weekend1 + timedelta(days=1)
     else:
-        Weekend1 = Today + timedelta(days=(4-Today.weekday()))
+        Weekend1 = Today + timedelta(days=(4 - Today.weekday()))
         Weekend2 = Weekend1 + timedelta(days=1)
 
     if Weekend2 == "None":
@@ -333,7 +357,6 @@ def is_this_weekend(StartDate, EndDate):
     #         return False
     #     else:
     #         return True
-
 
     # # remove extra data
     # print(Date)
@@ -401,16 +424,14 @@ def this_weekend_tab_test(driver):
     )
     if EventsList == None:
         print("No events in the today list")
-        driver.close()
+        driver.quit()
         exit()
     else:
         print(len(EventsList))
     EventsNum = len(EventsList)
     for i in range(1, EventsNum):
         time.sleep(5)
-        START_DATE_XPATH = (
-            START_DATE_1 + str(i) + START_DATE_2
-        )
+        START_DATE_XPATH = START_DATE_1 + str(i) + START_DATE_2
         EventStartDate = find_my_element(driver, "XPATH", START_DATE_XPATH)
         if EventStartDate != None:
             driver.execute_script("arguments[0].scrollIntoView();", EventStartDate)
@@ -418,19 +439,19 @@ def this_weekend_tab_test(driver):
             StartDate = EventStartDate.text
             StartDate = GetDate(StartDate)
             print(StartDate)
-            END_DATE_XPATH = (END_DATE_1+ str(i)+ END_DATE_2)
+            END_DATE_XPATH = END_DATE_1 + str(i) + END_DATE_2
             EventEndtDate = find_my_element(driver, "XPATH", END_DATE_XPATH)
             if EventEndtDate != None:
                 EndDate = EventEndtDate.text
                 EndDate = GetDate(EndDate)
                 print(EndDate)
                 # Check if this weekend
-                assert is_this_weekend(StartDate, EndDate), "This weekend Tab test failed"
+                assert is_this_weekend(
+                    StartDate, EndDate
+                ), "This weekend Tab test failed"
                 print("This weekend")
                 # assert StartDate <= date.today() <= EndDate, "Today Tab test failed"
-    
-    
-    
+
     # click on Today tab
     TodayTab = find_my_element(driver, "XPATH", THIS_WEEKEND_TAB)
     check_not_found(driver, TodayTab, "This weekend tab not found")
@@ -446,7 +467,7 @@ def this_weekend_tab_test(driver):
     )
     if EventsList == None:
         print("No events in the weekend list")
-        driver.close()
+        driver.quit()
         exit()
     EventsNumber = len(EventsList)
     EventsDateList = []
@@ -461,11 +482,11 @@ def this_weekend_tab_test(driver):
     for Date in EventsDateList:
         if is_this_weekend(Date) == False:
             print("Not all events are this weekend")
-            driver.close()
+            driver.quit()
             exit()
     print("This weekend tab test passed")
     time.sleep(10)
-    driver.close()
+    driver.quit()
 
 
 def online_tab_test(driver):
@@ -485,7 +506,7 @@ def online_tab_test(driver):
     )
     if len(EventsList) == 0:
         print("No events in the list")
-        driver.close()
+        driver.quit()
         exit()
     # EventsList = EventsList[0:10]
     EventsURLList = []
@@ -523,7 +544,7 @@ def online_tab_test(driver):
         if Location != None:
             if (Location.get_attribute("innerHTML")).find("Online") == -1:
                 print("Not all events are online")
-                driver.close()
+                driver.quit()
                 exit()
             else:
                 print("online")
@@ -531,7 +552,7 @@ def online_tab_test(driver):
             print("Not found")
     print("Online tab test passed")
     time.sleep(10)
-    driver.close()
+    driver.quit()
 
 
 def free_tab_test(driver):
@@ -551,7 +572,7 @@ def free_tab_test(driver):
     )
     if len(EventsList) == 0:
         print("No events in free tab list")
-        driver.close()
+        driver.quit()
         exit()
     EventsURLList = []
     # EventsList = EventsList[0:9]
@@ -583,10 +604,10 @@ def free_tab_test(driver):
         # Check if price is free
         if Free.get_attribute("innerHTML") != "Free":
             print("Not all events are free")
-            driver.close()
+            driver.quit()
             exit()
     print("Free tab test passed")
-    driver.close()
+    driver.quit()
 
 
 def test_category(driver, LinkText, Name):
@@ -632,4 +653,4 @@ def categories_test(driver):
     test_category(driver, FOOD_DRINK_CATEGORY, "Drink events")
     test_category(driver, HEALTH_CATEGORY, "Health events")
     test_category(driver, SPORTS_CATEGORY, "Fitness events")
-    driver.close()
+    driver.quit()
