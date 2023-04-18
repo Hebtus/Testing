@@ -24,17 +24,18 @@ def sign_in(driver):
         Emails[i] = Emails[i].rstrip("\n")
     for i in range(len(Passwords)):
         Passwords[i] = Passwords[i].rstrip("\n")
-    # sign_in_valid(driver, Emails[17], Passwords[7])
-    # sign_in_invalid(driver, Emails[17])
-    login_with_facebook(driver, Emails[15], Passwords[5])
+    signin_valid(driver, "hebtususer@gmail.com", "123456789")
+    # sign_in_invalid(driver, "hebtususer@gmail.com")
+    # login_with_facebook(driver, Emails[15], Passwords[5])
     # forget_password_test(driver, Emails[17], Passwords[4])
 
 
-def sign_in_valid(driver, Email, Password):
+def signin_valid(driver, Email, Password):
     # ---------------------------------------------- Testing valid log in ---------------------------------------------- #
-    driver.get("https://www.eventbrite.com/signin")
+    driver.get("https://www.hebtus.me/login")
     driver.maximize_window()
-    driver.implicitly_wait(5)
+    driver.implicitly_wait(60)
+    time.sleep(12)
     # enter email and password
     EmailTextbox = find_my_element(driver, "ID", EMAIL_TEXTBOX)
     check_not_found(driver, EmailTextbox, "Email textbox not found")
@@ -42,67 +43,87 @@ def sign_in_valid(driver, Email, Password):
     PasswordTextbox = find_my_element(driver, "ID", PASSWORD_TEXTBOX)
     check_not_found(driver, PasswordTextbox, "Password textbox not found")
     PasswordTextbox.send_keys(Password)
-    time.sleep(10)
-    LoginButton = find_my_element(driver, "XPATH", LOGIN_BUTTON)
+    time.sleep(3)
+    LoginButton = find_my_element(driver, "ID", LOGIN_BUTTON)
     check_not_found(driver, LoginButton, "Login button not found")
     LoginButton.click()
-    time.sleep(30)
-    AdExitButton = find_my_element(driver, "XPATH", AD_EXIT_BUTTON)
-    if AdExitButton != None:
-        AdExitButton.click()
-        time.sleep(10)
-        LeaveButton = find_my_element(driver, "XPATH", AD_WANT_TO_LEAVE_BUTTON)
-        if LeaveButton != None:
-            LeaveButton.click()
-            time.sleep(10)
+    time.sleep(15)
     # check if landing page is reached
-    LandingPage = find_my_element(driver, "XPATH", LANDING_PAGE)
+    LandingPage = find_my_element(driver, "ID", LANDING_PAGE)
     check_not_found(driver, LandingPage, "Landing page not reached")
+    time.sleep(5)
     print("signed in successfuly")
+    # Sign out
+    NavBarDropDown = find_my_element(driver, "ID", NAV_BAR_DROP_DOWN)
+    check_not_found(driver, NavBarDropDown, "NavBar drop down not found")
+    NavBarDropDown.click()
+    time.sleep(1)
+    LogOut = find_my_element(driver, "ID", LOG_OUT)
+    check_not_found(driver, LogOut, "Log out button not found")
+    LogOut.click()
+    time.sleep(5)
+    LoginPage = find_my_element(driver, "ID", EMAIL_TEXTBOX)
+    check_not_found(driver, LoginPage, "Login page not reached")
+    time.sleep(5)
+    print("signed out successfuly")
     driver.close()
 
 
 def sign_in_invalid(driver, Email):
     # ---------------------------------------------- Testing invalid log in ---------------------------------------------- #
     # open log in page
-    driver.get("https://www.eventbrite.com/signin")
+    driver.get("https://www.hebtus.me/login")
     driver.maximize_window()
-    driver.implicitly_wait(5)
+    driver.implicitly_wait(60)
+    time.sleep(12)
+    # ------------------- unregistered email-------------------
     EmailTextbox = find_my_element(driver, "ID", EMAIL_TEXTBOX)
     check_not_found(driver, EmailTextbox, "Email textbox not found")
-    # ------------------- unregistered email-------------------
     EmailTextbox.send_keys("Neweventbrite@gmail.com")
+
     PasswordTextbox = find_my_element(driver, "ID", PASSWORD_TEXTBOX)
     check_not_found(driver, PasswordTextbox, "Password textbox not found")
     PasswordTextbox.send_keys("Passwords")
-    time.sleep(10)
-    LoginButton = find_my_element(driver, "XPATH", LOGIN_BUTTON)
-    if LoginButton == None:
-        LoginButton = find_my_element(driver, "XPATH", SIGNIN_BUTTON)
-        check_not_found(driver, LoginButton, "Login button not found")
+
+    time.sleep(2)
+    LoginButton = find_my_element(driver, "ID", LOGIN_BUTTON)
+    check_not_found(driver, LoginButton, "Login button not found")
     LoginButton.click()
-    time.sleep(10)
+    time.sleep(3)
     # Check if an alert is present
-    UnregisterEmailAlter = find_my_element(driver, "XPATH", UNREGISTERED_EMAIL_ALERT)
+    UnregisterEmailAlter = find_my_element(driver, "ID", WRONG_EMAIL_PASS_ALERT)
     check_not_found(driver, UnregisterEmailAlter, "Unregistered email not detected")
+
     clear_textbox(EmailTextbox)
     EmailTextbox.send_keys(Email)
     # -------------------invalid password-------------------
-    LoginButton = find_my_element(driver, "XPATH", LOGIN_BUTTON)
-    if LoginButton == None:
-        LoginButton = find_my_element(driver, "XPATH", SIGNIN_BUTTON)
-        check_not_found(driver, LoginButton, "Login button not found")
+    time.sleep(1)
+    LoginButton = find_my_element(driver, "ID", LOGIN_BUTTON)
+    check_not_found(driver, LoginButton, "Login button not found")
     time.sleep(5)
     LoginButton.click()
-    time.sleep(5)
-    LoginButton.click()
-    time.sleep(30)
     # check if an alert is present
-    IncorrectPassword = find_my_element(driver, "XPATH", INCORRECT_PASSWORD_ALERT)
+    IncorrectPassword = find_my_element(driver, "ID", WRONG_EMAIL_PASS_ALERT)
     check_not_found(driver, IncorrectPassword, "Incorrect password not detected")
-
+    time.sleep(3)
+    # Empty fields
+    PasswordTextbox = find_my_element(driver, "ID", PASSWORD_TEXTBOX)
+    check_not_found(driver, PasswordTextbox, "Password textbox not found")
+    clear_textbox(PasswordTextbox)
+    # check if an alert is present
+    IncorrectPassword = find_my_element(driver, "ID", WRONG_EMAIL_PASS_ALERT)
+    check_not_found(driver, IncorrectPassword, "empty password field not detected")
+    time.sleep(1)
+    PasswordTextbox.send_keys("Passwords")
+    EmailTextbox = find_my_element(driver, "ID", EMAIL_TEXTBOX)
+    check_not_found(driver, EmailTextbox, "Email textbox not found")
+    clear_textbox(EmailTextbox)
+    IncorrectPassword = find_my_element(driver, "ID", EMAIL_REQUIRED_ALERT)
+    check_not_found(driver, IncorrectPassword, "empty email field not detected")
+    time.sleep(3)
     print("Sign in Invlaid tests passed")
     driver.close()
+    exit()
 
 
 def login_with_facebook(driver, Email, Password):

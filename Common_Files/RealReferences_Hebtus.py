@@ -4,20 +4,30 @@
 # ---------------- This file is used to easily map references for elements to the ones already used ----------------#
 
 # ---------------- Attendee's View ----------------#
+# log in:
+EMAIL_TEXTBOX = "email"  #! New
+PASSWORD_TEXTBOX = "password"  #! New
+LOGIN_BUTTON = "form--button-login"  #! New
+LANDING_PAGE = "popular-in-heading"  #! New
+
+WRONG_EMAIL_PASS_ALERT = "errorMessage"  #! New
+EMAIL_REQUIRED_ALERT = "errorMessageEmail"  #! New
+
+# Navigation bar:
+NAV_BAR_DROP_DOWN = "navbar-dropdown"
+LOG_OUT = "logout-link"
 # Sign up page
-EMAIL_TEXTBOX = "email"
+
 CONTINUE_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/form/div[2]/div/button"
 EMAIL_CONFIRMATION_TEXTBOX = "emailConfirmation"
 FIRT_NAME_TEXTBOX = "firstName"
 LAST_NAME_TEXTBOX = "lastName"
-PASSWORD_TEXTBOX = "password"
 CREATE_ACOUNT_BUTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/form/div[3]/div/button"
 TERMS_CONDITIONS_POPUP_WINDOW = "edsModalContentChildren"
 AGREE_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[3]/div/div/div/div/div[1]/div/div/main/div/div/div/div/div/div[2]/button[2]"
 START_ATTENDING_BUTTON = "/html/body/div[1]/div/div[2]/div/div[3]/div[1]/div[3]/button"
 EXIT_BUTTON_1 = "/html/body/div[1]/div/div[2]/div/div/div/div[2]/div/button[1]"
 EXIT_BUTTON_2 = "/html/body/div[1]/div/div[3]/div/div/div/div[1]/div/div/main/div/div/div/div[1]/button"
-LANDING_PAGE = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]"
 WHITE_SPACE_SIGNUP_PAGE = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[1]/div[1]/h1"
 # login button in sinup page
 SIGNUP_LOGIN_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[4]/button"
@@ -45,15 +55,12 @@ LOGIN_WITH_GOOGLE_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/
 AD_EXIT_BUTTON = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/div/div/div/div/div/div[2]/span/button"
 AD_WANT_TO_LEAVE_BUTTON = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/div/div/div/div/div/div[1]/div/div/main/div/div/div/div[2]/button[1]"
 ACCEPT_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[3]/div[2]/div/div/div/div/div[1]/div/div/main/div/div/div/div/div/div[2]/button[2]"
-# sign in Page
-UNREGISTERED_EMAIL_ALERT = (
-    "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[2]/div"
-)
+
+
 INCORRECT_PASSWORD_ALERT = (
     "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[2]/div"
 )
 SIGNIN_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[3]/div/form/div[4]/div/button"
-LOGIN_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[2]/div/form/div[4]/div/button"
 # Forget password
 FORGET_PASSWORD_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[3]/div/div/div/div/button"
 GMAIL_TEXTBOX = "identifierId"
@@ -142,7 +149,7 @@ MUSIC_TAB = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]
 FOOD_DRINK_TAB = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/nav/ul/li[10]/button"
 CHARITY_CAUSES_TAB = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/nav/ul/li[11]/button"
 # Categories:
-MUSIC_CATEGORY = "Music"
+MUSIC_CATEGORY = "/html/body/div/div/div[2]/div/div[4]/div/div[1]/div/div"
 HOBBBIES_CATEGORY = "Hobbies"
 VISUAL_ARTS_CATEGORY = "Performing & Visual Arts"
 BUSINESS_CATEGORY = "Business"

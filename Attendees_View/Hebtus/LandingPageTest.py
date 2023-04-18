@@ -22,7 +22,8 @@ def landing_page(driver):
     # call_see_more_test(driver)
     # call_today_tab_test(driver)
     # call_weekend_tab(driver)
-    paginations_test(driver)
+    # paginations_test(driver)
+    categories_test(driver)
     # call_online_tab(driver)
     # call_free_tab_test(driver)
     # call_categories_test(driver)
@@ -59,7 +60,7 @@ def call_free_tab_test(driver):
 
 
 def call_categories_test(driver):
-    login(driver, "testereventbrite@gmail.com", "eventbritetester")
+    # login(driver, "testereventbrite@gmail.com", "eventbritetester")
     categories_test(driver)
 
 
@@ -592,6 +593,45 @@ def test_category(driver, LinkText, Name):
 
 def categories_test(driver):
     # ---------------------------------------------- Testing Categories ---------------------------------------------- #
+    # Music category
+    driver.get("https://www.hebtus.me/#")
+    driver.maximize_window()
+    driver.implicitly_wait(60)
+    time.sleep(20)
+    MusicTab = find_my_element(driver, "XPATH", MUSIC_CATEGORY)
+    check_not_found(driver, MusicTab, "Music tab not found")
+    driver.execute_script("arguments[0].scrollIntoView();", MusicTab)
+
+    time.sleep(5)
+    x, y = 280, 60
+
+    # create an instance of ActionChains
+    action = ActionChains(driver)
+
+    # move the mouse to the desired location and click
+    action.move_by_offset(x, y).click().perform()
+    action.move_by_offset(x, y).click().perform()
+
+    time.sleep(5)
+    assert "Music" in str(driver.current_url), "Music category page not reached"
+
+    print("music tab test passed")
+
+    # click on hebtus icon
+
+    Logo = find_my_element(driver, "XPATH", "/html/body/div/div/div[1]/nav/a/h3")
+    check_not_found(driver, Logo, "Hebtus logo not found")
+    Logo.click()
+    time.sleep(5)
+
+    # check if landing page is reached
+    LandingPage = find_my_element(driver, "ID", LANDING_PAGE)
+    check_not_found(driver, LandingPage, "Landing page not reached")
+    time.sleep(5)
+
+    print("Landing page reached")
+    driver.close()
+    exit()
     # click on All tab
     AllTab = find_my_element(driver, "XPATH", ALL_TAB)
     check_not_found(driver, AllTab, "All tab not found")
