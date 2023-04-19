@@ -34,7 +34,7 @@ def sign_in(driver):
     # login_with_facebook(driver, Emails[15], Passwords[5])
     # forget_password_test(driver, Emails[17], Passwords[4])
 
-
+#* Phase 4
 def sign_in_valid(driver, Email, Password):
     # ---------------------------------------------- Testing valid log in ---------------------------------------------- #
     # enter email and password
@@ -80,7 +80,7 @@ def sign_in_valid(driver, Email, Password):
     print("signed out successfully")
     driver.quit()
 
-
+#* Phase 4
 def sign_in_invalid(driver, Email):
     # ---------------------------------------------- Testing invalid log in ---------------------------------------------- #
     # ------------------- unregistered email-------------------

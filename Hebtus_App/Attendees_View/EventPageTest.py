@@ -24,6 +24,7 @@ def event_page(driver):
     # GetEvents(driver)
 
 
+# * Phase 4
 def sign_in_valid(driver, Email, Password):
     # ---------------------------------------------- Testing valid log in ---------------------------------------------- #
     # enter email and password
@@ -133,6 +134,7 @@ def check_displayed(driver, type, value, message):
         print(message)
 
 
+# * Phase 4
 def events_info_test(driver):
     # Get the screen dimensions
     screen_width = driver.get_window_size()["width"]

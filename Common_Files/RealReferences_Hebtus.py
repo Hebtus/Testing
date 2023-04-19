@@ -4,25 +4,58 @@
 # ---------------- This file is used to easily map references for elements to the ones already used ----------------#
 
 # ---------------- Attendee's View ----------------#
+#! Phase 4
 # log in:
-EMAIL_TEXTBOX = "email"  #! New
-PASSWORD_TEXTBOX = "password"  #! New
-LOGIN_BUTTON = "form--button-login"  #! New
-LANDING_PAGE = "popular-in-heading"  #! New
+EMAIL_TEXTBOX = "email"
+PASSWORD_TEXTBOX = "password"
+LOGIN_BUTTON = "form--button-login"
+LANDING_PAGE = "popular-in-heading"
 
-WRONG_EMAIL_PASS_ALERT = "errorMessage"  #! New
-EMAIL_REQUIRED_ALERT = "errorMessageEmail"  #! New
+WRONG_EMAIL_PASS_ALERT = "errorMessage"
+EMAIL_REQUIRED_ALERT = "errorMessageEmail"
 
+SIGNUP_LOGIN_BUTTON = "SignIn"
+LOGIN_SIGNUP_BUTTON = "sign-up-link"
 # Navigation bar:
 NAV_BAR_DROP_DOWN = "navbar-dropdown"
 LOG_OUT = "logout-link"
 # Sign up page
-
-CONTINUE_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/form/div[2]/div/button"
-EMAIL_CONFIRMATION_TEXTBOX = "emailConfirmation"
+CREATE_ACOUNT_BUTON = "/html/body/div/div/div/section/div/form/div[12]/button"
+EMAIL_CONFIRMATION_TEXTBOX = "/html/body/div/div/div/section/div/form/div[3]/input"
 FIRT_NAME_TEXTBOX = "firstName"
 LAST_NAME_TEXTBOX = "lastName"
-CREATE_ACOUNT_BUTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/form/div[3]/div/button"
+CONFIRM_PASSWORD_TB = "confirmPassword"
+
+BACK_TO_LOGIN_BUTTON = "message--button-login"
+
+# Landing page:
+EVENT_ELEMENT = "card Events_event-card__4cxKy"
+EVENT_LIST_1 = "/html/body/div/div/div[3]/div/div/div/div["
+EVENT_LIST_2 = "]/div"
+# Tabs:
+TODAY_TAB = "today-link"
+
+START_DATE_1 = "/html/body/div/div/div[3]/div[1]/div/div/div["
+START_DATE_2 = "]/div/div/h6[1]"
+
+END_DATE_1 = "/html/body/div/div/div[3]/div[1]/div/div/div["
+END_DATE_2 = "]/div/div/h6[2]"
+THIS_WEEKEND_TAB = "this-weekend-tab"
+PREV_PAGE_BUTTON = "previous-page-button"
+NEXT_PAGE_BUTTON = "next-page-button"
+
+# Events Page
+IMAGE = "/html/body/div/div/div[2]/div/div[1]/img"
+START_DATE = "/html/body/div/div/div[2]/div/div[2]/div[1]/time"
+EVENT_TITLE = "/html/body/div/div/div[2]/div/div[2]/div[2]/h1"
+DATE_TIME = "/html/body/div/div/div[2]/div/div[2]/div[3]/div/div[1]/div[2]/p"
+LOCATION = "/html/body/div/div/div[2]/div/div[2]/div[3]/div/div[2]/div[2]/p/strong"
+EVENTS_DETAILS = "/html/body/div/div/div[2]/div/div[2]/div[4]/p"
+TICKETS_INFO = "/html/body/div/div/div[2]/div/div[3]/div"
+GET_TICKET_BUTTON = "/html/body/div/div/div[2]/div/div[3]/div/div"
+
+#!END-----------------------------------------------------------------------------------
+CONTINUE_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/form/div[2]/div/button"
 TERMS_CONDITIONS_POPUP_WINDOW = "edsModalContentChildren"
 AGREE_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[3]/div/div/div/div/div[1]/div/div/main/div/div/div/div/div/div[2]/button[2]"
 START_ATTENDING_BUTTON = "/html/body/div[1]/div/div[2]/div/div[3]/div[1]/div[3]/button"
@@ -30,17 +63,16 @@ EXIT_BUTTON_1 = "/html/body/div[1]/div/div[2]/div/div/div/div[2]/div/button[1]"
 EXIT_BUTTON_2 = "/html/body/div[1]/div/div[3]/div/div/div/div[1]/div/div/main/div/div/div/div[1]/button"
 WHITE_SPACE_SIGNUP_PAGE = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[1]/div[1]/h1"
 # login button in sinup page
-SIGNUP_LOGIN_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[4]/button"
 
 # signup invalid tests
+EMAIL_ALREADY_USED_ALERT = "errorMessage"
+ERROR_MESSAGE = "errorMessage"
+WRONG_CONFRIM_PASSWORD_ALERT = "errorMessageConfirmPassword"
+EMAIL_DONT_MATCH_ALERT = "errorMessageConfirmEmail"
+PASSWORD_REQUIRED_ALERT = "errorMessagePassword"
 INVALID_EMAIL_ALERT = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/form/div[1]/div[1]/div[2]/div/aside"
-EMAIL_ALREADY_USED_ALERT = (
-    "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[2]/div"
-)
-EMAIL_DONT_MATCH_ALERT = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/form/div[1]/div[2]/div/div[2]/div/aside"
 LAST_NAME_REQUIRED_ALERT = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/form/div[1]/div[3]/div[1]/div[2]/div/div[2]/div/aside"
 FIRST_NAME_REQUIRED_ALERT = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/form/div[1]/div[3]/div[1]/div[1]/div/div[2]/div/aside"
-PASSWORD_REQUIRED_ALERT = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/form/div[1]/div[3]/div[2]/div[1]/div/div[2]/div/aside"
 
 # login with google and facebook
 SIGNUP_WITH_FACEBOOK_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[3]/div[1]/div[2]/div/ul/li/div/div/button"
@@ -71,17 +103,6 @@ FIRST_EMAIL = "/html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]
 SET_NEW_PASSWORD_LINK = "Set a New Password"
 UPDATE_PASSWORD_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/form/div[2]/button"
 
-# Events Page
-IMAGE = "/html/body/div/div/div[2]/div/div[1]/img"  #! New
-START_DATE = "/html/body/div/div/div[2]/div/div[2]/div[1]/time"  #! New
-EVENT_TITLE = "/html/body/div/div/div[2]/div/div[2]/div[2]/h1"  #! New
-DATE_TIME = "/html/body/div/div/div[2]/div/div[2]/div[3]/div/div[1]/div[2]/p"  #! New
-LOCATION = (
-    "/html/body/div/div/div[2]/div/div[2]/div[3]/div/div[2]/div[2]/p/strong"  #! New
-)
-EVENTS_DETAILS = "/html/body/div/div/div[2]/div/div[2]/div[4]/p"  #! New
-TICKETS_INFO = "/html/body/div/div/div[2]/div/div[3]/div"  #! New
-GET_TICKET_BUTTON = "/html/body/div/div/div[2]/div/div[3]/div/div"  #! New
 
 EVENT_SUMMARY = "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div[2]/div[2]/div[1]/p"
 SIMPLIDIED_ORGANIZER_INFO = "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div[2]/div[2]/div[2]/div"
@@ -99,10 +120,6 @@ SHARE_BUTTON = "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div/m
 FOLLOW_BUTTTON = "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div[2]/div[2]/div[1]/section/div[2]/button"
 REGISTER_PAGE = "/html/body/div[1]/div/div/div/div/div[1]"
 
-# Landing page: #? Edited
-EVENT_ELEMENT = "card Events_event-card__4cxKy"  #! New
-EVENT_LIST_1 = "/html/body/div/div/div[3]/div/div/div/div["  #! New
-EVENT_LIST_2 = "]/div"  #! New
 
 LOCATION_PICKER = "location-text"
 SEE_MORE_BUTTON = "See more"
@@ -114,17 +131,6 @@ ALL_EVENT_DATE_1 = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/sec
 ALL_EVENT_DATE_2 = "]/div/div/article/div[1]/div[2]/div/div[1]/div"
 ALL_EVENTS_LOCATION_1 = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/div/div/div/section[1]/div/div/div[2]/div["
 ALL_EVENTS_LOCATION_2 = "]/div/div/article/div[1]/div[2]/div/div[2]/div[1]/div"
-# Tabs:
-TODAY_TAB = "today-link"  #! New
-
-START_DATE_1 = "/html/body/div/div/div[3]/div[1]/div/div/div["  #! New
-START_DATE_2 = "]/div/div/h6[1]"  #! New
-
-END_DATE_1 = "/html/body/div/div/div[3]/div[1]/div/div/div["  #! New
-END_DATE_2 = "]/div/div/h6[2]"  #! New
-THIS_WEEKEND_TAB = "this-weekend-tab"  #! New
-PREV_PAGE_BUTTON = "previous-page-button"  #! New
-NEXT_PAGE_BUTTON = "next-page-button"  #! New
 
 
 ALL_TAB = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/nav/ul/li[1]/button"

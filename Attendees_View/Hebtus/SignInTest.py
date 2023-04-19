@@ -29,7 +29,7 @@ def sign_in(driver):
     # login_with_facebook(driver, Emails[15], Passwords[5])
     # forget_password_test(driver, Emails[17], Passwords[4])
 
-
+#* Phase 4
 def signin_valid(driver, Email, Password):
     # ---------------------------------------------- Testing valid log in ---------------------------------------------- #
     driver.get("https://www.hebtus.me/login")
@@ -68,7 +68,7 @@ def signin_valid(driver, Email, Password):
     print("signed out successfuly")
     driver.close()
 
-
+#* Phase 4
 def sign_in_invalid(driver, Email):
     # ---------------------------------------------- Testing invalid log in ---------------------------------------------- #
     # open log in page

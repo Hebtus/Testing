@@ -38,6 +38,7 @@ def landing_page(driver):
     # categories_test(driver)
 
 
+# * Phase 4
 def tabs_test(driver):
     # All, music, food, charity
     MusicTab = find_my_element(driver, "XPATH", MUSIC_TAB)
@@ -68,6 +69,7 @@ def tabs_test(driver):
     driver.quit()
 
 
+# * Phase 4
 def see_more_test(driver):
     # ---------------------------------------------- Testing see more button ---------------------------------------------- #
     # Scroll down to see more button
@@ -118,6 +120,7 @@ def see_more_test(driver):
     driver.quit()
 
 
+# * Phase 4
 def sign_in_valid(driver, Email, Password):
     # ---------------------------------------------- Testing valid log in ---------------------------------------------- #
     # enter email and password

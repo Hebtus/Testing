@@ -19,6 +19,7 @@ def event_page(driver):
     GetEvents(driver)
 
 
+# * Phase 4
 def GetEvents(driver):
     driver.get("https://www.hebtus.me/#")
     driver.maximize_window()
@@ -123,6 +124,7 @@ def login(driver, Email, Password):
     events_info_test(driver, EventsURLList)
 
 
+# * Phase 4
 def check_displayed(driver, type, value, message):
     # ---------------------------------------------- Auxiliary function to check if element is displayed ---------------------------------------------- #
     element = find_my_element(driver, type, value)
@@ -131,6 +133,7 @@ def check_displayed(driver, type, value, message):
         print(message)
 
 
+# * Phase 4
 def events_info_test(driver):
     # ---------------------------------------------- Testing Events info ---------------------------------------------- #
     # Image

@@ -191,6 +191,7 @@ def see_more_test(driver):
     driver.close()
 
 
+# * Phase 4
 def GetDate(Date):
     # ---------------------------------------------- Auxiliary function to check date is in this weekend  ---------------------------------------------- #
     # remove extra data
@@ -235,6 +236,7 @@ def GetDate(Date):
     return Date
 
 
+# * Phase 4
 def check_today_list(driver, Num):
     for i in range(1, ceil(Num / 12) + 1):
         for j in range(1, 13):
@@ -273,6 +275,7 @@ def check_today_list(driver, Num):
             break
 
 
+# * Phase 4
 def today_tab_test(driver):
     # ---------------------------------------------- Testing today tab ---------------------------------------------- #
     driver.get("https://www.hebtus.me/#")
@@ -304,6 +307,7 @@ def today_tab_test(driver):
     driver.close()
 
 
+# * Phase 4
 def is_this_weekend(StartDate, EndDate):
     # ---------------------------------------------- Auxiliary function to check date is in this weekend  ---------------------------------------------- #
     # Monday: 0
@@ -336,6 +340,7 @@ def is_this_weekend(StartDate, EndDate):
     # print(Weekend2)
 
 
+# * Phase 4
 def check_this_weekend_list(driver, Num):
     for i in range(1, ceil(Num / 12) + 1):
         for j in range(1, 13):
@@ -369,6 +374,7 @@ def check_this_weekend_list(driver, Num):
             break
 
 
+# * Phase 4
 def this_weekend_tab_test(driver):
     # ---------------------------------------------- Testing this weekend tab ---------------------------------------------- #
     driver.get("https://www.hebtus.me/#")
@@ -397,6 +403,7 @@ def this_weekend_tab_test(driver):
     driver.close()
 
 
+# * Phase 4
 def paginations_test(driver):
     driver.get("https://www.hebtus.me/#")
     driver.maximize_window()
@@ -591,6 +598,7 @@ def test_category(driver, LinkText, Name):
     time.sleep(30)
 
 
+# * Phase 4 (only music category)
 def categories_test(driver):
     # ---------------------------------------------- Testing Categories ---------------------------------------------- #
     # Music category

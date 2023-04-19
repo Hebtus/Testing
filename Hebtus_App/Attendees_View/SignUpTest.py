@@ -50,7 +50,7 @@ def sign_up(driver):
     # go_to_login_page(driver)
 
 
-#! New
+#* Phase 4
 def sign_up_No_Verification_test(driver, Email, Password):
     # Enter email
     EmailTextbox = find_my_element(driver, "XPATH", SIGN_UP_EMAIL_TEXTBOX)
@@ -188,7 +188,7 @@ def sign_up_No_Verification_test(driver, Email, Password):
     driver.quit()
 
 
-#! New
+#* Phase 4
 def login_button_test(driver):
     # ----------------- login button in sign up page -------
     # Click on login button
@@ -206,7 +206,7 @@ def login_button_test(driver):
     driver.quit()
 
 
-#! New
+#* Phase 4
 def sign_up_valid_test(driver, Email, Password):
     # ---------------------------------------------- Testing valid email ---------------------------------------------- #
     # Enter email
@@ -274,7 +274,7 @@ def sign_up_valid_test(driver, Email, Password):
     driver.quit()
 
 
-#! New
+#* Phase 4
 def sign_in_new_account(driver, Email, Password):
     # ---------------------------------------------- Testing valid log in ---------------------------------------------- #
     # enter email and password
@@ -307,7 +307,7 @@ def sign_in_new_account(driver, Email, Password):
     driver.quit()
 
 
-#! New
+#* Phase 4
 def sign_up_invalid_email(driver, Emails):
     # ---------------------------------------------- Testing Invalid emails ---------------------------------------------- #
     # ------------------- missing email-------------------
@@ -438,7 +438,7 @@ def sign_up_invalid_email(driver, Emails):
     driver.quit()
 
 
-#! New
+#* Phase 4
 def sign_up_invalid_tests(driver, Email, Passwords):
     # ---------------------------------------------- Testing invalid info ---------------------------------------------- #
     # Enter email
