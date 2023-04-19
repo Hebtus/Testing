@@ -164,5 +164,56 @@ SPORTS_CATEGORY = "Sports & Fitness"
 
 # ---------------- Creator's View ----------------#
 # Basic Info Web Page
-EVENT_TITLE_FIELD = "event-basicInfo-title"  # ID
-TAGS_FIELD = "tagging-form-field"  # ID
+CREATE_EVENT_BUTTON = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.Button" # XPATH
+SAVE_BUTTON = "//android.widget.Button[@content-desc='Save']"
+EVENT_TITLE = "//android.view.View[@content-desc='Basic info']"
+EVENT_NAME_FIELD = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText[1]" # XPATH
+EVENT_NAME_ERROR_MSG = "//android.view.View[@content-desc='Please enter event name ']"
+EVENT_NAME_RATIO_PART1 = "//android.view.View[@content-desc='" # 0/75
+EVENT_NAME_RATIO_PART2 = "']"
+EVENT_TAGS_FIELD = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText"
+EVENT_TAGS_TITLE = "//android.view.View[@content-desc='Tags']"
+EVENT_TAG_RATIO_PART1 = "//android.view.View[@content-desc='" # 0/25
+EVENT_TAG_RATIO_PART2 = "']"
+EVENT_TAG_ADD_ID = "Tag"
+EVENT_TAG_ADD = "//android.widget.Button[@content-desc='Add']"
+EVENT_CATEGORY_MUSIC = "//android.widget.Button[@content-desc='Music']"
+EVENT_CATEGORY_CHARITY = "//android.view.View[@content-desc='Charity & Causes']"
+EVENT_CATEGORY_CHARITY_ID = "Charity & Causes"
+EVENT_LOCATION_TITLE = "//android.view.View[@content-desc='Location']"
+EVENT_VENUE_BUTTON = "//android.widget.Button[@content-desc='Venue']"
+EVENT_VENUE_FIELD = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText"
+EVENT_VENUE_ERROR_MSG = "//android.view.View[@content-desc='Please enter event location']"
+EVENT_ONLINE_BUTTON = "//android.widget.Button[@content-desc='Online event']"
+EVENT_TO_BE_ANNOUNCED = "//android.widget.Button[@content-desc='To be annonced']"
+EVENT_VENUE_ERROR_MSG = "//android.view.View[@content-desc='Please enter event location']"
+EVENT_DATE_TITLE = "//android.view.View[@content-desc='Date and time']"
+EVENT_SINGLE_EVENT_BUTTON = "//android.widget.Button[@content-desc='Single event']"
+EVENT_RECURRING_EVENT_BUTTON = "//android.widget.Button[@content-desc='Recurring Event']"
+EVENT_RECURRING_MESSAGE = "	//android.view.View[@content-desc='You’ll be able to set a schedule for your recurring event in the next step. Event details and ticket types will apply to all instances.']"
+EVENT_START_DATE_FIELD = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText[1]"
+EVENT_END_DATE_FIELD = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText[2]"
+EVENT_START_DATE_ERROR_MSG = "//android.view.View[@content-desc='Please enter event start date ']"
+EVENT_START_DATE_CALENDAR = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText[1]/android.widget.Button"
+EVENT_END_DATE_CALENDAR = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText[2]/android.widget.Button"
+EVENT_DATE_CHOOSE_CALENDAR_PART1 = "//android.view.View[@content-desc='" # 12, Wednesday, April 12, 2023
+EVENT_DATE_CHOOSE_CALENDAR_PART2 = "']"
+EVENT_CALENDAR_NEXT_PART1 = "//android.view.View[@content-desc='SELECT DATE " # Fri, Apr 21
+EVENT_CALENDAR_NEXT_PART2 = "']/android.widget.Button[4]"
+EVENT_CALENDAR_PREV_PART1 = "//android.view.View[@content-desc='SELECT DATE " # Fri, Apr 21
+EVENT_CALENDAR_PREV_PART2 = "']/android.widget.Button[3]"
+EVENT_TIME_DROPDOWN = "//android.widget.Button[@content-desc='01:00']" # index 2 and 4
+EVENT_CHOOSE_TIME_PART1 = "//android.view.View[@content-desc='" # 02:00
+EVENT_CHOOSE_TIME_PART2 = "']" 
+EVENT_CHOSEN_TIME_PART1 = "//android.widget.Button[@content-desc='" # 02:00
+EVENT_CHOSEN_TIME_PART2 = "']"
+EVENT_DISPLAY_START_TIME_BUTTON = "//android.widget.CheckBox[@content-desc='Display start time']"
+EVENT_DISPLAY_END_TIME_BUTTON = "//android.widget.CheckBox[@content-desc='Display end time']"
+EVENT_IMAGE_TITLE = "//android.view.View[@content-desc='Image upload']"
+EVENT_IMAGE_UPLOAD_BUTTON = "//android.widget.Button[@content-desc='Upload Photo']"
+EVENT_DESCRIPTION_TITLE = "//android.view.View[@content-desc='Description']"
+EVENT_DESCRIPTION_FIELD = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText[3]"
+
+# Return format in date field 2023-04-21
+
+
