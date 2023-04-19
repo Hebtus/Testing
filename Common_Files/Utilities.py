@@ -5,6 +5,9 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 
+import csv
+import openpyxl
+
 
 def find_my_element(Driver, type, val):
     try:
@@ -43,3 +46,44 @@ def check_not_found(driver, element, message):
 def clear_textbox(element):
     element.send_keys(Keys.CONTROL, "a")
     element.send_keys(Keys.BACKSPACE)
+
+def find_my_elements(Driver, type, val):
+    try:
+        if type == "XPATH":
+            items = WebDriverWait(Driver, 20).until(
+                EC.presence_of_all_elements_located((By.XPATH, val))
+            )
+        elif type == "CSS_SELECTOR":
+            items = WebDriverWait(Driver, 20).until(
+                EC.presence_of_all_elements_located((By.CSS_SELECTOR, val))
+            )
+    except:
+        print("Element not found.")
+    return items
+
+def my_clear(element):
+    element.send_keys(Keys.CONTROL, "a")
+    element.send_keys(Keys.BACKSPACE)
+
+# csv_to_excel.py
+def csv_to_excel(csv_file, excel_file):
+    csv_data = []
+    with open(csv_file) as file_obj:
+        reader = csv.reader(file_obj)
+        for row in reader:
+            csv_data.append(row)
+    workbook = openpyxl.Workbook()
+    sheet = workbook.active
+    for row in csv_data:
+        sheet.append(row)
+    workbook.save(excel_file)
+
+def scroll_to_bottom_of_page(driver):
+    lenOfPage = driver.execute_script("window.scrollTo(0, document.body.scrollHeight);var lenOfPage=document.body.scrollHeight;return lenOfPage;")
+    match=False
+    while(match==False):
+        lastCount = lenOfPage
+        time.sleep(3)
+        lenOfPage = driver.execute_script("window.scrollTo(0, document.body.scrollHeight);var lenOfPage=document.body.scrollHeight;return lenOfPage;")
+        if lastCount==lenOfPage:
+            match=True

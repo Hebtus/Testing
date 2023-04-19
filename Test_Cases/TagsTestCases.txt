@@ -4,13 +4,13 @@ rock
 fun
 singing
 bass_guitar
-band
+band22
 live_music
 talents
 drums
 electric_guitar
-electric_guitar
 extra_tag
+music
 to test if spaces allowed
 totest-special_characters
 $random_special_character
