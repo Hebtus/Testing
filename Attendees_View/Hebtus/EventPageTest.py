@@ -15,7 +15,6 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 
 def event_page(driver):
-    # login(driver, "testereventbrite@gmail.com", "eventbritetester")
     GetEvents(driver)
 
 
@@ -24,7 +23,7 @@ def GetEvents(driver):
     driver.get("https://www.hebtus.me/#")
     driver.maximize_window()
     driver.implicitly_wait(10)
-    time.sleep(5)
+    time.sleep(20)
     EventsList = driver.find_elements(
         By.CLASS_NAME,
         "col",
@@ -37,18 +36,16 @@ def GetEvents(driver):
         print(len(EventsList))
 
     # EventsNum = len(EventsList)
-    EventsNum = 5
+    EventsNum = 3
     for i in range(1, EventsNum):
         time.sleep(5)
         EVENT = EVENT_LIST_1 + str(i) + EVENT_LIST_2
         Event = find_my_element(driver, "XPATH", EVENT)
         if Event != None:
+            # Scroll the element into view
             driver.execute_script("arguments[0].scrollIntoView();", Event)
-            time.sleep(5)
-            # create action chain object
-            action = ActionChains(driver)
-            # perform the operation
-            action.move_to_element(Event).click().perform()
+            time.sleep(15)
+            driver.execute_script("arguments[0].click();", Event)
             time.sleep(10)
             # Test EventPage
             events_info_test(driver)
@@ -129,6 +126,7 @@ def check_displayed(driver, type, value, message):
     # ---------------------------------------------- Auxiliary function to check if element is displayed ---------------------------------------------- #
     element = find_my_element(driver, type, value)
     check_not_found(driver, element, message)
+    driver.execute_script("arguments[0].scrollIntoView();", element)
     if element.is_displayed() == False:
         print(message)
 

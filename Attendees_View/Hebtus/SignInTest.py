@@ -24,12 +24,13 @@ def sign_in(driver):
         Emails[i] = Emails[i].rstrip("\n")
     for i in range(len(Passwords)):
         Passwords[i] = Passwords[i].rstrip("\n")
-    signin_valid(driver, "hebtususer@gmail.com", "123456789")
-    # sign_in_invalid(driver, "hebtususer@gmail.com")
+    # signin_valid(driver, "hebtususer@gmail.com", "123456789")
+    sign_in_invalid(driver, "hebtususer@gmail.com")
     # login_with_facebook(driver, Emails[15], Passwords[5])
     # forget_password_test(driver, Emails[17], Passwords[4])
 
-#* Phase 4
+
+# * Phase 4
 def signin_valid(driver, Email, Password):
     # ---------------------------------------------- Testing valid log in ---------------------------------------------- #
     driver.get("https://www.hebtus.me/login")
@@ -53,22 +54,10 @@ def signin_valid(driver, Email, Password):
     check_not_found(driver, LandingPage, "Landing page not reached")
     time.sleep(5)
     print("signed in successfuly")
-    # Sign out
-    NavBarDropDown = find_my_element(driver, "ID", NAV_BAR_DROP_DOWN)
-    check_not_found(driver, NavBarDropDown, "NavBar drop down not found")
-    NavBarDropDown.click()
-    time.sleep(1)
-    LogOut = find_my_element(driver, "ID", LOG_OUT)
-    check_not_found(driver, LogOut, "Log out button not found")
-    LogOut.click()
-    time.sleep(5)
-    LoginPage = find_my_element(driver, "ID", EMAIL_TEXTBOX)
-    check_not_found(driver, LoginPage, "Login page not reached")
-    time.sleep(5)
-    print("signed out successfuly")
     driver.close()
 
-#* Phase 4
+
+# * Phase 4
 def sign_in_invalid(driver, Email):
     # ---------------------------------------------- Testing invalid log in ---------------------------------------------- #
     # open log in page

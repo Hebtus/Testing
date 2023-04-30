@@ -19,6 +19,10 @@ LOGIN_SIGNUP_BUTTON = "sign-up-link"
 # Navigation bar:
 NAV_BAR_DROP_DOWN = "navbar-dropdown"
 LOG_OUT = "logout-link"
+DROP_DOWN_TEXT = "/html/body/div/div/div[1]/div/nav/div[2]/a/div"
+CREATE_EVENT = "create-event-button"
+DROP_DOWN_LOGIN = "login-link"
+DROP_DOWN_SIGNUP = "signup-link"
 # Sign up page
 CREATE_ACOUNT_BUTON = "/html/body/div/div/div/section/div/form/div[12]/button"
 EMAIL_CONFIRMATION_TEXTBOX = "/html/body/div/div/div/section/div/form/div[3]/input"
@@ -34,25 +38,41 @@ EVENT_LIST_1 = "/html/body/div/div/div[3]/div/div/div/div["
 EVENT_LIST_2 = "]/div"
 # Tabs:
 TODAY_TAB = "today-link"
+THIS_WEEKEND_TAB = "this-weekend-tab"
+CHARITY_CAUSES_TAB = "charity-link"
+FREE_TAB = "free-tab"
+ONLINE_TAB = "online-link"
 
 START_DATE_1 = "/html/body/div/div/div[3]/div[1]/div/div/div["
 START_DATE_2 = "]/div/div/h6[1]"
 
 END_DATE_1 = "/html/body/div/div/div[3]/div[1]/div/div/div["
 END_DATE_2 = "]/div/div/h6[2]"
-THIS_WEEKEND_TAB = "this-weekend-tab"
 PREV_PAGE_BUTTON = "previous-page-button"
 NEXT_PAGE_BUTTON = "next-page-button"
+
 
 # Events Page
 IMAGE = "/html/body/div/div/div[2]/div/div[1]/img"
 START_DATE = "/html/body/div/div/div[2]/div/div[2]/div[1]/time"
 EVENT_TITLE = "/html/body/div/div/div[2]/div/div[2]/div[2]/h1"
 DATE_TIME = "/html/body/div/div/div[2]/div/div[2]/div[3]/div/div[1]/div[2]/p"
-LOCATION = "/html/body/div/div/div[2]/div/div[2]/div[3]/div/div[2]/div[2]/p/strong"
+LOCATION = "/html/body/div/div/div[2]/div/div[2]/div[3]/div/div[2]/div[2]/p"
 EVENTS_DETAILS = "/html/body/div/div/div[2]/div/div[2]/div[4]/p"
 TICKETS_INFO = "/html/body/div/div/div[2]/div/div[3]/div"
 GET_TICKET_BUTTON = "/html/body/div/div/div[2]/div/div[3]/div/div"
+
+# categories:
+HEADER_TEXT = "events-filter-header"
+
+MUSIC_CATEGORY = "/html/body/div/div/div[2]/div/div[4]/div/div[1]/div/div"
+VISUAL_ARTS_CATEGORY = "/html/body/div/div/div[2]/div/div[4]/div/div[2]/div/divd"
+HOLDIDAY_CATEGORY = "/html/body/div/div/div[2]/div/div[4]/div/div[3]"
+HEALTH_CATEGORY = "/html/body/div/div/div[2]/div/div[4]/div/div[4]"
+HOBBBIES_CATEGORY = "/html/body/div/div/div[2]/div/div[4]/div/div[5]"
+BUSINESS_CATEGORY = "/html/body/div/div/div[2]/div/div[4]/div/div[6]"
+FOOD_DRINK_CATEGORY = "/html/body/div/div/div[2]/div/div[4]/div/div[7]"
+SPORTS_CATEGORY = "/html/body/div/div/div[2]/div/div[4]/div/div[8]"
 
 #!END-----------------------------------------------------------------------------------
 CONTINUE_BUTTON = "/html/body/div[1]/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/form/div[2]/div/button"
@@ -135,7 +155,6 @@ ALL_EVENTS_LOCATION_2 = "]/div/div/article/div[1]/div[2]/div/div[2]/div[1]/div"
 
 ALL_TAB = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/nav/ul/li[1]/button"
 FOR_YOU_TAB = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/nav/ul/li[2]/button"
-ONLINE_TAB = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/nav/ul/li[3]/button"
 ONLINE_INFO_1 = "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div[2]/div[2]/section/div[2]/section[2]/div/div/div[2]/p"
 ONLINE_INFO_2 = "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[2]/section/div[2]/section[2]/div/div/div[2]/p"
 
@@ -146,14 +165,13 @@ WEEKEND_EVENT_DATE_1 = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main
 WEEKEND_EVENT_DATE_2 = "]/div/div/article/div[1]/div[2]/div/div[1]/div"
 
 WOMENS_HISTORY_MONTH = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/nav/ul/li[7]/button"
-FREE_TAB = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/nav/ul/li[8]/button"
+
 FREE_INFO_1 = "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div[2]/div[3]/div[2]/div[1]/div"
 FREE_INFO_2 = (
     "/html/body/div[1]/div/section/form/div/div/div/ul/li/div/div/div[2]/div/span"
 )
 MUSIC_TAB = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/nav/ul/li[9]/button"
 FOOD_DRINK_TAB = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/nav/ul/li[10]/button"
-CHARITY_CAUSES_TAB = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/nav/ul/li[11]/button"
 # Categories:
 MUSIC_CATEGORY = "/html/body/div/div/div[2]/div/div[4]/div/div[1]/div/div"
 HOBBBIES_CATEGORY = "Hobbies"

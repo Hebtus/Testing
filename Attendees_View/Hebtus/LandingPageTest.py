@@ -18,92 +18,142 @@ from datetime import datetime, date, timedelta
 
 
 def landing_page(driver):
+    login(driver, "hebtususer2@gmail.com", "123456789")
+    # nav_bar_test(driver, "hebtususer2@gmail.com")
+    tabs_test(driver)
+    # categories_test(driver)
     # call_location_test(driver)
     # call_see_more_test(driver)
     # call_today_tab_test(driver)
     # call_weekend_tab(driver)
     # paginations_test(driver)
-    categories_test(driver)
     # call_online_tab(driver)
     # call_free_tab_test(driver)
     # call_categories_test(driver)
 
 
-def call_location_test(driver):
-    # login(driver, "testereventbrite@gmail.com", "eventbritetester")
-    location_nearby_events_test(driver)
+# ? Phase 5
+def tabs_test(driver):
+    # Today tab
+    # today_tab_test(driver)
+
+    # This weekend test
+    # this_weekend_tab_test(driver)
+
+    # free tab
+    # free_tab_test(driver)
+
+    # online tab
+    # online_tab_test(driver)
+
+    # charity tab
+    CharityTab = find_my_element(driver, "ID", CHARITY_CAUSES_TAB)
+    check_not_found(driver, CharityTab, "Charity tab not found")
+    assert CharityTab.is_enabled(), "Charity tab is not enabled"
+    CharityTab.click()
+    print("Charity tab test passed")
+    driver.close()
+    time.sleep(2)
 
 
-def call_see_more_test(driver):
-    login(driver, "testereventbrite@gmail.com", "eventbritetester")
-    see_more_test(driver)
-
-
-def call_today_tab_test(driver):
-    # login(driver, "testereventbrite@gmail.com", "eventbritetester")
-    today_tab_test(driver)
-
-
-def call_weekend_tab(driver):
-    # login(driver, "testereventbrite@gmail.com", "eventbritetester")
-    this_weekend_tab_test(driver)
-
-
-def call_online_tab(driver):
-    login(driver, "testereventbrite@gmail.com", "eventbritetester")
-    online_tab_test(driver)
-
-
-def call_free_tab_test(driver):
-    login(driver, "testereventbrite@gmail.com", "eventbritetester")
-    free_tab_test(driver)
-
-
-def call_categories_test(driver):
-    # login(driver, "testereventbrite@gmail.com", "eventbritetester")
-    categories_test(driver)
-
-
+# ? Phase 5
 def login(driver, Email, Password):
-    # Open eventbrite
-    driver.get("https://www.eventbrite.com/signin")
+    # ---------------------------------------------- Testing valid log in ---------------------------------------------- #
+    driver.get("https://www.hebtus.me/login")
     driver.maximize_window()
-    driver.implicitly_wait(5)
-    # Login with email and password
+    driver.implicitly_wait(60)
+    time.sleep(12)
+    # enter email and password
     EmailTextbox = find_my_element(driver, "ID", EMAIL_TEXTBOX)
     check_not_found(driver, EmailTextbox, "Email textbox not found")
     EmailTextbox.send_keys(Email)
     PasswordTextbox = find_my_element(driver, "ID", PASSWORD_TEXTBOX)
     check_not_found(driver, PasswordTextbox, "Password textbox not found")
     PasswordTextbox.send_keys(Password)
-    time.sleep(10)
-    LoginButton = find_my_element(driver, "XPATH", LOGIN_BUTTON)
+    time.sleep(3)
+    LoginButton = find_my_element(driver, "ID", LOGIN_BUTTON)
     check_not_found(driver, LoginButton, "Login button not found")
     LoginButton.click()
-    time.sleep(30)
-    AdExitButton = find_my_element(driver, "XPATH", AD_EXIT_BUTTON)
-    if AdExitButton != None:
-        AdExitButton.click()
-        time.sleep(10)
-        LeaveButton = find_my_element(driver, "XPATH", AD_WANT_TO_LEAVE_BUTTON)
-        if LeaveButton != None:
-            LeaveButton.click()
-            time.sleep(10)
-    LandingPage = find_my_element(driver, "XPATH", LANDING_PAGE)
+    time.sleep(15)
+    # check if landing page is reached
+    LandingPage = find_my_element(driver, "ID", LANDING_PAGE)
     check_not_found(driver, LandingPage, "Landing page not reached")
-    time.sleep(30)
-    AllTab = find_my_element(driver, "XPATH", ALL_TAB)
-    check_not_found(driver, AllTab, "All tab not found")
-    AllTab.click()
-    time.sleep(10)
+    time.sleep(5)
+    print("signed in successfuly")
 
 
+# ? Phase 5
+def nav_bar_test(driver, email):
+    # account email
+    AccountEmail = find_my_element(driver, "XPATH", DROP_DOWN_TEXT)
+    check_not_found(driver, AccountEmail, "Account email not found in nav bar")
+    print(AccountEmail.text)
+    assert AccountEmail.text == email, "Account email does not match"
+    time.sleep(3)
+    # create event, update password, manage my events
+
+    # Sign out
+    NavBarDropDown = find_my_element(driver, "ID", NAV_BAR_DROP_DOWN)
+    check_not_found(driver, NavBarDropDown, "NavBar drop down not found")
+    NavBarDropDown.click()
+    time.sleep(1)
+    LogOut = find_my_element(driver, "ID", LOG_OUT)
+    check_not_found(driver, LogOut, "Log out button not found")
+    LogOut.click()
+    time.sleep(2)
+    DropDownText = find_my_element(driver, "XPATH", DROP_DOWN_TEXT)
+    check_not_found(driver, DropDownText, "Logout page not reached")
+    assert DropDownText.text == "Log In / Sign Up", "Log In page not reached"
+    print("signed out successfuly")
+    time.sleep(2)
+    # create event
+    NavBarDropDown = find_my_element(driver, "ID", NAV_BAR_DROP_DOWN)
+    check_not_found(driver, NavBarDropDown, "NavBar drop down not found")
+    NavBarDropDown.click()
+    time.sleep(1)
+    CreateEventButton = find_my_element(driver, "ID", CREATE_EVENT)
+    check_not_found(driver, CreateEventButton, "Create Event button not found")
+    CreateEventButton.click()
+    time.sleep(3)
+    LoginPage = find_my_element(driver, "ID", LOGIN_BUTTON)
+    check_not_found(driver, LoginPage, "Login page not reached")
+    time.sleep(1)
+    print("Create event button test passed")
+    driver.back()
+    # log in
+    NavBarDropDown = find_my_element(driver, "ID", NAV_BAR_DROP_DOWN)
+    check_not_found(driver, NavBarDropDown, "NavBar drop down not found")
+    NavBarDropDown.click()
+    time.sleep(1)
+    LoginButton = find_my_element(driver, "ID", DROP_DOWN_LOGIN)
+    check_not_found(driver, LoginButton, "Login button not found")
+    LoginButton.click()
+    LoginPage = find_my_element(driver, "ID", LOGIN_BUTTON)
+    check_not_found(driver, LoginPage, "Login page not reached")
+    time.sleep(1)
+    print("login button test passed")
+    driver.back()
+    time.sleep(3)
+
+    # sign up
+    NavBarDropDown = find_my_element(driver, "ID", NAV_BAR_DROP_DOWN)
+    check_not_found(driver, NavBarDropDown, "NavBar drop down not found")
+    NavBarDropDown.click()
+    time.sleep(1)
+    SignupButton = find_my_element(driver, "ID", DROP_DOWN_SIGNUP)
+    check_not_found(driver, SignupButton, "Sign up button not found")
+    SignupButton.click()
+    SignUpPage = find_my_element(driver, "XPATH", CREATE_ACOUNT_BUTON)
+    check_not_found(driver, SignUpPage, "Sign up page not reached")
+    time.sleep(1)
+    print("login button test passed")
+    print("navigation bar test passed")
+    driver.close()
+
+
+# TODO
 def location_nearby_events_test(driver):
     # ---------------------------------------------- Testing Detection of geolocation ---------------------------------------------- #
-    driver.get("https://www.hebtus.me/#")
-    driver.maximize_window()
-    driver.implicitly_wait(10)
-    time.sleep(5)
     # Get the detected location
     MyLocation = find_my_element(driver, "ID", LOCATION_PICKER)
     check_not_found(driver, MyLocation, "Location not found")
@@ -114,6 +164,7 @@ def location_nearby_events_test(driver):
         print("Location detected correctly")
     else:
         print("Location not detected correctly")
+
     # # Click on All tab to make sure home page is opened
     # AllTab = find_my_element(driver, "XPATH", ALL_TAB)
     # check_not_found(driver, AllTab, "All tab not found")
@@ -169,25 +220,6 @@ def location_nearby_events_test(driver):
     #         print("Not found")
     print("Location test passed")
     time.sleep(10)
-    driver.close()
-
-
-def see_more_test(driver):
-    # ---------------------------------------------- Testing see more button ---------------------------------------------- #
-    # Scroll down to load
-    driver.execute_script("window.scrollBy(0,document.body.scrollHeight)")
-    time.sleep(30)
-    SeeMoreButton = find_my_element(driver, "LINK_TEXT", SEE_MORE_BUTTON)
-    check_not_found(driver, SeeMoreButton, "See more button not found")
-    # create action chain object
-    action = ActionChains(driver)
-    # perform the operation
-    action.move_to_element(SeeMoreButton).click().perform()
-    time.sleep(30)
-    SeeMorePge = find_my_element(driver, "XPATH", SEE_MORE_PAGE)
-    check_not_found(driver, SeeMorePge, "See more page not reached")
-    time.sleep(10)
-    print("See more test passed")
     driver.close()
 
 
@@ -265,23 +297,20 @@ def check_today_list(driver, Num):
             else:
                 break
         # check if more pages
-        NextPageButton = find_my_element(driver, "ID", PREV_PAGE_BUTTON)
+        NextPageButton = find_my_element(driver, "ID", NEXT_PAGE_BUTTON)
         check_not_found(driver, NextPageButton, "Next page button not found")
-        driver.execute_script("arguments[0].scrollIntoView();", NextPageButton)
-        time.sleep(20)
         if NextPageButton.is_enabled():
             NextPageButton.click()
-        else:
-            break
+        # driver.execute_script("arguments[0].scrollIntoView();", NextPageButton)
+        # time.sleep(20)
+        # if NextPageButton.is_enabled():
+        # else:
+        #     break
 
 
 # * Phase 4
 def today_tab_test(driver):
     # ---------------------------------------------- Testing today tab ---------------------------------------------- #
-    driver.get("https://www.hebtus.me/#")
-    driver.maximize_window()
-    driver.implicitly_wait(10)
-    time.sleep(5)
     # click on Today tab
     TodayTab = find_my_element(driver, "ID", TODAY_TAB)
     check_not_found(driver, TodayTab, "Today tab not found")
@@ -302,9 +331,12 @@ def today_tab_test(driver):
     else:
         print(len(EventsList))
     EventsNum = len(EventsList)
-    check_today_list(driver, EventsNum)
-    print("Today tab test passed")
-    driver.close()
+    if EventsNum == 0:
+        print("No events in the today list")
+    else:
+        check_today_list(driver, EventsNum)
+        print("Today tab test passed")
+    # driver.close()
 
 
 # * Phase 4
@@ -364,7 +396,7 @@ def check_this_weekend_list(driver, Num):
             else:
                 break
         # check if more pages
-        NextPageButton = find_my_element(driver, "ID", PREV_PAGE_BUTTON)
+        NextPageButton = find_my_element(driver, "ID", NEXT_PAGE_BUTTON)
         check_not_found(driver, NextPageButton, "Next page button not found")
         driver.execute_script("arguments[0].scrollIntoView();", NextPageButton)
         time.sleep(20)
@@ -377,10 +409,6 @@ def check_this_weekend_list(driver, Num):
 # * Phase 4
 def this_weekend_tab_test(driver):
     # ---------------------------------------------- Testing this weekend tab ---------------------------------------------- #
-    driver.get("https://www.hebtus.me/#")
-    driver.maximize_window()
-    driver.implicitly_wait(10)
-    time.sleep(30)
     # click on this weekend tab
     WeekendTab = find_my_element(driver, "ID", THIS_WEEKEND_TAB)
     check_not_found(driver, WeekendTab, "This weekend tab not found")
@@ -398,9 +426,12 @@ def this_weekend_tab_test(driver):
     else:
         print(len(EventsList))
     EventsNum = len(EventsList)
-    check_this_weekend_list(driver, EventsNum)
-    print("This weekend tab test passed")
-    driver.close()
+    if EventsNum == 0:
+        print("No events in the weekend list")
+    else:
+        check_this_weekend_list(driver, EventsNum)
+        print("This weekend tab test passed")
+    # driver.close()
 
 
 # * Phase 4
@@ -410,7 +441,7 @@ def paginations_test(driver):
     driver.implicitly_wait(10)
     time.sleep(30)
     # prev button disabled in first page
-    PrevPageButton = find_my_element(driver, "ID", NEXT_PAGE_BUTTON)
+    PrevPageButton = find_my_element(driver, "ID", PREV_PAGE_BUTTON)
     check_not_found(driver, PrevPageButton, "Next page button not found")
     driver.execute_script("arguments[0].scrollIntoView();", PrevPageButton)
     time.sleep(20)
@@ -427,10 +458,21 @@ def paginations_test(driver):
         exit()
     EventsNum = len(EventsList)
 
+    if EventsNum < 12:
+        # next page button disabled
+        NextPageButton = find_my_element(driver, "ID", NEXT_PAGE_BUTTON)
+        check_not_found(driver, NextPageButton, "Next page button not found")
+        driver.execute_script("arguments[0].scrollIntoView();", NextPageButton)
+        time.sleep(20)
+        assert not (NextPageButton.is_enabled()), "Next page button is not disabled"
+        print("Pagination test passed")
+        driver.close()
+        exit()
+
     # reach last page
     for i in range(1, ceil(EventsNum / 12)):
         # check if more pages
-        NextPageButton = find_my_element(driver, "ID", PREV_PAGE_BUTTON)
+        NextPageButton = find_my_element(driver, "ID", NEXT_PAGE_BUTTON)
         check_not_found(driver, NextPageButton, "Next page button not found")
         driver.execute_script("arguments[0].scrollIntoView();", NextPageButton)
         time.sleep(20)
@@ -439,7 +481,7 @@ def paginations_test(driver):
         time.sleep(5)
 
     # next page button disabled in the last page
-    NextPageButton = find_my_element(driver, "ID", PREV_PAGE_BUTTON)
+    NextPageButton = find_my_element(driver, "ID", NEXT_PAGE_BUTTON)
     check_not_found(driver, NextPageButton, "Next page button not found")
     driver.execute_script("arguments[0].scrollIntoView();", NextPageButton)
     time.sleep(20)
@@ -449,208 +491,261 @@ def paginations_test(driver):
     driver.close()
 
 
+# ? phase 5
 def online_tab_test(driver):
     # ---------------------------------------------- Testing today tab ---------------------------------------------- #
     # click on online tab
-    OnlineTab = find_my_element(driver, "XPATH", ONLINE_TAB)
+    OnlineTab = find_my_element(driver, "ID", ONLINE_TAB)
     check_not_found(driver, OnlineTab, "Online tab not found")
     OnlineTab.click()
-    time.sleep(30)
-    # Scroll down to load
+    time.sleep(10)
+    # Get list of elements
     driver.execute_script("window.scrollBy(0,document.body.scrollHeight)")
-    time.sleep(60)
-    # Get event list
     EventsList = driver.find_elements(
         By.CLASS_NAME,
-        EVENT_ELEMENT,
+        "col",
     )
-    if len(EventsList) == 0:
-        print("No events in the list")
+    if EventsList == None:
+        print("No events in the today list")
         driver.close()
         exit()
-    # EventsList = EventsList[0:10]
-    EventsURLList = []
-    # Get URLs of event pages
-    for element in EventsList:
-        try:
-            link = element.find_element(By.TAG_NAME, "a")
-            EventsURLList.append(link.get_attribute("href"))
-            print(link.get_attribute("href"))
-        except:
-            print("No Data Available!")
-    # print(EventsURLList)
-    for Link in EventsURLList:
-        # Open event page
-        driver.get(Link)
-        driver.implicitly_wait(10)
-        # Scroll down to load
-        driver.execute_script("window.scrollBy(0,500)")
-        driver.implicitly_wait(10)
-        # Get location
-        Location = find_my_element(
-            driver,
-            "XPATH",
-            ONLINE_INFO_1,
-        )
+    else:
+        print(len(EventsList) - 8)
 
-        if Location == None:
-            Location = find_my_element(
-                driver,
-                "XPATH",
-                ONLINE_INFO_2,
-            )
-        check_not_found(driver, Location, "location not found")
-        # check if online
-        if Location != None:
-            if (Location.get_attribute("innerHTML")).find("Online") == -1:
-                print("Not all events are online")
-                driver.close()
-                exit()
-            else:
-                print("online")
-        else:
-            print("Not found")
-    print("Online tab test passed")
-    time.sleep(10)
-    driver.close()
+    EventsNum = len(EventsList) - 8
+    if EventsNum == 0:
+        print("No events in the weekend list")
+    else:
+        OnlineEvents = driver.find_elements(By.ID, "is-online")
+        assert OnlineEvents != None, "Not all events are online"
+        print(len(OnlineEvents))
+        assert len(OnlineEvents) == EventsNum, "Not all events are online"
+        print("Online tab test passed")
 
 
+# ? phase 5
 def free_tab_test(driver):
     # ---------------------------------------------- Testing free tab ---------------------------------------------- #
     # click on Free tab
-    FreeTab = find_my_element(driver, "XPATH", FREE_TAB)
+    FreeTab = find_my_element(driver, "ID", FREE_TAB)
     check_not_found(driver, FreeTab, "Free tab not found")
     FreeTab.click()
-    time.sleep(30)
-    # Scroll down to load
+    time.sleep(10)
+
+    # Get list of elements
     driver.execute_script("window.scrollBy(0,document.body.scrollHeight)")
-    time.sleep(30)
-    # Get event list
     EventsList = driver.find_elements(
-        By.CLASS_NAME,
-        EVENT_ELEMENT,
+        By.XPATH,
+        "//div[@class='card-body']",
     )
-    if len(EventsList) == 0:
-        print("No events in free tab list")
+    if EventsList == None:
+        print("No events in the free list")
         driver.close()
         exit()
-    EventsURLList = []
-    # EventsList = EventsList[0:9]
-    # get URLs of event pages
-    for element in EventsList:
-        try:
-            link = element.find_element(By.TAG_NAME, "a")
-            EventsURLList.append(link.get_attribute("href"))
-            print(link.get_attribute("href"))
-        except:
-            print("No Data Available!")
-    for Link in EventsURLList:
-        # Open event page
-        driver.get(Link)
-        driver.implicitly_wait(10)
-        # Scroll down to load
-        driver.execute_script("window.scrollBy(0,500)")
-        driver.implicitly_wait(10)
-        Free = find_my_element(
-            driver,
-            "XPATH",
-            '//*[@id="root"]/div/section/form/div/div/div/ul/li/div/div/div[2]/div/span',
-        )
-        if Free == None:
-            Free = find_my_element(driver, "XPATH", FREE_INFO_1)
-            if Free == None:
-                print("Ticket price not found")
-                exit()
-        # Check if price is free
-        if Free.get_attribute("innerHTML") != "Free":
-            print("Not all events are free")
-            driver.close()
-            exit()
-    print("Free tab test passed")
-    driver.close()
+
+    print(len(EventsList) - 8)
+    EventsNum = len(EventsList) - 8
+    if EventsNum == 0:
+        print("No events in the free list")
+    else:
+        FreeEvents = driver.find_elements(By.ID, "is-free")
+        assert FreeEvents != None, "Not all events are free"
+        print(len(FreeEvents))
+        assert len(FreeEvents) == EventsNum, "Not all events are free"
+        print("Free tab test passed")
 
 
-def test_category(driver, LinkText, Name):
+def test_category(driver, Name):
     # ---------------------------------------------- Auxiliary function to test categories ---------------------------------------------- #
-    # Scroll down to load
-    driver.execute_script("window.scrollBy(0,500)")
-    time.sleep(30)
-    # Fin category button and click it
-    Category = find_my_element(driver, "LINK_TEXT", LinkText)
-    check_not_found(driver, Category, (Name + " category button not found"))
-    Category.click()
-    time.sleep(30)
-    # Find Page title
-    Page = find_my_element(
-        driver,
-        "XPATH",
-        "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/div[1]/div/div/div/h1",
-    )
-    check_not_found(driver, Page, (Name + " category page not reached"))
     # Check if correct page is reached
-    if (Page.get_attribute("innerHTML")).find(Name) == -1:
-        print(Name + " category page not reached")
-        driver.back()
-        return
+    HeaderText = find_my_element(driver, "ID", HEADER_TEXT)
+    check_not_found(driver, HeaderText, "Header text not found")
+    print(HeaderText.text)
+    assert Name in HeaderText.text, Name + " category page not reached"
     print(Name + " category page reached successfuly")
-    # Go back to previous page (home page)
-    driver.back()
-    time.sleep(30)
 
 
-# * Phase 4 (only music category)
+# ? phase 5
 def categories_test(driver):
     # ---------------------------------------------- Testing Categories ---------------------------------------------- #
-    # Music category
-    driver.get("https://www.hebtus.me/#")
-    driver.maximize_window()
-    driver.implicitly_wait(60)
-    time.sleep(20)
+    # # -------------------- Music category -------------
     MusicTab = find_my_element(driver, "XPATH", MUSIC_CATEGORY)
     check_not_found(driver, MusicTab, "Music tab not found")
     driver.execute_script("arguments[0].scrollIntoView();", MusicTab)
 
-    time.sleep(5)
-    x, y = 280, 60
+    time.sleep(10)
+    x, y = 200, 50
 
     # create an instance of ActionChains
     action = ActionChains(driver)
 
     # move the mouse to the desired location and click
     action.move_by_offset(x, y).click().perform()
+
+    time.sleep(10)
+    assert "Music" in str(driver.current_url), "Music category page not reached"
+    test_category(driver, "Music")
+
+    driver.back()
+    time.sleep(5)
+
+    # ---------------Performing & Visual Arts-----------
+    MusicTab = find_my_element(driver, "XPATH", MUSIC_CATEGORY)
+    check_not_found(driver, MusicTab, "Music tab not found")
+    driver.execute_script("arguments[0].scrollIntoView();", MusicTab)
+
+    time.sleep(10)
+    x, y = 500, 50
+
+    # create an instance of ActionChains
+    action = ActionChains(driver)
+
+    # move the mouse to the desired location and click
     action.move_by_offset(x, y).click().perform()
 
+    time.sleep(10)
+    assert "Performing&VisualArts" in str(
+        driver.current_url
+    ), "Performing & Visual Arts category page not reached"
+
+    test_category(driver, "Performing & Visual Arts")
+    driver.back()
     time.sleep(5)
-    assert "Music" in str(driver.current_url), "Music category page not reached"
+    # ---------------------Holiday--------------
+    MusicTab = find_my_element(driver, "XPATH", MUSIC_CATEGORY)
+    check_not_found(driver, MusicTab, "Music tab not found")
+    driver.execute_script("arguments[0].scrollIntoView();", MusicTab)
 
-    print("music tab test passed")
+    time.sleep(10)
+    x, y = 800, 50
 
+    # create an instance of ActionChains
+    action = ActionChains(driver)
+
+    # move the mouse to the desired location and click
+    action.move_by_offset(x, y).click().perform()
+
+    time.sleep(10)
+    assert "Holiday" in str(driver.current_url), "Holiday category page not reached"
+
+    test_category(driver, "Holiday")
+    driver.back()
+    time.sleep(5)
+    # # ---------------Health & Fitness---------
+    MusicTab = find_my_element(driver, "XPATH", MUSIC_CATEGORY)
+    check_not_found(driver, MusicTab, "Music tab not found")
+    driver.execute_script("arguments[0].scrollIntoView();", MusicTab)
+
+    time.sleep(10)
+    x, y = 1100, 50
+
+    # create an instance of ActionChains
+    action = ActionChains(driver)
+
+    # move the mouse to the desired location and click
+    action.move_by_offset(x, y).click().perform()
+    # action.move_by_offset(x, y).click().perform()
+
+    time.sleep(10)
+    assert "Health&Fitness" in str(
+        driver.current_url
+    ), "Health & Fitness category page not reached"
+
+    test_category(driver, "Health & Fitness")
+    driver.back()
+    time.sleep(5)
+    # -----------------Hobbies-------------
+    MusicTab = find_my_element(driver, "XPATH", MUSIC_CATEGORY)
+    check_not_found(driver, MusicTab, "Music tab not found")
+    driver.execute_script("arguments[0].scrollIntoView();", MusicTab)
+
+    time.sleep(10)
+    x, y = 200, 120
+
+    # create an instance of ActionChains
+    action = ActionChains(driver)
+
+    # move the mouse to the desired location and click
+    action.move_by_offset(x, y).click().perform()
+    # action.move_by_offset(x, y).click().perform()
+
+    time.sleep(10)
+    assert "Hobbies" in str(driver.current_url), "Hobbies category page not reached"
+
+    test_category(driver, "Hobbies")
+    driver.back()
+    time.sleep(5)
+    # -----------Business---------------
+    MusicTab = find_my_element(driver, "XPATH", MUSIC_CATEGORY)
+    check_not_found(driver, MusicTab, "Music tab not found")
+    driver.execute_script("arguments[0].scrollIntoView();", MusicTab)
+
+    time.sleep(10)
+    x, y = 500, 120
+
+    # create an instance of ActionChains
+    action = ActionChains(driver)
+
+    # move the mouse to the desired location and click
+    action.move_by_offset(x, y).click().perform()
+    # action.move_by_offset(x, y).click().perform()
+
+    time.sleep(10)
+    assert "Business" in str(driver.current_url), "Business category page not reached"
+
+    test_category(driver, "Business")
+    driver.back()
+    time.sleep(5)
+    # --------------Food & Drink------------------
+    MusicTab = find_my_element(driver, "XPATH", MUSIC_CATEGORY)
+    check_not_found(driver, MusicTab, "Music tab not found")
+    driver.execute_script("arguments[0].scrollIntoView();", MusicTab)
+
+    time.sleep(10)
+    x, y = 800, 120
+
+    # create an instance of ActionChains
+    action = ActionChains(driver)
+
+    # move the mouse to the desired location and click
+    action.move_by_offset(x, y).click().perform()
+
+    time.sleep(10)
+    assert "Food&Drink" in str(
+        driver.current_url
+    ), "Food & Drink category page not reached"
+
+    test_category(driver, "Food & Drink ")
+    driver.back()
+    time.sleep(5)
+    # ------------------Sports & Fitness ----------------
+    MusicTab = find_my_element(driver, "XPATH", MUSIC_CATEGORY)
+    check_not_found(driver, MusicTab, "Music tab not found")
+    driver.execute_script("arguments[0].scrollIntoView();", MusicTab)
+
+    time.sleep(10)
+    x, y = 1100, 120
+
+    # create an instance of ActionChains
+    action = ActionChains(driver)
+
+    # move the mouse to the desired location and click
+    action.move_by_offset(x, y).click().perform()
+
+    time.sleep(10)
+    assert "Sports&Fitness" in str(
+        driver.current_url
+    ), "Sports & Fitness category page not reached"
+
+    test_category(driver, "Sports & Fitness")
     # click on hebtus icon
-
-    Logo = find_my_element(driver, "XPATH", "/html/body/div/div/div[1]/nav/a/h3")
+    Logo = find_my_element(driver, "ID", "hebtus-logo")
     check_not_found(driver, Logo, "Hebtus logo not found")
     Logo.click()
     time.sleep(5)
-
     # check if landing page is reached
     LandingPage = find_my_element(driver, "ID", LANDING_PAGE)
     check_not_found(driver, LandingPage, "Landing page not reached")
     time.sleep(5)
-
-    print("Landing page reached")
-    driver.close()
-    exit()
-    # click on All tab
-    AllTab = find_my_element(driver, "XPATH", ALL_TAB)
-    check_not_found(driver, AllTab, "All tab not found")
-    AllTab.click()
-    time.sleep(30)
-    test_category(driver, MUSIC_CATEGORY, "Music events")
-    test_category(driver, HOBBBIES_CATEGORY, "Hobbies events")
-    test_category(driver, VISUAL_ARTS_CATEGORY, "Visual Arts events")
-    test_category(driver, BUSINESS_CATEGORY, "Business events")
-    test_category(driver, HOLDIDAY_CATEGORY, "Holiday events")
-    test_category(driver, FOOD_DRINK_CATEGORY, "Drink events")
-    test_category(driver, HEALTH_CATEGORY, "Health events")
-    test_category(driver, SPORTS_CATEGORY, "Fitness events")
+    print("Categories test passed")
     driver.close()

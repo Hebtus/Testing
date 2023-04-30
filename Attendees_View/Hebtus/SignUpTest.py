@@ -28,10 +28,10 @@ def sign_up(driver):
     # signin_new_account(driver, Emails[0], Passwords[0])
     # sign_up_invalid_email(driver, Emails[2:14])
     # sign_up_No_Verification_test(driver, Emails[1], Passwords[0])
-    sign_up_invalid_tests(driver, Emails[1], Passwords)
+    # sign_up_invalid_tests(driver, Emails[1], Passwords)
     # Sign_up_with_facebook(driver, Emails[16], Passwords[6])
     # sign_up_with_google(driver)
-    # go_to_login_page(driver)
+    go_to_login_page(driver)
 
 
 # * Phase 4

@@ -29,23 +29,24 @@ def sign_in(driver):
     for i in range(len(Passwords)):
         Passwords[i] = Passwords[i].rstrip("\n")
 
-    # sign_in_valid(driver, "ayausamakhalifa@gmail.com", "123456789")
-    sign_in_invalid(driver, "ayausamakhalifa@gmail.com")
+    sign_in_valid(driver, "ayausamakhalifa@gmail.com", "123456789")
+    # sign_in_invalid(driver, "ayausamakhalifa@gmail.com")
     # login_with_facebook(driver, Emails[15], Passwords[5])
     # forget_password_test(driver, Emails[17], Passwords[4])
 
-#* Phase 4
+
+# * Phase 4
 def sign_in_valid(driver, Email, Password):
     # ---------------------------------------------- Testing valid log in ---------------------------------------------- #
     # enter email and password
     EmailTextbox = find_my_element(driver, "XPATH", EMAIL_TEXTBOX)
     check_not_found(driver, EmailTextbox, "Email textbox not found")
     EmailTextbox.click()
-    time.sleep(1)
+    time.sleep(2)
     EmailTextbox = find_my_element(driver, "XPATH", EMAIL_TEXTBOX)
     check_not_found(driver, EmailTextbox, "Email textbox not found 2")
     EmailTextbox.send_keys(Email)
-    time.sleep(1)
+    time.sleep(2)
 
     PasswordTextbox = find_my_element(driver, "XPATH", PASSWORD_TEXTBOX)
     check_not_found(driver, PasswordTextbox, "Password textbox not found")
@@ -60,7 +61,7 @@ def sign_in_valid(driver, Email, Password):
     LoginButton.click()
     time.sleep(4)
     # check if landing page is reached
-    LandingPage = find_my_element(driver, "XPATH", LANDING_PAGE)
+    LandingPage = find_my_element(driver, "XPATH", HEBTUS_BUTTON)
     check_not_found(driver, LandingPage, "Landing page not reached")
     print("signed in successfuly")
     # Sign out
@@ -80,7 +81,8 @@ def sign_in_valid(driver, Email, Password):
     print("signed out successfully")
     driver.quit()
 
-#* Phase 4
+
+# * Phase 4
 def sign_in_invalid(driver, Email):
     # ---------------------------------------------- Testing invalid log in ---------------------------------------------- #
     # ------------------- unregistered email-------------------
