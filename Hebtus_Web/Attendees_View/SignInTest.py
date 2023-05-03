@@ -115,6 +115,7 @@ def sign_in_invalid(driver, Email):
     exit()
 
 
+# TODO
 def login_with_facebook(driver, Email, Password):
     # ---------------------------------------------- Testing log in with facebook ---------------------------------------------- #
     driver.get("https://www.eventbrite.com/signin")
@@ -161,6 +162,7 @@ def login_with_facebook(driver, Email, Password):
     print("Successfully login with facebook account")
 
 
+# TODO
 def forget_password_test(driver, Email, Password):
     # ---------------------------------------------- Testing forget password ---------------------------------------------- #
     # Open log in page

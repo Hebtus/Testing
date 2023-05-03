@@ -16,10 +16,14 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 from datetime import datetime, date, timedelta
 
+#! To change:
+#   add login functions inside functions
+
 
 def landing_page(driver):
-    login(driver, "hebtususer2@gmail.com", "123456789")
-    nav_bar_test(driver, "hebtususer2@gmail.com")
+    # login(driver, "hebtususer@gmail.com", "123456789")
+    # nav_bar_test(driver, "hebtususer@gmail.com")
+    update_password_test(driver, "hebtususer2@gmail.com", "123456789", "147258369")
     # tabs_test(driver)
     # categories_test(driver)
     # call_location_test(driver)
@@ -30,6 +34,154 @@ def landing_page(driver):
     # call_online_tab(driver)
     # call_free_tab_test(driver)
     # call_categories_test(driver)
+
+
+# ? phase 5
+def update_password_test(driver, email, password, new_password):
+    # login with old password
+    login(driver, email, password)
+    # click update password button
+    NavBarDropDown = find_my_element(driver, "ID", NAV_BAR_DROP_DOWN)
+    check_not_found(driver, NavBarDropDown, "NavBar drop down not found")
+    NavBarDropDown.click()
+    time.sleep(1)
+    UpdatePasswordButton = find_my_element(driver, "ID", DROP_DOWN_UPDATE_PASSWORD)
+    check_not_found(driver, UpdatePasswordButton, "Manage Event button not found")
+    UpdatePasswordButton.click()
+    time.sleep(3)
+    # ----------------------------Invalid tests----------------------------
+    # Add wrong current password
+    CurrentPasswordTB = find_my_element(driver, "ID", CURRENT_PASSWORD_TB)
+    check_not_found(driver, CurrentPasswordTB, "Current password textbox not found")
+    CurrentPasswordTB.send_keys("password")
+    # add new password
+    NewPasswordTB = find_my_element(driver, "ID", PASSWORD_TEXTBOX)
+    check_not_found(driver, NewPasswordTB, "New Password textbox not found")
+    NewPasswordTB.send_keys(new_password)
+    # confrim new passowrd
+    ConfirmPasswordTB = find_my_element(driver, "ID", CONFIRM_PASSWORD_TB)
+    check_not_found(driver, ConfirmPasswordTB, "Confirm Password textbox not found")
+    ConfirmPasswordTB.send_keys(new_password)
+    time.sleep(3)
+    # click update password
+    UpdatePasswordButton = find_my_element(driver, "ID", LOGIN_BUTTON)
+    check_not_found(driver, UpdatePasswordButton, "Update password button not found")
+    UpdatePasswordButton.click()
+    # check for alert message
+    AlertMessage = find_my_element(driver, "ID", ERROR_MESSAGE)
+    check_not_found(driver, AlertMessage, "Wrong current password message not found")
+    # New password less than 8 characters
+    clear_textbox(CurrentPasswordTB)
+    CurrentPasswordTB.send_keys(password)
+    clear_textbox(NewPasswordTB)
+    NewPasswordTB.send_keys("123")
+    clear_textbox(ConfirmPasswordTB)
+    ConfirmPasswordTB.send_keys("123")
+    # click update password
+    UpdatePasswordButton = find_my_element(driver, "ID", LOGIN_BUTTON)
+    check_not_found(driver, UpdatePasswordButton, "Update password button not found")
+    UpdatePasswordButton.click()
+    # check for alert message
+    AlertMessage = find_my_element(driver, "ID", PASSWORD_REQUIRED_ALERT)
+    check_not_found(
+        driver, AlertMessage, "password less than 8 characters message not found"
+    )
+    # confirm password don't match
+    clear_textbox(NewPasswordTB)
+    NewPasswordTB.send_keys("newpassword")
+    clear_textbox(ConfirmPasswordTB)
+    ConfirmPasswordTB.send_keys("7895612346")
+    # click update password
+    UpdatePasswordButton = find_my_element(driver, "ID", LOGIN_BUTTON)
+    check_not_found(driver, UpdatePasswordButton, "Update password button not found")
+    UpdatePasswordButton.click()
+    # check for alert message
+    AlertMessage = find_my_element(driver, "ID", WRONG_CONFRIM_PASSWORD_ALERT)
+    check_not_found(
+        driver, AlertMessage, "wrong confirmation password message not found"
+    )
+    # current password missing
+    clear_textbox(ConfirmPasswordTB)
+    ConfirmPasswordTB.send_keys("newpassword")
+    clear_textbox(CurrentPasswordTB)
+    # click update password
+    UpdatePasswordButton = find_my_element(driver, "ID", LOGIN_BUTTON)
+    check_not_found(driver, UpdatePasswordButton, "Update password button not found")
+    UpdatePasswordButton.click()
+    # check for alert message
+    AlertMessage = find_my_element(driver, "ID", CURRENT_PASSWORD_ALERT)
+    check_not_found(driver, AlertMessage, "Current password missing message not found")
+    # ----------------------------Valid test----------------------------
+    # add current password
+    clear_textbox(CurrentPasswordTB)
+    CurrentPasswordTB.send_keys(password)
+    # add new password
+    clear_textbox(NewPasswordTB)
+    NewPasswordTB.send_keys(new_password)
+    # confrim new passowrd
+    clear_textbox(ConfirmPasswordTB)
+    ConfirmPasswordTB.send_keys(new_password)
+    time.sleep(1)
+    # click update password
+    UpdatePasswordButton = find_my_element(driver, "ID", LOGIN_BUTTON)
+    check_not_found(driver, UpdatePasswordButton, "Update password button not found")
+    UpdatePasswordButton.click()
+    # check message "Updated password successfully"
+    AlertMessage = find_my_element(driver, "ID", ERROR_MESSAGE)
+    check_not_found(driver, AlertMessage, "Alert message not found")
+    print("Password updated successfully")
+    # Try changin password one more time --> check alert message "you just updated your password"
+    NewPasswordTB.send_keys(new_password)
+    ConfirmPasswordTB.send_keys(new_password)
+    time.sleep(1)
+    # click update password
+    UpdatePasswordButton = find_my_element(driver, "ID", LOGIN_BUTTON)
+    check_not_found(driver, UpdatePasswordButton, "Update password button not found")
+    UpdatePasswordButton.click()
+    AlertMessage = find_my_element(driver, "ID", ERROR_MESSAGE)
+    check_not_found(
+        driver, AlertMessage, "User recently changed password message not found"
+    )
+    # go to landing page
+    driver.back()
+    time.sleep(1)
+    # sign out
+    NavBarDropDown = find_my_element(driver, "ID", NAV_BAR_DROP_DOWN)
+    check_not_found(driver, NavBarDropDown, "NavBar drop down not found")
+    NavBarDropDown.click()
+    time.sleep(1)
+    LogOut = find_my_element(driver, "ID", LOG_OUT)
+    check_not_found(driver, LogOut, "Log out button not found")
+    LogOut.click()
+    time.sleep(2)
+    # Go to login page
+    NavBarDropDown = find_my_element(driver, "ID", NAV_BAR_DROP_DOWN)
+    check_not_found(driver, NavBarDropDown, "NavBar drop down not found")
+    NavBarDropDown.click()
+    time.sleep(1)
+    LoginButton = find_my_element(driver, "ID", DROP_DOWN_LOGIN)
+    check_not_found(driver, LoginButton, "Login button not found")
+    LoginButton.click()
+    time.sleep(2)
+    # login with new password
+    # enter email and password
+    EmailTextbox = find_my_element(driver, "ID", EMAIL_TEXTBOX)
+    check_not_found(driver, EmailTextbox, "Email textbox not found")
+    EmailTextbox.send_keys(email)
+    PasswordTextbox = find_my_element(driver, "ID", PASSWORD_TEXTBOX)
+    check_not_found(driver, PasswordTextbox, "Password textbox not found")
+    PasswordTextbox.send_keys(new_password)
+    time.sleep(3)
+    LoginButton = find_my_element(driver, "ID", LOGIN_BUTTON)
+    check_not_found(driver, LoginButton, "Login button not found")
+    LoginButton.click()
+    time.sleep(15)
+    # check if landing page is reached
+    LandingPage = find_my_element(driver, "ID", LANDING_PAGE)
+    check_not_found(driver, LandingPage, "Landing page not reached")
+    time.sleep(2)
+    print("signed in successfuly")
+    driver.close()
 
 
 # ? Phase 5
@@ -80,11 +232,6 @@ def login(driver, Email, Password):
     check_not_found(driver, LandingPage, "Landing page not reached")
     time.sleep(5)
     print("signed in successfuly")
-
-
-# TODO
-def update_password_test(driver):
-    print("")
 
 
 # ? Phase 5
@@ -164,7 +311,7 @@ def nav_bar_test(driver, email):
     print("login button test passed")
     driver.back()
     time.sleep(3)
-    #----------- sign up button -----------
+    # ----------- sign up button -----------
     NavBarDropDown = find_my_element(driver, "ID", NAV_BAR_DROP_DOWN)
     check_not_found(driver, NavBarDropDown, "NavBar drop down not found")
     NavBarDropDown.click()

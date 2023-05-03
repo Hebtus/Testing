@@ -27,6 +27,11 @@ DROP_DOWN_MANAGE_EVENTS = "manage-my-events-link"
 DROP_DOWN_UPDATE_PASSWORD = "update-password-link"
 CREATE_EVENT_PAGE = "/html/body/div/div/div[1]/div[2]/h1"
 MANGE_EVENTS_PAGE = "event-list-header"
+
+# Update password page
+CURRENT_PASSWORD_TB = "currentPassword"
+ERROR_MESSAGE = "errorMessage"
+CURRENT_PASSWORD_ALERT = "errorMessageCurrentPassword"
 # Sign up page
 CREATE_ACOUNT_BUTON = "/html/body/div/div/div/section/div/form/div[12]/button"
 EMAIL_CONFIRMATION_TEXTBOX = "/html/body/div/div/div/section/div/form/div[3]/input"
