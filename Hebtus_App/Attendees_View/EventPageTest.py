@@ -20,8 +20,8 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 def event_page(driver):
     sign_in_valid(driver, "ayausamakhalifa@gmail.com", "123456789")
-    events_info_test(driver)
-    # GetEvents(driver)
+    # events_info_test(driver)
+    GetEvents(driver)
 
 
 # * Phase 4
@@ -58,32 +58,104 @@ def sign_in_valid(driver, Email, Password):
 # content_desc = element.get_attribute("content-desc")
 
 
+# ? Phase 5
 def GetEvents(driver):
     # Get the screen dimensions
     screen_width = driver.get_window_size()["width"]
     screen_height = driver.get_window_size()["height"]
-    EVENT1 = "//android.view.View[@index='"
-    EVENT2 = "']//android.widget.ImageView[@index='0'and @class='android.widget.ImageView'][1]"
+    ContentSet = set()
+    old_page_source = None
+    for j in range(10):
+        # Scroll down using TouchAction
+        swipe_action = TouchAction(driver)
+        swipe_action.press(x=screen_width * 0.5, y=screen_height * 0.8).move_to(
+            x=screen_width * 0.5, y=screen_height * 0.2
+        ).release().perform()
+        time.sleep(3)
+        # Scroll down using TouchAction
+        swipe_action = TouchAction(driver)
+        swipe_action.press(x=screen_width * 0.5, y=screen_height * 0.8).move_to(
+            x=screen_width * 0.5, y=screen_height * 0.2
+        ).release().perform()
+        time.sleep(3)
+        for i in range(6):
+            EVENT = EVENT_1 + str(i) + EVENT_2
+            Event = find_my_element(driver, "XPATH", EVENT)
+            check_not_found(driver, Event, "Event Not FOUNDDDDDDDDDD")
+            time.sleep(2)
+            ContentSet.add(Event.get_attribute("content-desc"))
+            print(Event.get_attribute("content-desc"))
+            print(str(i) + ": ------------------------------")
+        if old_page_source is not None and driver.page_source == old_page_source:
+            break
+        old_page_source = driver.page_source
+    print(ContentSet)
+    DateSet = set()
+    for event in ContentSet:
+        EventsInfo = event.split("\n")
+        Date = EventsInfo[1].split(" ")[0]
+        DateSet.add(Date)
+
+    exit()
+    # Get the screen dimensions
+    screen_width = driver.get_window_size()["width"]
+    screen_height = driver.get_window_size()["height"]
     # Scroll down using TouchAction
     swipe_action = TouchAction(driver)
     swipe_action.press(x=screen_width * 0.5, y=screen_height * 0.8).move_to(
         x=screen_width * 0.5, y=screen_height * 0.2
     ).release().perform()
 
-    for i in range(5):
-        time.sleep(5)
-        EVENT = EVENT1 + str(i) + EVENT2
-        Event = find_my_element(driver, "XPATH", EVENT)
-        check_not_found(driver, Event, "Event Not FOUNDDDDDDDDDD")
-        time.sleep(5)
-        print(Event.get_attribute("content-desc"))
-        print("---------------" + str(i) + "---------------")
-        # Scroll down using TouchAction
-        swipe_action = TouchAction(driver)
-        swipe_action.press(x=screen_width * 0.5, y=screen_height * 0.5).move_to(
-            x=targetX, y=targetY
-        ).release().perform()
-    driver.quit()
+    # for i in range(5):
+    time.sleep(3)
+    # EVENT = EVENT1 + str(i) + EVENT2
+    Event = find_my_element(driver, "XPATH", EVENT1)
+    check_not_found(driver, Event, "Event Not FOUNDDDDDDDDDD")
+    time.sleep(2)
+    print(Event.get_attribute("content-desc"))
+    print("------------------------------")
+    time.sleep(2)
+    Event = find_my_element(driver, "XPATH", EVENT2)
+    check_not_found(driver, Event, "Event Not FOUNDDDDDDDDDD")
+    time.sleep(2)
+    print(Event.get_attribute("content-desc"))
+    print("------------------------------")
+    # Scroll down using TouchAction
+    swipe_action = TouchAction(driver)
+    swipe_action.press(x=screen_width * 0.5, y=screen_height * 0.8).move_to(
+        x=screen_width * 0.5, y=screen_height * 0.2
+    ).release().perform()
+    time.sleep(3)
+    Event = find_my_element(driver, "XPATH", EVENT3)
+    check_not_found(driver, Event, "Event Not FOUNDDDDDDDDDD")
+    time.sleep(2)
+    print(Event.get_attribute("content-desc"))
+    print("------------------------------")
+    time.sleep(2)
+    Event = find_my_element(driver, "XPATH", EVENT4)
+    check_not_found(driver, Event, "Event Not FOUNDDDDDDDDDD")
+    time.sleep(2)
+    print(Event.get_attribute("content-desc"))
+    print("------------------------------")
+    time.sleep(2)
+    Event = find_my_element(driver, "XPATH", EVENT5)
+    check_not_found(driver, Event, "Event Not FOUNDDDDDDDDDD")
+    time.sleep(2)
+    print(Event.get_attribute("content-desc"))
+    print("------------------------------")
+    time.sleep(2)
+    Event = find_my_element(driver, "XPATH", EVENT6)
+    check_not_found(driver, Event, "Event Not FOUNDDDDDDDDDD")
+    time.sleep(2)
+    print(Event.get_attribute("content-desc"))
+    print("------------------------------")
+    # Scroll down using TouchAction
+    swipe_action = TouchAction(driver)
+    swipe_action.press(x=screen_width * 0.5, y=screen_height * 0.8).move_to(
+        x=screen_width * 0.5, y=screen_height * 0.2
+    ).release().perform()
+    time.sleep(3)
+    # driver.quit()
     exit()
 
     Event = find_my_element(driver, "XPATH", EVENT)

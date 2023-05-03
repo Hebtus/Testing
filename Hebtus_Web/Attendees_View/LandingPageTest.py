@@ -19,8 +19,8 @@ from datetime import datetime, date, timedelta
 
 def landing_page(driver):
     login(driver, "hebtususer2@gmail.com", "123456789")
-    # nav_bar_test(driver, "hebtususer2@gmail.com")
-    tabs_test(driver)
+    nav_bar_test(driver, "hebtususer2@gmail.com")
+    # tabs_test(driver)
     # categories_test(driver)
     # call_location_test(driver)
     # call_see_more_test(driver)
@@ -82,17 +82,47 @@ def login(driver, Email, Password):
     print("signed in successfuly")
 
 
+# TODO
+def update_password_test(driver):
+    print("")
+
+
 # ? Phase 5
 def nav_bar_test(driver, email):
-    # account email
+    # ------------------------Logged in mode----------------------------
+    # check account logged is the one in nav bar:
     AccountEmail = find_my_element(driver, "XPATH", DROP_DOWN_TEXT)
     check_not_found(driver, AccountEmail, "Account email not found in nav bar")
     print(AccountEmail.text)
     assert AccountEmail.text == email, "Account email does not match"
     time.sleep(3)
-    # create event, update password, manage my events
-
-    # Sign out
+    # -----------create event button-----------
+    CreateEventButton = find_my_element(driver, "ID", CREATE_EVENT)
+    check_not_found(driver, CreateEventButton, "Create Event button not found")
+    CreateEventButton.click()
+    time.sleep(3)
+    BasicInfoPage = find_my_element(driver, "XPATH", CREATE_EVENT_PAGE)
+    check_not_found(driver, BasicInfoPage, "Basic Info page not reached")
+    assert BasicInfoPage.text == "Basic Info", "Basic Info page not reached"
+    time.sleep(1)
+    print("Create event button test passed")
+    driver.back()
+    time.sleep(1)
+    # -----------manage my events button -----------
+    NavBarDropDown = find_my_element(driver, "ID", NAV_BAR_DROP_DOWN)
+    check_not_found(driver, NavBarDropDown, "NavBar drop down not found")
+    NavBarDropDown.click()
+    time.sleep(1)
+    ManageEventButton = find_my_element(driver, "ID", DROP_DOWN_MANAGE_EVENTS)
+    check_not_found(driver, ManageEventButton, "Manage Event button not found")
+    ManageEventButton.click()
+    time.sleep(3)
+    ManageEventPage = find_my_element(driver, "ID", MANGE_EVENTS_PAGE)
+    check_not_found(driver, ManageEventPage, "Manage events page not reached")
+    print("Manage events button test passed")
+    driver.back()
+    time.sleep(1)
+    # -----------Sign out button -----------
     NavBarDropDown = find_my_element(driver, "ID", NAV_BAR_DROP_DOWN)
     check_not_found(driver, NavBarDropDown, "NavBar drop down not found")
     NavBarDropDown.click()
@@ -101,16 +131,15 @@ def nav_bar_test(driver, email):
     check_not_found(driver, LogOut, "Log out button not found")
     LogOut.click()
     time.sleep(2)
+
+    # ------------------------Logged in mode----------------------------
+    # check if the drop down menu in nav changed to login in/ sign up
     DropDownText = find_my_element(driver, "XPATH", DROP_DOWN_TEXT)
     check_not_found(driver, DropDownText, "Logout page not reached")
     assert DropDownText.text == "Log In / Sign Up", "Log In page not reached"
     print("signed out successfuly")
     time.sleep(2)
-    # create event
-    NavBarDropDown = find_my_element(driver, "ID", NAV_BAR_DROP_DOWN)
-    check_not_found(driver, NavBarDropDown, "NavBar drop down not found")
-    NavBarDropDown.click()
-    time.sleep(1)
+    # -----------create event button -----------
     CreateEventButton = find_my_element(driver, "ID", CREATE_EVENT)
     check_not_found(driver, CreateEventButton, "Create Event button not found")
     CreateEventButton.click()
@@ -120,7 +149,8 @@ def nav_bar_test(driver, email):
     time.sleep(1)
     print("Create event button test passed")
     driver.back()
-    # log in
+    time.sleep(1)
+    # ----------- log in button -----------
     NavBarDropDown = find_my_element(driver, "ID", NAV_BAR_DROP_DOWN)
     check_not_found(driver, NavBarDropDown, "NavBar drop down not found")
     NavBarDropDown.click()
@@ -134,8 +164,7 @@ def nav_bar_test(driver, email):
     print("login button test passed")
     driver.back()
     time.sleep(3)
-
-    # sign up
+    #----------- sign up button -----------
     NavBarDropDown = find_my_element(driver, "ID", NAV_BAR_DROP_DOWN)
     check_not_found(driver, NavBarDropDown, "NavBar drop down not found")
     NavBarDropDown.click()
@@ -151,7 +180,7 @@ def nav_bar_test(driver, email):
     driver.close()
 
 
-# TODO
+# * phase 4
 def location_nearby_events_test(driver):
     # ---------------------------------------------- Testing Detection of geolocation ---------------------------------------------- #
     # Get the detected location

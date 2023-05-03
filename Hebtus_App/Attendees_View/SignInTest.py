@@ -29,7 +29,7 @@ def sign_in(driver):
     for i in range(len(Passwords)):
         Passwords[i] = Passwords[i].rstrip("\n")
 
-    sign_in_valid(driver, "ayausamakhalifa@gmail.com", "123456789")
+    # sign_in_valid(driver, "ayausamakhalifa@gmail.com", "123456789")
     # sign_in_invalid(driver, "ayausamakhalifa@gmail.com")
     # login_with_facebook(driver, Emails[15], Passwords[5])
     # forget_password_test(driver, Emails[17], Passwords[4])
@@ -139,9 +139,6 @@ def sign_in_invalid(driver, Email):
 
 def login_with_facebook(driver, Email, Password):
     # ---------------------------------------------- Testing log in with facebook ---------------------------------------------- #
-    driver.get("https://www.eventbrite.com/signin")
-    driver.maximize_window()
-    driver.implicitly_wait(10)
     # Click on log in with facebook
     LoginWithFacebookButton = find_my_element(
         driver, "XPATH", LOGIN_WITH_FACEBOOK_BUTTON

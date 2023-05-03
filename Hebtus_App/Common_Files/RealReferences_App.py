@@ -54,6 +54,9 @@ EVENTS_DETAILS_1 = "//android.view.View[@index='0']//android.widget.ScrollView[@
 EVENTS_DETAILS_2 = "//android.view.View[@index='0']//android.widget.ScrollView[@index='1']//android.view.View[@index='5'and @class='android.view.View']"
 # ---------------------------------------------------------------------------------------------------
 # Landing page:
+EVENT_1 = "//android.view.View[@index='"
+EVENT_2 = "']//android.widget.ImageView[@index='0'and @class='android.widget.ImageView'][1]"
+
 EVENT_ELEMENT = "card Events_event-card__4cxKy"
 EVENT_LIST_1 = "/html/body/div/div/div[3]/div/div/div/div["
 EVENT_LIST_2 = "]/div"
