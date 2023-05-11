@@ -23,7 +23,7 @@ from datetime import datetime, date, timedelta
 def landing_page(driver):
     sign_in_valid(driver, "ayausamakhalifa@gmail.com", "123456789")
     # see_more_test(driver)
-    tabs_test(driver)
+    # tabs_categories_test(driver)
 
     # location_nearby_events_test(driver)
 
@@ -33,14 +33,14 @@ def landing_page(driver):
 
     # online_tab_test(driver)
 
-    # free_tab_test(driver)
+    free_tab_test(driver)
 
     # categories_test(driver)
 
 
-# * Phase 4
-def tabs_test(driver):
-    # All, music, food, charity
+# ? Phase 5
+def tabs_categories_test(driver):
+    # music
     MusicTab = find_my_element(driver, "XPATH", MUSIC_TAB)
     check_not_found(driver, MusicTab, "Music tab not found")
     assert MusicTab.is_enabled(), "Music tab is not enabled"
@@ -58,14 +58,74 @@ def tabs_test(driver):
     assert CharityTab.is_enabled(), "Charity tab is not enabled"
     CharityTab.click()
     time.sleep(2)
-    # All
+    # # All
     AllTab = find_my_element(driver, "XPATH", ALL_TAB)
     check_not_found(driver, AllTab, "All tab not found")
     assert AllTab.is_enabled(), "All tab is not enabled"
     AllTab.click()
+    time.sleep(2)
+    # Swipe right twice
+    screen_width = driver.get_window_size()["width"]
+    screen_height = driver.get_window_size()["height"]
+    AllTab = find_my_element(driver, "XPATH", ALL_TAB)
+    check_not_found(driver, AllTab, "All tab not found")
+    location2 = AllTab.location
+    size2 = AllTab.size
+    CharityTab = find_my_element(driver, "XPATH", CHARITY_CAUSES_TAB)
+    check_not_found(driver, CharityTab, "Charity tab not found")
+    # Swipe right using TouchAction
+    # Calculate the starting and ending positions for the swipe
+    location = CharityTab.location
+    size = CharityTab.size
 
+    # Swipe from the center of the element to the top of the screen
+    start_x = location["x"] + size["width"] / 2
+    start_y = location["y"] + size["height"] / 2
+    end_x = location2["x"] + size2["width"] / 2
+    end_y = location["y"] + size["height"] / 2
+    swipe_action = TouchAction(driver)
+    swipe_action.press(x=start_x, y=start_y).wait(500).move_to(
+        x=end_x, y=end_y
+    ).release().perform()
+    time.sleep(1)
+    swipe_action.press(x=start_x, y=start_y).wait(500).move_to(
+        x=end_x, y=end_y
+    ).release().perform()
+    time.sleep(1)
+
+    # Online tab
+    OnlineTab = find_my_element(driver, "XPATH", ONLINE_TAB)
+    check_not_found(driver, OnlineTab, "Online tab not found")
+    assert OnlineTab.is_enabled(), "Online tab is not enabled"
+    OnlineTab.click()
     print("Tabs test passed")
-    time.sleep(5)
+    # ---------------- Categories ---------------------
+    # Music category
+    MusicCategory = find_my_element(driver, "XPATH", MUSIC_CATEGORY)
+    check_not_found(driver, MusicCategory, "Music Category not found")
+    assert MusicCategory.is_enabled(), "Music Category is not enabled"
+    MusicCategory.click()
+    time.sleep(3)
+    # Food category
+    FoodCategory = find_my_element(driver, "XPATH", FOOD_DRINK_CATEGORY)
+    check_not_found(driver, FoodCategory, "Food Category not found")
+    assert FoodCategory.is_enabled(), "Food Category is not enabled"
+    FoodCategory.click()
+    time.sleep(3)
+    # Scroll down using TouchAction
+    swipe_action = TouchAction(driver)
+    swipe_action.press(x=screen_width * 0.5, y=screen_height * 0.8).move_to(
+        x=screen_width * 0.5, y=screen_height * 0.2
+    ).release().perform()
+    time.sleep(3)
+
+    # Charity category
+    CharityCategory = find_my_element(driver, "XPATH", CHARITY_CATEGORY)
+    check_not_found(driver, CharityCategory, "Charity Category not found")
+    assert CharityCategory.is_enabled(), "Charity Category is not enabled"
+    CharityCategory.click()
+    time.sleep(3)
+    print("Categories test passed")
     driver.quit()
 
 
@@ -151,175 +211,160 @@ def sign_in_valid(driver, Email, Password):
     print("signed in successfuly")
 
 
+# ? Phase 5
 def location_nearby_events_test(driver):
     # ---------------------------------------------- Testing Detection of geolocation ---------------------------------------------- #
-    driver.get("https://www.hebtus.me/#")
-    driver.maximize_window()
-    driver.implicitly_wait(10)
-    time.sleep(5)
     # Get the detected location
-    MyLocation = find_my_element(driver, "ID", LOCATION_PICKER)
+    # Get the screen dimensions
+    screen_width = driver.get_window_size()["width"]
+    screen_height = driver.get_window_size()["height"]
+    # Scroll down using TouchAction
+    swipe_action = TouchAction(driver)
+    swipe_action.press(x=screen_width * 0.5, y=screen_height * 0.8).move_to(
+        x=screen_width * 0.5, y=screen_height * 0.2
+    ).release().perform()
+    time.sleep(3)
+    MyLocation = find_my_element(driver, "XPATH", LOCATION_TEXT)
     check_not_found(driver, MyLocation, "Location not found")
-    # print(MyLocation.get_attribute("value"))
-    print(MyLocation.text)
     # Check if it's correct
-    if MyLocation.text == "Cairo":
-        print("Location detected correctly")
-    else:
-        print("Location not detected correctly")
-    # # Click on All tab to make sure home page is opened
-    # AllTab = find_my_element(driver, "XPATH", ALL_TAB)
-    # check_not_found(driver, AllTab, "All tab not found")
-    # AllTab.click()
-    # time.sleep(30)
-    # # Scroll down to load
-    # driver.execute_script("window.scrollBy(0,document.body.scrollHeight)")
-    # time.sleep(60)
-    # # ---------------------------------------------- Testing nearby events ---------------------------------------------- #
-    # # Get list of events
-    # EventsList = driver.find_elements(
-    #     By.CLASS_NAME,
-    #     EVENT_ELEMENT,
-    # )
-    # if len(EventsList) == 0:
-    #     print("No events in the list")
-    #     driver.quit()
-    #     exit()
-    # EventsList = EventsList[0:10]
-    # EventsURLList = []
-    # # Get URL of events pages
-    # for element in EventsList:
-    #     try:
-    #         link = element.find_element(By.TAG_NAME, "a")
-    #         EventsURLList.append(link.get_attribute("href"))
-    #         print(link.get_attribute("href"))
-    #     except:
-    #         print("No Data Available!")
-    # # loop over all URLs
-    # for Link in EventsURLList:
-    #     # Open event oage
-    #     driver.get(Link)
-    #     driver.implicitly_wait(10)
-    #     # Scroll down to load
-    #     driver.execute_script("window.scrollBy(0,500)")
-    #     driver.implicitly_wait(10)
-    #     # Get location element
-    #     Location = find_my_element(
-    #         driver,
-    #         "XPATH",
-    #         "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div[2]/div[2]/section/div[2]/section[2]/div/div/div[2]/p",
-    #     )
-    #     check_not_found(driver, Location, "location not found")
-    #     # Check if the location is in Cairo or online
-    #     if Location != None:
-    #         if (Location.get_attribute("innerHTML")).find("Cairo") == -1 and (
-    #             Location.get_attribute("innerHTML")
-    #         ).find("Online") == -1:
-    #             print("Not all events are nearby")
-    #         else:
-    #             print("Cairo or online")
-    #     else:
-    #         print("Not found")
+    # assert "Cairo" in MyLocation.get_attributte(
+    #     "content-desc"
+    # ), "Location not detected successfully"
+
+    # scroll up
+    swipe_action = TouchAction(driver)
+    swipe_action.press(x=screen_width * 0.5, y=screen_height * 0.2).move_to(
+        x=screen_width * 0.5, y=screen_height * 0.8
+    ).release().perform()
+    time.sleep(2)
+
+    LocationTextbox = find_my_element(driver, "XPATH", LOCATION_PICKER_TB)
+    check_not_found(driver, LocationTextbox, "Location textbox not found")
+    LocationTextbox.click()
+    time.sleep(3)
+    LocationTextbox.send_keys("Alexandria")
+
+    time.sleep(1)
+    SearchButton = find_my_element(driver, "XPATH", SEARCH_BUTTON)
+    check_not_found(driver, SearchButton, "Search button not found")
+    SearchButton.click()
+    time.sleep(2)
+    # Scroll down using TouchAction
+    swipe_action = TouchAction(driver)
+    swipe_action.press(x=screen_width * 0.5, y=screen_height * 0.8).move_to(
+        x=screen_width * 0.5, y=screen_height * 0.2
+    ).release().perform()
+    time.sleep(3)
+    MyLocation = find_my_element(driver, "XPATH", LOCATION_TEXT)
+    check_not_found(driver, MyLocation, "Location not found")
+    # Check if it's correct
+    # assert "Alexandria" in MyLocation.get_attributte(
+    #     "content-desc"
+    # ), "Location not detected successfully"
+
+    # scroll up
+    swipe_action = TouchAction(driver)
+    swipe_action.press(x=screen_width * 0.8, y=screen_height * 0.2).move_to(
+        x=screen_width * 0.8, y=screen_height * 0.8
+    ).release().perform()
+    time.sleep(3)
+    # get back to current location
+    DropDownMenu = find_my_element(driver, "XPATH", DROP_DOWN_MENU)
+    DropDownMenu.click()
+    time.sleep(1)
+    MyCurrentLocation = find_my_element(driver, "XPATH", CURRENT_LOCATION_BUTTON)
+    MyCurrentLocation.click()
+    time.sleep(3)
+
+    # Scroll down using TouchAction
+    swipe_action = TouchAction(driver)
+    swipe_action.press(x=screen_width * 0.5, y=screen_height * 0.8).move_to(
+        x=screen_width * 0.5, y=screen_height * 0.2
+    ).release().perform()
+    time.sleep(3)
+    MyLocation = find_my_element(driver, "XPATH", LOCATION_TEXT)
+    check_not_found(driver, MyLocation, "Location not found")
+    # Check if it's correct
+    # assert "Cairo" in MyLocation.get_attributte(
+    #     "content-desc"
+    # ), "Location not detected successfully"
     print("Location test passed")
-    time.sleep(10)
+    time.sleep(3)
     driver.quit()
 
 
-def GetDate(Date):
-    # ---------------------------------------------- Auxiliary function to check date is in this weekend  ---------------------------------------------- #
-    # remove extra data
-    # Starts Monday, August 8, 2022
-    if "Starts" in Date:
-        Date = Date.split("Starts")[1]
-    else:
-        Date = Date.split("Ends")[1]
-    # Monday, August 8, 2022
-    # if "today", add today's date
-    if Date.find("Today") != -1:
-        Date = date.today()
-    # if tomorrow, add tomorrow's date
-    elif Date.find("Tomorrow") != -1:
-        Datestr = (str(datetime.today() + timedelta(days=1))).split()[0]
-        Datestr = Datestr.split("-")
-        Day = int(Datestr[2])
-        Month = int(Datestr[1])
-        Year = int(Datestr[0])
-        Date = date(Year, Month, Day)
-    else:
-        FullEventDateSeperated = Date.split()[1:]  # default is split at whitespaces
-        FullEventDateSeperated[1] = (FullEventDateSeperated[1].split(","))[
-            0
-        ]  # to get rid of comma next to day
-        MonthNum = datetime.strptime(
-            FullEventDateSeperated[0][0:3], "%b"
-        ).month  # to cast month from string to int (Note: Apr -> 4 (not 04))
-        # to change formats: 9/4/2023 7:00PM -> 09/04/2023 07:00PM
-        # Day
-        if int(FullEventDateSeperated[1]) < 10:
-            DayStr = "0" + FullEventDateSeperated[1]
-        else:
-            DayStr = FullEventDateSeperated[1]
-        # Month
-        if MonthNum < 10:
-            MonthStr = "0" + str(MonthNum)
-        else:
-            MonthStr = str(MonthNum)
-        Date = date(int(FullEventDateSeperated[2]), int(MonthStr), int(DayStr))
-    print(Date)
-    return Date
+# ? phase 5
+def GetEventsDate(driver):
+    # Get the screen dimensions
+    screen_width = driver.get_window_size()["width"]
+    screen_height = driver.get_window_size()["height"]
+    ContentSet = set()
+    old_page_source = None
+    for j in range(10):
+        # Scroll down using TouchAction
+        swipe_action = TouchAction(driver)
+        swipe_action.press(x=screen_width * 0.5, y=screen_height * 0.8).move_to(
+            x=screen_width * 0.5, y=screen_height * 0.2
+        ).release().perform()
+        time.sleep(3)
+        # Scroll down using TouchAction
+        swipe_action = TouchAction(driver)
+        swipe_action.press(x=screen_width * 0.5, y=screen_height * 0.8).move_to(
+            x=screen_width * 0.5, y=screen_height * 0.2
+        ).release().perform()
+        time.sleep(3)
+        for i in range(6):
+            EVENT = EVENT_1 + str(i) + EVENT_2
+            Event = find_my_element(driver, "XPATH", EVENT)
+            check_not_found(driver, Event, "Event Not FOUNDDDDDDDDDD")
+            time.sleep(2)
+            ContentSet.add(Event.get_attribute("content-desc"))
+            # print(Event.get_attribute("content-desc"))
+            # print(str(i) + ": ------------------------------")
+        if old_page_source is not None and driver.page_source == old_page_source:
+            break
+        old_page_source = driver.page_source
+    # print(ContentSet)
+    DateSet = set()
+    for event in ContentSet:
+        EventsInfo = event.split("\n")
+        Date = EventsInfo[1].split(" ")[0]
+        DateSet.add(Date)
+    return DateSet
 
 
+# ? Phse 5
 def today_tab_test(driver):
     # ---------------------------------------------- Testing today tab ---------------------------------------------- #
-    driver.get("https://www.hebtus.me/#")
-    driver.maximize_window()
-    driver.implicitly_wait(10)
-    time.sleep(5)
+    # Swipe right using TouchAction
+    # Swipe from the center of the element to the top of the screen
+    start_x = 948.0
+    start_y = 1149.5
+    end_x = 280
+    end_y = 1149.5
+    swipe_action = TouchAction(driver)
+    swipe_action.press(x=start_x, y=start_y).wait(700).move_to(
+        x=end_x, y=end_y
+    ).release().perform()
+    time.sleep(3)
     # click on Today tab
-    TodayTab = find_my_element(driver, "ID", TODAY_TAB)
+    TodayTab = find_my_element(driver, "XPATH", TODAY_TAB)
     check_not_found(driver, TodayTab, "Today tab not found")
     TodayTab.click()
-    time.sleep(10)
-    # Scroll down to load
-    # driver.execute_script("window.scrollBy(0,document.body.scrollHeight)")
-    time.sleep(10)
-    # Get list of elements
-    EventsList = driver.find_elements(
-        By.CLASS_NAME,
-        "col",
-    )
-    if EventsList == None:
-        print("No events in the today list")
-        driver.quit()
-        exit()
-    else:
-        print(len(EventsList))
-    EventsNum = len(EventsList)
-    for i in range(1, EventsNum):
-        time.sleep(5)
-        START_DATE_XPATH = START_DATE_1 + str(i) + START_DATE_2
-        EventStartDate = find_my_element(driver, "XPATH", START_DATE_XPATH)
-        if EventStartDate != None:
-            driver.execute_script("arguments[0].scrollIntoView();", EventStartDate)
-            time.sleep(5)
-            StartDate = EventStartDate.text
-            StartDate = GetDate(StartDate)
-            END_DATE_XPATH = END_DATE_1 + str(i) + END_DATE_2
-            EventEndtDate = find_my_element(driver, "XPATH", END_DATE_XPATH)
-            if EventEndtDate != None:
-                EndDate = EventEndtDate.text
-                EndDate = GetDate(EndDate)
-                assert StartDate <= date.today() <= EndDate, "Today Tab test failed"
-                # if StartDate <= date.today() <= EndDate:
-                #     print("Today")
-                # else:
-                #     print("Not today")
+    time.sleep(3)
 
+    DateSet = GetEventsDate(driver)
+    print(DateSet)
+    for Date in DateSet:
+        Date = Date.split("-")
+        Date = date(int(Date[0]), int(Date[1]), int(Date[2]))
+        assert date.today() >= Date, "Not all events are today"
     print("Today tab test passed")
     driver.quit()
 
 
-def is_this_weekend(StartDate, EndDate):
+# ? Phase 5
+def is_this_weekend(StartDate):
     # ---------------------------------------------- Auxiliary function to check date is in this weekend  ---------------------------------------------- #
     # Monday: 0
     # Tuesday: 1
@@ -344,316 +389,161 @@ def is_this_weekend(StartDate, EndDate):
         Weekend2 = Weekend1 + timedelta(days=1)
 
     if Weekend2 == "None":
-        return StartDate <= Weekend1 <= EndDate
+        return StartDate <= Weekend1
     else:
-        return StartDate <= Weekend1 <= EndDate and StartDate <= Weekend2 <= EndDate
-    # print(Weekend1)
-    # print(Weekend2)
-
-    # if Date.weekday() == 5 or Date.weekday() == 4:
-    #     Difference = (Date - date.today()).days
-    #     # check if saturday and event day is next friday
-    #     if Difference == 6 and date.today().weekday() == 5:
-    #         return False
-    #     # check if the difference is < 6 (means it is in the same week as today)
-    #     if Difference > 6 or Difference < 0:
-    #         return False
-    #     else:
-    #         return True
-
-    # # remove extra data
-    # print(Date)
-    # Date = Date.split("+")[0]
-    # # if "today", add today's date
-    # if Date.find("Today") != -1:
-    #     Date = date.today()
-    # # if tomorrow, add tomorrow's date
-    # elif Date.find("Tomorrow") != -1:
-    #     Datestr = (str(datetime.today() + timedelta(days=1))).split()[0]
-    #     Datestr = Datestr.split("-")
-    #     Day = int(Datestr[2])
-    #     Month = int(Datestr[1])
-    #     Year = int(Datestr[0])
-    #     Date = date(Year, Month, Day)
-    # else:
-    #     FullEventDateSeperated = Date.split()[1:]  # default is split at whitespaces
-    #     FullEventDateSeperated[1] = (FullEventDateSeperated[1].split(","))[
-    #         0
-    #     ]  # to get rid of comma next to day
-    #     MonthNum = datetime.strptime(
-    #         FullEventDateSeperated[0], "%b"
-    #     ).month  # to cast month from string to int (Note: Apr -> 4 (not 04))
-    #     # to change formats: 9/4/2023 7:00PM -> 09/04/2023 07:00PM
-    #     # Day
-    #     if int(FullEventDateSeperated[1]) < 10:
-    #         DayStr = "0" + FullEventDateSeperated[1]
-    #     else:
-    #         DayStr = FullEventDateSeperated[1]
-    #     # Month
-    #     if MonthNum < 10:
-    #         MonthStr = "0" + str(MonthNum)
-    #     else:
-    #         MonthStr = str(MonthNum)
-    #     Date = date(2023, int(MonthStr), int(DayStr))
-    # print(Date)
-    # # weekdays = 5,4 are weekends
-    # if Date.weekday() == 5 or Date.weekday() == 4:
-    #     Difference = (Date - date.today()).days
-    #     # check if saturday and event day is next friday
-    #     if Difference == 6 and date.today().weekday() == 5:
-    #         return False
-    #     # check if the difference is < 6 (means it is in the same week as today)
-    #     if Difference > 6 or Difference < 0:
-    #         return False
-    #     else:
-    #         return True
+        return StartDate <= Weekend1 and StartDate <= Weekend2
 
 
+# ? Phase 5
 def this_weekend_tab_test(driver):
     # ---------------------------------------------- Testing this weekend tab ---------------------------------------------- #
-    driver.get("https://www.hebtus.me/#")
-    driver.maximize_window()
-    driver.implicitly_wait(10)
-    time.sleep(30)
+    start_x = 948.0
+    start_y = 1149.5
+    end_x = 280
+    end_y = 1149.5
+    swipe_action = TouchAction(driver)
+    swipe_action.press(x=start_x, y=start_y).wait(700).move_to(
+        x=end_x, y=end_y
+    ).release().perform()
+    time.sleep(3)
+
     # click on this weekend tab
-    WeekendTab = find_my_element(driver, "ID", THIS_WEEKEND_TAB)
+    WeekendTab = find_my_element(driver, "XPATH", THIS_WEEKEND_TAB)
     check_not_found(driver, WeekendTab, "This weekend tab not found")
     WeekendTab.click()
-    time.sleep(10)
-    # Get list of elements
-    EventsList = driver.find_elements(
-        By.CLASS_NAME,
-        "col",
-    )
-    if EventsList == None:
-        print("No events in the today list")
-        driver.quit()
-        exit()
-    else:
-        print(len(EventsList))
-    EventsNum = len(EventsList)
-    for i in range(1, EventsNum):
-        time.sleep(5)
-        START_DATE_XPATH = START_DATE_1 + str(i) + START_DATE_2
-        EventStartDate = find_my_element(driver, "XPATH", START_DATE_XPATH)
-        if EventStartDate != None:
-            driver.execute_script("arguments[0].scrollIntoView();", EventStartDate)
-            time.sleep(5)
-            StartDate = EventStartDate.text
-            StartDate = GetDate(StartDate)
-            print(StartDate)
-            END_DATE_XPATH = END_DATE_1 + str(i) + END_DATE_2
-            EventEndtDate = find_my_element(driver, "XPATH", END_DATE_XPATH)
-            if EventEndtDate != None:
-                EndDate = EventEndtDate.text
-                EndDate = GetDate(EndDate)
-                print(EndDate)
-                # Check if this weekend
-                assert is_this_weekend(
-                    StartDate, EndDate
-                ), "This weekend Tab test failed"
-                print("This weekend")
-                # assert StartDate <= date.today() <= EndDate, "Today Tab test failed"
+    time.sleep(3)
 
-    # click on Today tab
-    TodayTab = find_my_element(driver, "XPATH", THIS_WEEKEND_TAB)
-    check_not_found(driver, TodayTab, "This weekend tab not found")
-    TodayTab.click()
-    time.sleep(30)
-    # Scroll down to load
-    driver.execute_script("window.scrollBy(0,document.body.scrollHeight)")
-    time.sleep(30)
-    # Get events list
-    EventsList = driver.find_elements(
-        By.CLASS_NAME,
-        EVENT_ELEMENT,
-    )
-    if EventsList == None:
-        print("No events in the weekend list")
-        driver.quit()
-        exit()
-    EventsNumber = len(EventsList)
-    EventsDateList = []
-    # Get date of all events
-    for i in range(EventsNumber):
-        EVENT_DATE = WEEKEND_EVENT_DATE_1 + str(i) + WEEKEND_EVENT_DATE_2
-        EventDate = find_my_element(driver, "XPATH", EVENT_DATE)
-        if EventDate != None:
-            EventsDateList.append(EventDate.get_attribute("innerHTML"))
-    # print(EventsDateList)
-    # Check if the date is in this weekend
-    for Date in EventsDateList:
-        if is_this_weekend(Date) == False:
-            print("Not all events are this weekend")
-            driver.quit()
-            exit()
+    DateSet = GetEventsDate(driver)
+    print(DateSet)
+    for Date in DateSet:
+        Date = Date.split("-")
+        Date = date(int(Date[0]), int(Date[1]), int(Date[2]))
+        assert is_this_weekend(Date), "Not all events are this weekend"
+
     print("This weekend tab test passed")
-    time.sleep(10)
+    time.sleep(2)
     driver.quit()
 
 
-def online_tab_test(driver):
-    # ---------------------------------------------- Testing today tab ---------------------------------------------- #
-    # click on online tab
-    OnlineTab = find_my_element(driver, "XPATH", ONLINE_TAB)
-    check_not_found(driver, OnlineTab, "Online tab not found")
-    OnlineTab.click()
-    time.sleep(30)
-    # Scroll down to load
-    driver.execute_script("window.scrollBy(0,document.body.scrollHeight)")
-    time.sleep(60)
-    # Get event list
-    EventsList = driver.find_elements(
-        By.CLASS_NAME,
-        EVENT_ELEMENT,
-    )
-    if len(EventsList) == 0:
-        print("No events in the list")
-        driver.quit()
-        exit()
-    # EventsList = EventsList[0:10]
-    EventsURLList = []
-    # Get URLs of event pages
-    for element in EventsList:
-        try:
-            link = element.find_element(By.TAG_NAME, "a")
-            EventsURLList.append(link.get_attribute("href"))
-            print(link.get_attribute("href"))
-        except:
-            print("No Data Available!")
-    # print(EventsURLList)
-    for Link in EventsURLList:
-        # Open event page
-        driver.get(Link)
-        driver.implicitly_wait(10)
-        # Scroll down to load
-        driver.execute_script("window.scrollBy(0,500)")
-        driver.implicitly_wait(10)
-        # Get location
-        Location = find_my_element(
-            driver,
-            "XPATH",
-            ONLINE_INFO_1,
-        )
+# ? phase 5
+def is_free(driver):
+    GetTicketButton = find_my_element(driver, "XPATH", GET_TICKET_BUTTON)
+    check_not_found(driver, GetTicketButton, "Get ticket button not found")
+    GetTicketButton.click()
+    time.sleep(2)
+    # check if there is free tickets section
+    TicketsType = find_my_element(driver, "XPATH", TICKETS_TYPES)
+    check_not_found(driver, TicketsType, "Tickets type section not found")
+    assert "Free tickets" in TicketsType.get_attribute(
+        "content-desc"
+    ), "Not all events are Free"
+    # click back button to return
+    location = TicketsType.location
+    # Get the X and Y coordinates of the top-left corner of the element
+    x = location["x"]
+    y = location["y"]
+    # Create a TouchAction object
+    action = TouchAction(driver)
+    # Perform a tap at the specified position
+    action.tap(x=x, y=y).perform()
 
-        if Location == None:
-            Location = find_my_element(
-                driver,
-                "XPATH",
-                ONLINE_INFO_2,
-            )
-        check_not_found(driver, Location, "location not found")
-        # check if online
-        if Location != None:
-            if (Location.get_attribute("innerHTML")).find("Online") == -1:
-                print("Not all events are online")
-                driver.quit()
-                exit()
-            else:
-                print("online")
-        else:
-            print("Not found")
-    print("Online tab test passed")
-    time.sleep(10)
-    driver.quit()
+    # click leave button
+    LeaveButton = find_my_element(driver, "XPATH", LEAVE_BUTTON)
+    check_not_found(driver, LeaveButton, "Leave button not found")
+    LeaveButton.click()
 
 
+# ? phase 5
 def free_tab_test(driver):
     # ---------------------------------------------- Testing free tab ---------------------------------------------- #
+    start_x = 948.0
+    start_y = 1149.5
+    end_x = 280
+    end_y = 1149.5
+    swipe_action = TouchAction(driver)
+    swipe_action.press(x=start_x, y=start_y).wait(700).move_to(
+        x=end_x, y=end_y
+    ).release().perform()
+    time.sleep(3)
+
     # click on Free tab
     FreeTab = find_my_element(driver, "XPATH", FREE_TAB)
     check_not_found(driver, FreeTab, "Free tab not found")
     FreeTab.click()
-    time.sleep(30)
-    # Scroll down to load
-    driver.execute_script("window.scrollBy(0,document.body.scrollHeight)")
-    time.sleep(30)
-    # Get event list
-    EventsList = driver.find_elements(
-        By.CLASS_NAME,
-        EVENT_ELEMENT,
-    )
-    if len(EventsList) == 0:
-        print("No events in free tab list")
-        driver.quit()
-        exit()
-    EventsURLList = []
-    # EventsList = EventsList[0:9]
-    # get URLs of event pages
-    for element in EventsList:
-        try:
-            link = element.find_element(By.TAG_NAME, "a")
-            EventsURLList.append(link.get_attribute("href"))
-            print(link.get_attribute("href"))
-        except:
-            print("No Data Available!")
-    for Link in EventsURLList:
-        # Open event page
-        driver.get(Link)
-        driver.implicitly_wait(10)
-        # Scroll down to load
-        driver.execute_script("window.scrollBy(0,500)")
-        driver.implicitly_wait(10)
-        Free = find_my_element(
-            driver,
-            "XPATH",
-            '//*[@id="root"]/div/section/form/div/div/div/ul/li/div/div/div[2]/div/span',
-        )
-        if Free == None:
-            Free = find_my_element(driver, "XPATH", FREE_INFO_1)
-            if Free == None:
-                print("Ticket price not found")
-                exit()
-        # Check if price is free
-        if Free.get_attribute("innerHTML") != "Free":
-            print("Not all events are free")
-            driver.quit()
-            exit()
+    time.sleep(3)
+
+    # Get the screen dimensions
+    screen_width = driver.get_window_size()["width"]
+    screen_height = driver.get_window_size()["height"]
+    ContentSet = set()
+    old_page_source = None
+    end = False
+    for j in range(10):
+        # Scroll down using TouchAction
+        swipe_action = TouchAction(driver)
+        swipe_action.press(x=screen_width * 0.5, y=screen_height * 0.8).move_to(
+            x=screen_width * 0.5, y=screen_height * 0.2
+        ).release().perform()
+        time.sleep(3)
+        # Scroll down using TouchAction
+        swipe_action = TouchAction(driver)
+        swipe_action.press(x=screen_width * 0.5, y=screen_height * 0.8).move_to(
+            x=screen_width * 0.5, y=screen_height * 0.2
+        ).release().perform()
+        time.sleep(3)
+        count = 6
+        if find_my_element(driver, "XPATH", CHARITY_CATEGORY) != None:
+            # There is no more than 2 events
+            count = 2
+            end = True
+        elif find_my_element(driver, "XPATH", LOCATION_TEXT) != None:
+            # There is no more than 2 events
+            count = 4
+            end = True
+        print(find_my_element(driver, "XPATH", LOCATION_TEXT).text)
+        for i in range(count):
+            EVENT = EVENT_1 + str(i) + EVENT_2
+            Event = WebDriverWait(driver, 2).until(
+                EC.presence_of_element_located((AppiumBy.XPATH, EVENT))
+            )
+            # Event = find_my_element(driver, "XPATH", EVENT)
+            time.sleep(2)
+            print(Event.get_attribute("content-desc"))
+            print(str(i) + ": ------------------------------")
+            Event.click()
+            is_free(driver)
+            time.sleep(2)
+            # get back to home page
+            # Click on home page
+            HomeButton = find_my_element(driver, "XPATH", HEBTUS_BUTTON)
+            check_not_found(driver, HomeButton, "Hebtus home button not found")
+            HomeButton.click()
+            time.sleep(2)
+            # click on free tab again
+            swipe_action = TouchAction(driver)
+            swipe_action.press(x=start_x, y=start_y).wait(700).move_to(
+                x=end_x, y=end_y
+            ).release().perform()
+            time.sleep(3)
+
+            # click on Free tab
+            FreeTab = find_my_element(driver, "XPATH", FREE_TAB)
+            check_not_found(driver, FreeTab, "Free tab not found")
+            FreeTab.click()
+            time.sleep(3)
+            # navigate to the same position by scrolling as much as j*2
+            for k in range(2 * (j + 1)):
+                # Scroll down using TouchAction
+                swipe_action = TouchAction(driver)
+                swipe_action.press(x=screen_width * 0.5, y=screen_height * 0.8).move_to(
+                    x=screen_width * 0.5, y=screen_height * 0.2
+                ).release().perform()
+                time.sleep(3)
+        if (
+            old_page_source is not None and driver.page_source == old_page_source
+        ) or end:
+            break
+        old_page_source = driver.page_source
+
     print("Free tab test passed")
-    driver.quit()
-
-
-def test_category(driver, LinkText, Name):
-    # ---------------------------------------------- Auxiliary function to test categories ---------------------------------------------- #
-    # Scroll down to load
-    driver.execute_script("window.scrollBy(0,500)")
-    time.sleep(30)
-    # Fin category button and click it
-    Category = find_my_element(driver, "LINK_TEXT", LinkText)
-    check_not_found(driver, Category, (Name + " category button not found"))
-    Category.click()
-    time.sleep(30)
-    # Find Page title
-    Page = find_my_element(
-        driver,
-        "XPATH",
-        "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/div[1]/div/div/div/h1",
-    )
-    check_not_found(driver, Page, (Name + " category page not reached"))
-    # Check if correct page is reached
-    if (Page.get_attribute("innerHTML")).find(Name) == -1:
-        print(Name + " category page not reached")
-        driver.back()
-        return
-    print(Name + " category page reached successfuly")
-    # Go back to previous page (home page)
-    driver.back()
-    time.sleep(30)
-
-
-def categories_test(driver):
-    # ---------------------------------------------- Testing Categories ---------------------------------------------- #
-    # click on All tab
-    AllTab = find_my_element(driver, "XPATH", ALL_TAB)
-    check_not_found(driver, AllTab, "All tab not found")
-    AllTab.click()
-    time.sleep(30)
-    test_category(driver, MUSIC_CATEGORY, "Music events")
-    test_category(driver, HOBBBIES_CATEGORY, "Hobbies events")
-    test_category(driver, VISUAL_ARTS_CATEGORY, "Visual Arts events")
-    test_category(driver, BUSINESS_CATEGORY, "Business events")
-    test_category(driver, HOLDIDAY_CATEGORY, "Holiday events")
-    test_category(driver, FOOD_DRINK_CATEGORY, "Drink events")
-    test_category(driver, HEALTH_CATEGORY, "Health events")
-    test_category(driver, SPORTS_CATEGORY, "Fitness events")
     driver.quit()

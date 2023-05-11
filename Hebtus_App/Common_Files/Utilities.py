@@ -17,7 +17,7 @@ def find_my_element(Driver, type, val):
                 EC.presence_of_element_located((AppiumBy.ID, val))
             )
         elif type == "XPATH":
-            item = WebDriverWait(Driver, 30).until(
+            item = WebDriverWait(Driver, 20).until(
                 EC.presence_of_element_located((AppiumBy.XPATH, val))
             )
         elif type == "LINK_TEXT":
@@ -46,4 +46,3 @@ def check_not_found(driver, element, message):
         assert element != None, message
         # driver.close()
         # exit()
-

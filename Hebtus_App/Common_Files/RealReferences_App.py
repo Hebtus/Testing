@@ -41,21 +41,25 @@ PASSWORD_MISMATCH_ALERT = '//android.widget.EditText//android.view.View[@content
 EVENT = "//android.view.View[@index='0']//android.widget.ImageView[@index='0'and @class='android.widget.ImageView'][1]"
 IMAGE = "//android.view.View[@index='0']//android.widget.ScrollView[@index='1'and @class='android.widget.ScrollView']"
 TICKETS_INFO = "//android.widget.ScrollView[@index='1']//android.view.View[@index='2']"
-GET_TICKET_BUTTON = "//android.view.View[@index='2']//android.widget.Button[@index='2' and @content-desc='Reserve a spot' and @class='android.widget.Button']"
-PLUS_BUTTON = "//android.view.View[@index='2']//android.widget.Button[@index='0' and @class='android.widget.Button']"
-MINUS_BUTTON = "//android.view.View[@index='2']//android.widget.Button[@index='1' and @class='android.widget.Button']"
 START_DATE = "//android.view.View[@index='0']//android.widget.ScrollView[@index='1']//android.view.View[@index='2'and @class='android.view.View']"
 EVENT_TITLE = "//android.view.View[@index='0']//android.widget.ScrollView[@index='1']//android.view.View[@index='3'and @class='android.view.View']"
 DATE_TIME = "//android.view.View[@index='0']//android.widget.ScrollView[@index='1']//android.view.View[@index='6'and @class='android.view.View']"
 LOCATION = "//android.view.View[@index='0']//android.widget.ScrollView[@index='1']//android.view.View[@index='8'and @class='android.view.View']"
 
+# Booking
+GET_TICKET_BUTTON = "//android.view.View[@index='2']//android.widget.Button[@index='0' and @content-desc='Get tickets' and @class='android.widget.Button']"
+TICKETS_TYPES = "//android.view.View[@index='0']//android.widget.Button[@index='0'and @class='android.widget.Button']"
+LEAVE_BUTTON = "//android.view.View[@index='0']//android.widget.Button[@index='3' and @content-desc='Leave' and @class='android.widget.Button']"
+STAY_BUTTON = "//android.view.View[@index='0']//android.widget.Button[@index='3' and @content-desc='Stay' and @class='android.widget.Button']"
 
 EVENTS_DETAILS_1 = "//android.view.View[@index='0']//android.widget.ScrollView[@index='1']//android.view.View[@index='4'and @class='android.view.View']"
 EVENTS_DETAILS_2 = "//android.view.View[@index='0']//android.widget.ScrollView[@index='1']//android.view.View[@index='5'and @class='android.view.View']"
 # ---------------------------------------------------------------------------------------------------
 # Landing page:
 EVENT_1 = "//android.view.View[@index='"
-EVENT_2 = "']//android.widget.ImageView[@index='0'and @class='android.widget.ImageView'][1]"
+EVENT_2 = (
+    "']//android.widget.ImageView[@index='0'and @class='android.widget.ImageView'][1]"
+)
 
 EVENT_ELEMENT = "card Events_event-card__4cxKy"
 EVENT_LIST_1 = "/html/body/div/div/div[3]/div/div/div/div["
@@ -65,11 +69,26 @@ SEE_MORE_BUTTON = "//android.view.View[@index='0']//android.widget.ScrollView[@i
 HEBTUS_BUTTON = "//android.view.View[@index='0']//android.widget.Button[@content-desc='Hebtus' and @index='0'and @class='android.widget.Button']"
 SEE_MORE_PAGE = "//android.widget.ScrollView[@index='1']//android.view.View[@index='0']//android.view.View[@index='0']//android.view.View[@index='0']//android.widget.ImageView[@index='0'and @class='android.widget.ImageView']"
 
+# location
+LOCATION_TEXT = "//android.widget.ScrollView[@index='1']//android.view.View[@index='1' and @class='android.view.View']"
+LOCATION_PICKER_TB = "//android.widget.ScrollView[@index='1']//android.widget.EditText[@index='6' and @class='android.widget.EditText']"
+SEARCH_BUTTON = "//android.widget.ScrollView[@index='1']//android.widget.Button[@content-desc='Search' and @index='7' and @class='android.widget.Button']"
+DROP_DOWN_MENU = "//android.widget.ScrollView[@index='1']//android.view.View[@index='5' and @class='android.view.View']"
+CURRENT_LOCATION_BUTTON = "//android.view.View[@index='0']//android.widget.Button[@content-desc='use current Location' and @index='0'and @class='android.widget.Button']"
 # tabs
 ALL_TAB = "//android.view.View[@index='0']//android.widget.Button[@content-desc='All' and @index='0'and @class='android.widget.Button']"
 MUSIC_TAB = "//android.view.View[@index='1']//android.widget.Button[@content-desc='Music' and @index='0'and @class='android.widget.Button']"
 FOOD_DRINK_TAB = "//android.view.View[@index='2']//android.widget.Button[@content-desc='Food & Drink' and @index='0'and @class='android.widget.Button']"
 CHARITY_CAUSES_TAB = "//android.view.View[@index='3']//android.widget.Button[@content-desc='Charity & Causes' and @index='0'and @class='android.widget.Button']"
+ONLINE_TAB = "//android.widget.HorizontalScrollView[@index='8']//android.view.View[@index='2']//android.widget.Button[@content-desc='Online' and @index='0'and @class='android.widget.Button']"
+TODAY_TAB = "//android.widget.HorizontalScrollView[@index='8']//android.view.View[@index='0']//android.widget.Button[@content-desc='Today' and @index='0'and @class='android.widget.Button']"
+THIS_WEEKEND_TAB = "//android.widget.HorizontalScrollView[@index='8']//android.view.View[@index='1']//android.widget.Button[@content-desc='This Weekend' and @index='0'and @class='android.widget.Button']"
+FREE_TAB = "//android.widget.HorizontalScrollView[@index='8']//android.view.View[@index='2']//android.widget.Button[@content-desc='Free' and @index='0'and @class='android.widget.Button']"
+
+# Categories:
+MUSIC_CATEGORY = "//android.view.View[@index='10']//android.view.View[@index='0']//android.view.View[@index='0']//android.view.View[@content-desc='Music' and @index='0'and @class='android.view.View']"
+FOOD_DRINK_CATEGORY = "//android.view.View[@index='10']//android.view.View[@index='0']//android.view.View[@index='1']//android.view.View[@content-desc='Food & Drink' and @index='0'and @class='android.view.View']"
+CHARITY_CATEGORY = "//android.view.View[@index='0']//android.view.View[@index='0']//android.view.View[@index='2']//android.view.View[@content-desc='Charity & Causes' and @index='0'and @class='android.view.View']"
 #!END ---------------------------------------------------------------------------------------------------
 
 EMAIL_ALREADY_USED_ALERT = (
@@ -132,35 +151,22 @@ EVENT_ELEMENT = "card Events_event-card__4cxKy"
 EVENT_LIST_1 = "/html/body/div/div/div[3]/div/div/div/div["
 EVENT_LIST_2 = "]/div"
 
-SEE_MORE_BUTTON = "//android.view.View[@index='0']//android.widget.ScrollView[@index='1']//android.widget.Button[@content-desc='See more' and @index='2'and @class='android.widget.Button']"
-HEBTUS_BUTTON = "//android.view.View[@index='0']//android.widget.Button[@content-desc='Hebtus' and @index='0'and @class='android.widget.Button']"
-SEE_MORE_PAGE = "//android.widget.ScrollView[@index='1']//android.view.View[@index='0']//android.view.View[@index='0']//android.view.View[@index='0']//android.widget.ImageView[@index='0'and @class='android.widget.ImageView']"
-
-# tabs
-ALL_TAB = "//android.view.View[@index='0']//android.widget.Button[@content-desc='All' and @index='0'and @class='android.widget.Button']"
-MUSIC_TAB = "//android.view.View[@index='1']//android.widget.Button[@content-desc='Music' and @index='0'and @class='android.widget.Button']"
-FOOD_DRINK_TAB = "//android.view.View[@index='2']//android.widget.Button[@content-desc='Food & Drink' and @index='0'and @class='android.widget.Button']"
-CHARITY_CAUSES_TAB = "//android.view.View[@index='3']//android.widget.Button[@content-desc='Charity & Causes' and @index='0'and @class='android.widget.Button']"
-
-LOCATION_PICKER = "location-text"
 
 ALL_EVENT_DATE_1 = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/div/div/div/section/div/div[1]/div/div["
 ALL_EVENT_DATE_2 = "]/div/div/article/div[1]/div[2]/div/div[1]/div"
 ALL_EVENTS_LOCATION_1 = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/div/div/div/section[1]/div/div/div[2]/div["
 ALL_EVENTS_LOCATION_2 = "]/div/div/article/div[1]/div[2]/div/div[2]/div[1]/div"
-# Tabs:
-TODAY_TAB = "today-link"
+
+
 START_DATE_1 = "/html/body/div/div/div[3]/div/div/div/div["
 START_DATE_2 = "]/div/div/h6[1]"
 END_DATE_1 = "/html/body/div/div/div[3]/div/div/div/div["
 END_DATE_2 = "]/div/div/h6[2]"
-THIS_WEEKEND_TAB = "this-weekend-tab"
 
 
 # ----------------------------------------------------------------
 
 FOR_YOU_TAB = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/nav/ul/li[2]/button"
-ONLINE_TAB = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/nav/ul/li[3]/button"
 ONLINE_INFO_1 = "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div[2]/div[2]/section/div[2]/section[2]/div/div/div[2]/p"
 ONLINE_INFO_2 = "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div/div[2]/section/div[2]/section[2]/div/div/div[2]/p"
 
@@ -171,18 +177,15 @@ WEEKEND_EVENT_DATE_1 = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main
 WEEKEND_EVENT_DATE_2 = "]/div/div/article/div[1]/div[2]/div/div[1]/div"
 
 WOMENS_HISTORY_MONTH = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/nav/ul/li[7]/button"
-FREE_TAB = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/section[2]/div/div/div[2]/div/div/nav/ul/li[8]/button"
 FREE_INFO_1 = "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div[2]/div[3]/div[2]/div[1]/div"
 FREE_INFO_2 = (
     "/html/body/div[1]/div/section/form/div/div/div/ul/li/div/div/div[2]/div/span"
 )
-# Categories:
-MUSIC_CATEGORY = "Music"
+
 HOBBBIES_CATEGORY = "Hobbies"
 VISUAL_ARTS_CATEGORY = "Performing & Visual Arts"
 BUSINESS_CATEGORY = "Business"
 HOLDIDAY_CATEGORY = "Holiday"
-FOOD_DRINK_CATEGORY = "Food & Drink"
 HEALTH_CATEGORY = "Health"
 SPORTS_CATEGORY = "Sports & Fitness"
 
