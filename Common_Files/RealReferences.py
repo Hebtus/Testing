@@ -92,6 +92,10 @@ GO_TO_PUBLISH = "/html/body/div/div/div[2]/div/div[2]/ul/li[4]/a/div/svg/path"
 PUBLISH_TITLE = "/html/body/div/div/div[2]/div[2]/h1"
 PUBLISH_EVENT_TITLE = "/html/body/div/div/div[2]/div[2]/div[1]/div[2]/span[1]"
 PUBLISH_DATE_TITLE = "/html/body/div/div/div[2]/div[2]/div[1]/div[2]/span[2]"
+PUBLIC_RADIOBUTTON = "Public"
+PRIVATE_RADIOBUTTON = "Private"
+PUBLISH_NOW_RADIOBUTTON = "now"
+SCHEDULE_LATER_RADIOBUTTON ="schedule"
 
 
 
