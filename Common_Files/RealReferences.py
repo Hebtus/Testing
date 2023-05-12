@@ -53,7 +53,47 @@ EVENT_START_DATE_MSG = "/html/body/div/div/div/div[2]/div[3]/div[2]/div[2]/div[1
 EVENT_END_DATE_MSG = "/html/body/div/div/div/div[2]/div[3]/div[2]/div[3]/div[1]/p[2]"
 EVENT_TIME_ZONE_DROPDOWN = "/html/body/div/div/div/div[2]/div[3]/div[2]/div[4]/select"
 EVENT_LANGUAGES_DROPDOWN = "select-event-page-lang"
-SAVE_AND_CONTINUE_BUTTON = "/html/body/div/div/div/div[2]/div[4]/div/button"
+SAVE_AND_CONTINUE_BUTTON = "/html/body/div/div/div/div[2]/div[4]/div/div"
+SAVE_AND_CONTINUE_BUTTON2 = "/html/body/div/div/div[3]/div/div"
+UPLOADED_IMAGE_HEBTUS = "/html/body/div/div/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/img"
+UPLOAD_IMAGE_HEBTUS = "/html/body/div/div/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/input"
+REMOVE_IMAGE = "/html/body/div/div/div[2]/div[2]/div[1]/div/div[2]/div/div[2]"
+REMOVED_IMAGE = "/html/body/div/div/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div"
+EVENT_DESCRIPTION = "/html/body/div/div/div[2]/div[2]/div[2]/div/div[2]/h1"
+DESCRIPTON_TEXTAREA = "/html/body/div/div/div[2]/div[2]/div[2]/div/div[2]/div/textarea"
+#SAVE_AND_CONTINUE_BUTTON = "save-button"
+# Tickets
+TICKETS_TITLE = "/html/body/div/div/div[3]/div[1]/div[1]/h1"
+ADD_TICKET_OUTER = "add-ticket--card"
+TICKET_TITLE_TAB = "offcanvasRightLabel"
+CLOSE_TICKET_FORM = "form-close"
+PAID_TICKET = "paid-panel-changer"
+FREE_TICKET = "free-panel-changer"
+DONATION = "donation-panel-changer"
+NAME_TICKET_FIELD = "input-field-Name"
+QUANTITY_TICKET_FIELD = "input-field-Available Quantity"
+PRICE_TICKET_FIELD = "input-field-Price"
+SELECT_TICKET_TYPE = "select-ticket-type-dropdown"
+START_DATE_TICKET = "start-date"
+END_DATE_TICKET = "end-date"
+START_TIME_TICKET = "start-time"
+END_TIME_TICKET = "end-time"
+ADD_TICKET_INNER = "form-save-ticket-btn"
+CANCEL_BUTTON = "form-cancel-btn"
+TICKETS_ERROR_MSG = "form-message-text"
+FIRST_TICKET_CARD = "ticket--card-0"
+FIRST_EVENT_TITLE = "ticket-card-title-0"
+FIRST_EVENT_START_DATE = "ticket-card-start-date-0"
+FIRST_EVENT_TICKET_COUNT = "ticket-card-capacity-0"
+FIRST_EVENT_TICKET_EDIT = "ticket-card-edit-0"
+
+# Publish
+GO_TO_PUBLISH = "/html/body/div/div/div[2]/div/div[2]/ul/li[4]/a/div/svg/path"
+PUBLISH_TITLE = "/html/body/div/div/div[2]/div[2]/h1"
+PUBLISH_EVENT_TITLE = "/html/body/div/div/div[2]/div[2]/div[1]/div[2]/span[1]"
+PUBLISH_DATE_TITLE = "/html/body/div/div/div[2]/div[2]/div[1]/div[2]/span[2]"
+
+
 
 
 # ---------------- Creator's View ----------------#
@@ -84,7 +124,7 @@ ONLINE_EVENT_BUTTON_FIELD = "/html/body/div[1]/div[2]/div/div/div/div/div/div[2]
 VENUE_TO_BE_ANNOUNCED_BUTTON = "/html/body/div[1]/div[2]/div/div/div/div/div/div[2]/div/div[2]/div[2]/div/div/div/div[1]/div/main/section/div/div/div[2]/form/div[2]/div[2]/div[2]/div/div/div/div/div[3]/label" # XPATH
 ADD_MORE_TITLE = "//*[@id='root']/div/div[2]/div[2]/div/div/div/div[1]/div/main/section/div/div/div/form/div[4]/div/div/div[2]/h2" # XPATH
 START_TIME_CHECKBOX = "//*[@id='check-chunky_svg__eds-icon--check-chunky_svg']" # XPATH
-SAVE_AND_CONTINUE_BUTTON = "//*[@id='root']/div/div[2]/div[2]/div/div/div/div[2]/div/div/div/button[2]" # XPATH
+#SAVE_AND_CONTINUE_BUTTON = "//*[@id='root']/div/div[2]/div[2]/div/div/div/div[2]/div/div/div/button[2]" # XPATH
 
 
 # Basic Info Page 2

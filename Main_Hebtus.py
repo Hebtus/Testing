@@ -8,6 +8,8 @@ from selenium.webdriver.chrome.options import Options
 from Creators_View.LogInToCreatorView import creator_view
 from Creators_View.BasicInfo import basic_info
 from Creators_View.EventList import event_list
+from Creators_View.Tickets import tickets
+from Creators_View.Publish import publish
 
 Coptions = Options()
 Coptions.add_experimental_option("detach", True)
@@ -25,4 +27,5 @@ s = Service(PATH)
 driver.maximize_window()
 creator_view(driver)  # temporary
 #event_list(driver)
-basic_info(driver, 0)
+basic_info(driver, 1)
+tickets(driver,1)
