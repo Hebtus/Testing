@@ -15,6 +15,25 @@ def creator_view(driver):
     NavBarDropDown = find_my_element(driver,"ID",NAV_BAR_DROP_DOWN)
     NavBarDropDown.click()
 
-    creatorView = find_my_element(driver, "XPATH", MANAGE_MY_EVENTS)
-    creatorView.click()
+    LogIn = find_my_element(driver, "XPATH", DROPDOWN_LOGIN_CHOICE)
+    LogIn.click()
     time.sleep(3)
+
+    Email = find_my_element(driver,"ID",EMAIL_FIELD)
+    Email.send_keys("malak.mokhtar@gmail.com")
+
+    Password = find_my_element(driver,"ID",PASSWORD_FIELD)
+    Password.send_keys("Tom&Jerry")
+
+    time.sleep(1)
+
+    LogInBtn = find_my_element(driver,"ID",LOG_IN_BUTTON)
+    LogInBtn.click()
+
+    time.sleep(3)
+
+    ManageEvents = find_my_element(driver,"XPATH",MANAGE_MY_EVENTS)
+    ManageEvents.click()
+
+
+

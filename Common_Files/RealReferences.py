@@ -5,9 +5,15 @@
 
 
 # ----------- Hebtus Creator's View --------------#
-# Event list
+# Log in and to creator's view
 NAV_BAR_DROP_DOWN = "navbar-dropdown-container" # ID
-MANAGE_MY_EVENTS = "/html/body/div/div/div[1]/nav/div[2]/ul/li[1]/a" # FULL XPATH
+DROPDOWN_LOGIN_CHOICE = "/html/body/div/div/div[1]/div/nav/div[2]/ul/li[1]/a"
+EMAIL_FIELD = "email"
+PASSWORD_FIELD = "password"
+LOG_IN_BUTTON = "form--button-login"
+MANAGE_MY_EVENTS = "/html/body/div/div/div[1]/div/nav/div[1]/a" # FULL XPATH
+
+# Event list
 EVENT_HEADER = "event-list-header" # ID
 FILTER_EVENTS_BUTTON = "choices-menu" # ID
 FILTER_ALL_EVENTS = "choices-menu-all" # ID
@@ -22,7 +28,7 @@ EVENT_SOLD_PART2 = "]/td[2]/div/p" # Rest of XPATH
 EVENTS_SEARCH_BAR = "search-bar" # ID
 # Basic info
 CREATE_EVENT_BUTTON = "create-event-button" #ID
-EVENT_TITLE_FIELD = "input-field"  # ID
+EVENT_TITLE_FIELD = "input-field-Event Title"  # ID
 TAGS_FIELD = ":r0:"  # ID
 EVENT_TYPE_DROPDOWN_FIELD = "select-type" # ID
 EVENT_CATEGORY_DROPDOWN_FIELD = "select-category" # ID
@@ -31,20 +37,23 @@ EVENT_START_DATE_FIELD = ":r2:" # ID
 EVENT_END_DATE_FIELD = ":r6:" # ID
 EVENT_START_TIME_FIELD = ":r4:" # ID
 EVENT_END_TIME_FIELD = ":r8:" # ID
-TYPE_OPTIONS = "/html/body/div/div/div[1]/div[2]/div[2]/select[1]/option"
-CATEGORY_OPTIONS = "/html/body/div/div/div[1]/div[2]/div[2]/select[2]/option"
-SUBCATEGORY_OPTIONS = "/html/body/div/div/div[1]/div[2]/div[2]/select[3]/option"
+TYPE_OPTIONS = "/html/body/div/div/div/div[2]/div[1]/div[2]/div[2]/select[1]/option"
+CATEGORY_OPTIONS = "/html/body/div/div/div/div[2]/div[1]/div[2]/div[2]/select[2]/option"
+SUBCATEGORY_OPTIONS = "/html/body/div/div/div/div[2]/div[1]/div[2]/div[2]/select[3]/option"
 ADD_TAG = "add-tag-btn"
-ALL_TAGS = "/html/body/div/div/div[1]/div[2]/div[5]/div"
-TAG_ERROR_MSG = "/html/body/div/div/div[1]/div[2]/div[4]/div/div[2]/p[1]" # XPATH
-VENUE_BUTTON = "/html/body/div/div/div[2]/div[2]/div/div[1]" # XPATH
-ONLINE_BUTTON = "/html/body/div/div/div[2]/div[2]/div/div[2]" # XPATH
-TO_BE_ANNOUNCED_BUTTON = "/html/body/div/div/div[2]/div[2]/div/div[3]" # XPATH
-DATE_AND_TIME_TITLE = "/html/body/div/div/div[3]/div[2]/h1" # XPATH 
-EVENT_START_DATE_MSG = "/html/body/div/div/div[3]/div[2]/div[2]/div[1]/p[2]"
-EVENT_END_DATE_MSG = "/html/body/div/div/div[3]/div[2]/div[3]/div[1]/p[2]"
-DISPLAY_START_TIME = "/html/body/div/div/div[3]/div[2]/div[4]/span/input"
-DISPLAY_END_TIME = "/html/body/div/div/div[3]/div[2]/div[5]/span/input"
+ALL_TAGS = "/html/body/div/div/div/div[2]/div[1]/div[2]/div[5]/div"
+TAG_ERROR_MSG = "/html/body/div/div/div/div[2]/div[1]/div[2]/div[4]/div/div[2]/p[1]" # XPATH
+LOCATION_TITLE = "/html/body/div/div/div/div[2]/div[2]/div[2]/h1"
+VENUE_BUTTON = "/html/body/div/div/div/div[2]/div[2]/div[2]/div/div[1]" # XPATH
+ONLINE_BUTTON = "/html/body/div/div/div/div[2]/div[2]/div[2]/div/div[2]" # XPATH
+TO_BE_ANNOUNCED_BUTTON = "/html/body/div/div/div/div[2]/div[2]/div[2]/div/div[3]" # XPATH
+SINGLE_EVENT = "single-event-panel"
+DATE_AND_TIME_TITLE = "/html/body/div/div/div/div[2]/div[3]/div[2]/h1" # XPATH 
+EVENT_START_DATE_MSG = "/html/body/div/div/div/div[2]/div[3]/div[2]/div[2]/div[1]/p[2]"
+EVENT_END_DATE_MSG = "/html/body/div/div/div/div[2]/div[3]/div[2]/div[3]/div[1]/p[2]"
+EVENT_TIME_ZONE_DROPDOWN = "/html/body/div/div/div/div[2]/div[3]/div[2]/div[4]/select"
+EVENT_LANGUAGES_DROPDOWN = "select-event-page-lang"
+SAVE_AND_CONTINUE_BUTTON = "/html/body/div/div/div/div[2]/div[4]/div/button"
 
 
 # ---------------- Creator's View ----------------#
