@@ -16,9 +16,6 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 from datetime import datetime, date, timedelta
 
-#! To change:
-#   add login functions inside functions
-
 
 def landing_page(driver):
     # login(driver, "hebtususer@gmail.com", "123456789")

@@ -21,7 +21,7 @@ from datetime import datetime, date, timedelta
 
 
 def landing_page(driver):
-    sign_in_valid(driver, "ayausamakhalifa@gmail.com", "123456789")
+    sign_in_valid(driver, "hebtususer@gmail.com", "123456789")
     # see_more_test(driver)
     # tabs_categories_test(driver)
 
@@ -316,7 +316,7 @@ def GetEventsDate(driver):
         for i in range(6):
             EVENT = EVENT_1 + str(i) + EVENT_2
             Event = find_my_element(driver, "XPATH", EVENT)
-            check_not_found(driver, Event, "Event Not FOUNDDDDDDDDDD")
+            check_not_found(driver, Event, "Event Not Found")
             time.sleep(2)
             ContentSet.add(Event.get_attribute("content-desc"))
             # print(Event.get_attribute("content-desc"))
@@ -500,7 +500,6 @@ def free_tab_test(driver):
             # There is no more than 2 events
             count = 4
             end = True
-        print(find_my_element(driver, "XPATH", LOCATION_TEXT).text)
         for i in range(count):
             EVENT = EVENT_1 + str(i) + EVENT_2
             Event = WebDriverWait(driver, 2).until(

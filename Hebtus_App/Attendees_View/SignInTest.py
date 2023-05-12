@@ -29,8 +29,8 @@ def sign_in(driver):
     for i in range(len(Passwords)):
         Passwords[i] = Passwords[i].rstrip("\n")
 
-    # sign_in_valid(driver, "ayausamakhalifa@gmail.com", "123456789")
-    # sign_in_invalid(driver, "ayausamakhalifa@gmail.com")
+    # sign_in_valid(driver, "hebtususer@gmail.com", "123456789")
+    # sign_in_invalid(driver, "hebtususer@gmail.com")
     # login_with_facebook(driver, Emails[15], Passwords[5])
     # forget_password_test(driver, Emails[17], Passwords[4])
 

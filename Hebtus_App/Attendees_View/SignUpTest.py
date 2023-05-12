@@ -50,7 +50,7 @@ def sign_up(driver):
     # go_to_login_page(driver)
 
 
-#* Phase 4
+# * Phase 4
 def sign_up_No_Verification_test(driver, Email, Password):
     # Enter email
     EmailTextbox = find_my_element(driver, "XPATH", SIGN_UP_EMAIL_TEXTBOX)
@@ -188,7 +188,7 @@ def sign_up_No_Verification_test(driver, Email, Password):
     driver.quit()
 
 
-#* Phase 4
+# * Phase 4
 def login_button_test(driver):
     # ----------------- login button in sign up page -------
     # Click on login button
@@ -206,7 +206,7 @@ def login_button_test(driver):
     driver.quit()
 
 
-#* Phase 4
+# * Phase 4
 def sign_up_valid_test(driver, Email, Password):
     # ---------------------------------------------- Testing valid email ---------------------------------------------- #
     # Enter email
@@ -274,7 +274,7 @@ def sign_up_valid_test(driver, Email, Password):
     driver.quit()
 
 
-#* Phase 4
+# * Phase 4
 def sign_in_new_account(driver, Email, Password):
     # ---------------------------------------------- Testing valid log in ---------------------------------------------- #
     # enter email and password
@@ -307,7 +307,7 @@ def sign_in_new_account(driver, Email, Password):
     driver.quit()
 
 
-#* Phase 4
+# * Phase 4
 def sign_up_invalid_email(driver, Emails):
     # ---------------------------------------------- Testing Invalid emails ---------------------------------------------- #
     # ------------------- missing email-------------------
@@ -389,7 +389,7 @@ def sign_up_invalid_email(driver, Emails):
     time.sleep(1)
     EmailTextbox = find_my_element(driver, "XPATH", SIGN_UP_EMAIL_TEXTBOX)
     check_not_found(driver, EmailTextbox, "Email textbox not found")
-    EmailTextbox.set_text("ayausamakhalifa@gmail.com")
+    EmailTextbox.set_text("hebtususer@gmail.com")
     driver.hide_keyboard()
     CreateAcountButton = find_my_element(driver, "XPATH", CREATE_ACOUNT_BUTON)
     check_not_found(driver, CreateAcountButton, "Sign up button not found")
@@ -438,7 +438,7 @@ def sign_up_invalid_email(driver, Emails):
     driver.quit()
 
 
-#* Phase 4
+# * Phase 4
 def sign_up_invalid_tests(driver, Email, Passwords):
     # ---------------------------------------------- Testing invalid info ---------------------------------------------- #
     # Enter email
@@ -489,7 +489,6 @@ def sign_up_invalid_tests(driver, Email, Passwords):
     FirstNameMissingAlert = find_my_element(driver, "XPATH", FIRST_NAME_REQUIRED_ALERT)
     check_not_found(driver, FirstNameMissingAlert, "First name missing alert not found")
     time.sleep(5)
-    #!--------------Above Tested --------------------
     # ------------------- Last Name missing-------------------
     # Enter first name
     FirstNameTextbox = find_my_element(driver, "XPATH", FIRT_NAME_TEXTBOX)

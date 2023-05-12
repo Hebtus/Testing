@@ -46,11 +46,44 @@ EVENT_TITLE = "//android.view.View[@index='0']//android.widget.ScrollView[@index
 DATE_TIME = "//android.view.View[@index='0']//android.widget.ScrollView[@index='1']//android.view.View[@index='6'and @class='android.view.View']"
 LOCATION = "//android.view.View[@index='0']//android.widget.ScrollView[@index='1']//android.view.View[@index='8'and @class='android.view.View']"
 
+NO_TICKETS = "//android.view.View[@index='0']//android.view.View[@index='2' and @content-desc='No tickets available'and @class='android.view.View']"
 # Booking
 GET_TICKET_BUTTON = "//android.view.View[@index='2']//android.widget.Button[@index='0' and @content-desc='Get tickets' and @class='android.widget.Button']"
 TICKETS_TYPES = "//android.view.View[@index='0']//android.widget.Button[@index='0'and @class='android.widget.Button']"
 LEAVE_BUTTON = "//android.view.View[@index='0']//android.widget.Button[@index='3' and @content-desc='Leave' and @class='android.widget.Button']"
-STAY_BUTTON = "//android.view.View[@index='0']//android.widget.Button[@index='3' and @content-desc='Stay' and @class='android.widget.Button']"
+STAY_BUTTON = "//android.view.View[@index='0']//android.widget.Button[@index='2' and @content-desc='Stay' and @class='android.widget.Button']"
+
+# Checkout page
+B_BACK_BUTTON = "//android.view.View[@index='0']//android.widget.Button[@index='0'and @class='android.widget.Button']"
+B_FIRST_NAME_TB = "//android.view.View[@index='0']//android.widget.EditText[@index='1'and @class='android.widget.EditText']"
+B_LAST_NAME_TB = "//android.view.View[@index='0']//android.widget.EditText[@index='2'and @class='android.widget.EditText']"
+B_EMAIL_TB = "//android.view.View[@index='0']//android.widget.EditText[@index='3'and @class='android.widget.EditText']"
+B_PHONE_NUM_TB = "//android.view.View[@index='0']//android.widget.EditText[@index='4'and @class='android.widget.EditText']"
+B_GENDER_TB = "//android.view.View[@index='0']//android.widget.EditText[@index='5'and @class='android.widget.EditText']"
+B_PROMOCODE_TB = "//android.view.View[@index='0']//android.widget.EditText[@index='6'and @class='android.widget.EditText']"
+
+B_DONE_BUTTON = "//android.view.View[@index='0']//android.view.View[@index='7']//android.widget.Button[@index='0' and @content-desc='Done' and @class='android.widget.Button']"
+B_SUMMARY_BUTTON = "//android.view.View[@index='0']//android.view.View[@index='7']//android.widget.Button[@index='1' and @content-desc='Order summary' and @class='android.widget.Button']"
+SUMMARY_TICKET_1 = "//android.view.View[@index='0']//android.view.View[@index='2'and @class='android.view.View']"
+SUMMARY_TICKET_2 = "//android.view.View[@index='0']//android.view.View[@index='5'and @class='android.view.View']"
+
+ALERT_BACK_BUTTON = "//android.widget.FrameLayout[@index='0']//android.view.View[@index='0']//android.view.View[@index='0']//android.view.View[@index='0']//android.view.View[@index='0']//android.view.View[@index='0']//android.view.View[@index='0']//android.view.View[@index='0']//android.widget.Button[@index='0' and @content-desc='back' and @class='android.widget.Button']"
+
+TIME_LIMIT_ALERT = "//android.view.View[@index='0']//android.widget.Button[@index='2' and @content-desc='Back to tickets' and @class='android.widget.Button']"
+# Choose tickets page
+TICKET_TYPE_1 = "//android.widget.Button[@index='0']//android.view.View[@index='0']//android.view.View[@index='0']//android.view.View[@index='0' and @class='android.view.View']"
+TICKET_TYPE_2 = "//android.widget.Button[@index='0']//android.view.View[@index='0']//android.view.View[@index='0']//android.view.View[@index='1' and @class='android.view.View']"
+
+PLUS_BUTTON_1 = "//android.widget.Button[@index='0']//android.view.View[@index='0']//android.view.View[@index='0']//android.view.View[@index='0']//android.widget.Button[@index='0'and @class='android.widget.Button']"
+MINUS_BUTTON_1 = "//android.widget.Button[@index='0']//android.view.View[@index='0']//android.view.View[@index='0']//android.view.View[@index='0']//android.widget.Button[@index='1'and @class='android.widget.Button']"
+
+PLUS_BUTTON_2 = "//android.widget.Button[@index='0']//android.view.View[@index='0']//android.view.View[@index='0']//android.view.View[@index='1']//android.widget.Button[@index='0'and @class='android.widget.Button']"
+
+MINUS_BUTTON_2 = "//android.widget.Button[@index='0']//android.view.View[@index='0']//android.view.View[@index='0']//android.view.View[@index='1']//android.widget.Button[@index='1'and @class='android.widget.Button']"
+BOOK_TICKET_BUTTON = "//android.view.View[@index='0']//android.widget.Button[@index='0']//android.widget.Button[@index='1' and @content-desc='Book tickets' and @class='android.widget.Button']"
+
+CHOOSE_TICKET_ALERT = "//android.view.View[@index='0']//android.view.View[@index='1' and @content-desc='Please choose a ticket' and @class='android.view.View']"
+CLOSE_ALERT = "//android.view.View[@index='0']//android.widget.Button[@index='2' and @content-desc='Close' and @class='android.widget.Button']"
 
 EVENTS_DETAILS_1 = "//android.view.View[@index='0']//android.widget.ScrollView[@index='1']//android.view.View[@index='4'and @class='android.view.View']"
 EVENTS_DETAILS_2 = "//android.view.View[@index='0']//android.widget.ScrollView[@index='1']//android.view.View[@index='5'and @class='android.view.View']"
