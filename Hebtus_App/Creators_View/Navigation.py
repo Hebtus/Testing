@@ -44,7 +44,66 @@ def log_in(driver, Email, Password):
     check_not_found(driver, LoginButton, "Login button not found")
     LoginButton.click()
     time.sleep(4)
+
+def Skip_Location(driver):
+    # Choose only once:
+    Location = find_my_element(driver,"XPATH",ONLY_ONCE_LOCATION)
+    Location.click()
+    time.sleep(6)
     # check if landing page is reached
     LandingPage = find_my_element(driver, "XPATH", LANDING_PAGE)
     check_not_found(driver, LandingPage, "Landing page not reached")
     print("signed in successfuly")
+    time.sleep(8)
+
+
+def To_Event_List(driver):
+    # Click on account icon:
+    Account = find_my_element(driver,"XPATH",ACCOUNT_ICON)
+    Account.click()
+    time.sleep(1)
+    # Click on manage my events
+    ManageEvents = find_my_element(driver,"XPATH",MANAGE_MY_EVENTS)
+    ManageEvents.click()
+    time.sleep(3)
+
+def To_Dashboard_Second_Event(driver):
+    # Validate navigation to event list
+    Title = find_my_element(driver,"XPATH",EVENT_LIST_TITLE)
+    check_not_found(driver,Title,"Failed to navigate to event list")
+    # Click on first event in event list
+    FirstEvent = find_my_element(driver,"XPATH",SECOND_EVENT)
+    FirstEvent.click()
+    time.sleep(3)
+
+def To_Main_Menu_First_Event(driver):
+    # Validate navigation to event list
+    Title = find_my_element(driver,"XPATH",DASHBOARD_TITLE)
+    check_not_found(driver,Title,"Failed to navigate to dashboard")
+    # This gets the main menu of an event
+    MainMenu = find_my_element(driver,"XPATH",MENU_DASHBOARD)
+    MainMenu.click()
+    time.sleep(3)
+
+def Main_Menu_First_Event_Tickets(driver):
+    # This gets the main menu of an event
+    MainMenuChoice = find_my_element(driver,"XPATH",MAIN_MENU_TICKETS)
+    MainMenuChoice.click()
+    time.sleep(3)
+
+def Main_Menu_First_Event_Publish(driver):
+    # This gets the main menu of an event
+    MainMenuChoice = find_my_element(driver,"XPATH",MAIN_MENU_PUBLISH)
+    MainMenuChoice.click()
+    time.sleep(3)
+
+def Main_Menu_First_Event_Dashboard(driver):
+    # This gets the main menu of an event
+    MainMenuChoice = find_my_element(driver,"XPATH",MAIN_MENU_DASHBOARD)
+    MainMenuChoice.click()
+    time.sleep(3)
+
+
+
+
+

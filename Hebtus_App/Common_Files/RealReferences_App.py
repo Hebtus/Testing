@@ -221,18 +221,24 @@ EVENT_DESCRIPTION_TITLE = "//android.view.View[@content-desc='Description']"
 EVENT_DESCRIPTION_FIELD = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText[3]"
 
 # Event List
+EVENT_LIST_TITLE = "//android.view.View[@content-desc="hey there!"]"
 EXPORT_TO_CSV = "//android.widget.Button[@content-desc='Export to CSV']"
 EVENT_LIST_FILTER = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.Button[1]"
 
 # In between
-FIRST_EVENT = "//android.view.View[@content-desc='description Egyptian Fox Border Point, New Valley, Egypt Mon, May 15, 2023 at 2:00 AM']"
+#FIRST_EVENT = "//android.view.View[@content-desc='description Egyptian Fox Border Point, New Valley, Egypt Mon, May 15, 2023 at 2:00 AM']"
+SECOND_EVENT = "//android.view.View[@content-desc='youssef Cairo, Egypt Sun, May 14, 2023 at 2:00 AM']"
 MENU_DASHBOARD = "//android.widget.Button[@content-desc='Dashboard']"
 MAIN_MENU_TICKETS = "//android.view.View[@content-desc='Tickets']"
 MAIN_MENU_PUBLISH = "//android.view.View[@content-desc='Publish']"
 MAIN_MENU_DASHBOARD = "//android.view.View[@content-desc='dashboard']"
 MAIN_MENU_BASIC_INFO = "//android.view.View[@content-desc='Basic info']"
 
+# Dashboard
+DASHBOARD_TITLE = "//android.widget.Button[@content-desc='Dashboard']"
+
 # -- Tickets
+TICKETS_TITLE = "//android.widget.Button[@content-desc='Tickets']"
 ADMISSION_BUTTON = "//android.widget.Button[@content-desc='Admission']"
 ADMISSION_BUTTON_ID = "Admission"
 PROMO_CODE_BUTTON = "//android.widget.Button[@content-desc='Promo code']"
@@ -241,6 +247,7 @@ ADD_MORE_TICKETS = "//android.widget.Button[@content-desc='+ Add more tickets']"
 ADD_MORE_TICKETS_ID = "+ Add more tickets"
 REFRESH = "//android.widget.Button[@content-desc='Refresh']"
 REFRESH_ID = "Refresh"
+
 # Add more tickets
 REGULAR = "//android.widget.Button[@content-desc='Regular']"
 REGULAR_TITLE = "/html/body/div[1]/div/div/div/div[2]/div[2]/div/div[2]/div/div/div/div[1]/div/div[2]/div/div/div[3]/div/div/div/div[15]/span[3]/span/span"
@@ -262,7 +269,7 @@ ADD_TICKET_BTN = "//android.widget.Button[@content-desc='Add']"
 ADD_TICKET_BTN_ID = "Add"
 TICKET_ADDED_SUCCESSFULLY = "//android.view.View[@content-desc='The ticket was added successfully']"
 ADD_TICKETS_GO_BACK = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.Button"
-TICKET_CARD = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.view.View/android.view.View[2]"
+TICKET_CARDS = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.view.View/android.view.View"
 THREE_DOTS = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.view.View/android.view.View[2]/android.view.View/android.widget.Button"
 
 

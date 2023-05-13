@@ -39,6 +39,30 @@ def find_my_element(Driver, type, val):
         return None
     return item
 
+def find_my_elements(Driver, type, val):
+    try:
+        if type == "XPATH":
+            items = WebDriverWait(Driver, 30).until(
+                EC.presence_of_elements_located((AppiumBy.XPATH, val))
+            )
+        elif type == "LINK_TEXT":
+            items = WebDriverWait(Driver, 20).until(
+                EC.presence_of_elements_located((AppiumBy.LINK_TEXT, val))
+            )
+        elif type == "CLASS":
+            items = WebDriverWait(Driver, 20).until(
+                EC.presence_of_elements_located((AppiumBy.CLASS_NAME, val))
+            )
+        elif type == "AID":
+            items = WebDriverWait(Driver, 20).until(
+                EC.presence_of_elements_located((AppiumBy.ACCESSIBILITY_ID, val))
+            )
+        else:
+            return None
+    except:
+        # print("Elements not found.")
+        return None
+    return items
 
 def check_not_found(driver, element, message):
     if element == None:

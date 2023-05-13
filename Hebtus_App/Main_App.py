@@ -12,7 +12,7 @@ from Attendees_View.SignInTest import sign_in
 from Attendees_View.EventPageTest import event_page
 from Attendees_View.LandingPageTest import landing_page
 
-from Creators_View.LogInToCreatorView import log_in
+from Creators_View.Navigation import *
 from Creators_View.BasicInfo import basic_info
 
 import time
@@ -40,5 +40,11 @@ driver.implicitly_wait(120)
 # ------------- Creator's view web pages testing -------------- #
 # creator_view(driver)  # temporary
 log_in(driver, "ayausamakhalifa@gmail.com", "123456789")
-time.sleep(7)
-basic_info(driver)
+Skip_Location(driver)
+To_Event_List(driver)
+To_Dashboard_Second_Event(driver)
+To_Main_Menu_First_Event(driver)
+Main_Menu_First_Event_Tickets(driver)
+
+
+#basic_info(driver)
