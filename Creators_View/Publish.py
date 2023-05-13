@@ -35,6 +35,56 @@ def publish(driver, mode = 0):
             print("DateTitle value: ",DateTitle.get_attribute("value"))
             print("DateTitle text: ",DateTitle.text)
 
+        # function taken from attendee's view
+        def GetEvents(driver, choice):
+        # Get the screen dimensions
+            screen_width = driver.get_window_size()["width"]
+            screen_height = driver.get_window_size()["height"]
+            ContentSet = set()
+            old_page_source = None
+            end = False
+            for j in range(10):
+                # Scroll down using TouchAction
+                swipe_action = TouchAction(driver)
+                swipe_action.press(x=screen_width * 0.5, y=screen_height * 0.8).move_to(
+                    x=screen_width * 0.5, y=screen_height * 0.2
+                ).release().perform()
+                time.sleep(3)
+                # Scroll down using TouchAction
+                swipe_action = TouchAction(driver)
+                swipe_action.press(x=screen_width * 0.5, y=screen_height * 0.8).move_to(
+                    x=screen_width * 0.5, y=screen_height * 0.2
+                ).release().perform()
+                time.sleep(3)
+                count = 6
+                for i in range(count):
+                    EVENT = EVENT_1 + str(i) + EVENT_2
+                    Event = find_my_element(driver, "XPATH", EVENT)
+                    check_not_found(driver, Event, "Event Not Found")
+                    time.sleep(2)
+                    EventInfo = Event.get_attribute("content-desc").split("\n")
+                    EventName = EventInfo[0]
+                    if "NightScape4" in EventName:
+                        print(EventName)
+                        Event.click()
+                        if choice == 1:
+                            invalid_booking_test(driver)
+                        elif choice == 2:
+                            valid_booking_test(driver, EventName)
+                        elif choice == 3:
+                            no_tickets_test(driver)
+                        end = True
+                        break
+                if (
+                    old_page_source is not None and driver.page_source == old_page_source
+                ) or end:
+                    break
+                old_page_source = driver.page_source
+
+            print("Booking Test Passed")
+            time.sleep(2)
+            driver.quit()
+
         def Public_And_Publish_Now(driver):
             PublicRadio = find_my_element(driver,"ID",PUBLIC_RADIOBUTTON)
             PublishNowRadio = find_my_element(driver,"ID",PUBLISH_NOW_RADIOBUTTON)
