@@ -105,6 +105,7 @@ STAY_BUTTON = "button-stay"
 
 TIMER_ALERT = "page--button"
 
+HEBTUS_LOGO = "hebtus-logo"
 # categories:
 HEADER_TEXT = "events-filter-header"
 

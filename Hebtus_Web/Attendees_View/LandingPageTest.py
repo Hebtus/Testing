@@ -20,7 +20,7 @@ from datetime import datetime, date, timedelta
 def landing_page(driver):
     # login(driver, "hebtususer@gmail.com", "123456789")
     # nav_bar_test(driver, "hebtususer@gmail.com")
-    update_password_test(driver, "hebtususer2@gmail.com", "123456789", "147258369")
+    update_password_test(driver, "hebtususer2@gmail.com", "147258369", "123456789")
     # tabs_test(driver)
     # categories_test(driver)
     # call_location_test(driver)

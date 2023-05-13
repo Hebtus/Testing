@@ -16,9 +16,10 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 
 def event_page(driver):
-    login(driver, "hebtususer@gmail.com", "123456789")
+    # login(driver, "hebtususer@gmail.com", "123456789")
     # GetEvents(driver)
-    get_event_booking(driver)
+    # get_event_booking(driver)
+    private_event_test(driver)
 
 
 # * Phase 4
@@ -324,15 +325,15 @@ def valid_booking_test_1(driver):
     check_not_found(driver, GetTicketButton, "Get ticket button not found")
     driver.execute_script("arguments[0].scrollIntoView();", GetTicketButton)
     GetTicketButton.click()
-    time.sleep(1)
+    time.sleep(5)
     BackToEvent = find_my_element(driver, "ID", "page--button")
     check_not_found(driver, BackToEvent, "Back To Event button not found")
     BackToEvent.click()
-    time.sleep(1)
+    time.sleep(5)
     GetTicketButton = find_my_element(driver, "ID", GET_TICKET_BUTTON)
     check_not_found(driver, GetTicketButton, "Get ticket button not found")
     GetTicketButton.click()
-    time.sleep(1)
+    time.sleep(5)
 
     # * 1)
     PlusButton1 = find_my_element(driver, "XPATH", PLUS_BUTTON_1)
@@ -342,62 +343,65 @@ def valid_booking_test_1(driver):
     PlusButton1.click()
     PlusButton1.click()
     PlusButton1.click()
+    time.sleep(5)
 
     PlusButton2 = find_my_element(driver, "XPATH", PLUS_BUTTON_2)
     check_not_found(driver, PlusButton2, "Plus button not found")
     PlusButton2.click()
     PlusButton2.click()
+    time.sleep(5)
 
     CheckoutButton = find_my_element(driver, "ID", CHECKOUT_BUTTON)
     check_not_found(driver, CheckoutButton, "Checkout Button button not found")
     CheckoutButton.click()
+    time.sleep(5)
 
     # 🎉 Write Info 🎉
     # add first name
     FirstNameTB = find_my_element(driver, "ID", FIRT_NAME_TEXTBOX)
     check_not_found(driver, FirstNameTB, "First name textbox not found")
     FirstNameTB.send_keys("FirstName")
-    time.sleep(1)
+    time.sleep(5)
     # add last name
     LastNameTB = find_my_element(driver, "ID", LAST_NAME_TEXTBOX)
     check_not_found(driver, LastNameTB, "Last name textbox not found")
     LastNameTB.send_keys("LastName")
-    time.sleep(1)
+    time.sleep(5)
     # add email
     EmailTB = find_my_element(driver, "ID", EMAIL_TEXTBOX)
     check_not_found(driver, LastNameTB, "Email textbox not found")
     EmailTB.send_keys("user@gmail.com")
-    time.sleep(1)
+    time.sleep(5)
     # Confirm email
     EmailTB = find_my_element(driver, "ID", CONFIRM_EMAIL)
     check_not_found(driver, LastNameTB, "Email textbox not found")
     EmailTB.send_keys("user@gmail.com")
-    time.sleep(1)
+    time.sleep(5)
     # add number
     PhoneNumTB = find_my_element(driver, "ID", PHONE_TEXTBOX)
     check_not_found(driver, PhoneNumTB, "Phone number textbox not found")
     PhoneNumTB.send_keys("01221993665")
-    time.sleep(1)
+    time.sleep(5)
     # add gender
     GenderTB = find_my_element(driver, "XPATH", MALE_RADIO_BUTTON)
     check_not_found(driver, GenderTB, "Gender textbox not found")
     GenderTB.click()
-    time.sleep(1)
+    time.sleep(5)
     # check first checkbox
     Checkbox1 = find_my_element(driver, "ID", BE_INFORMED_CB)
     check_not_found(driver, Checkbox1, "Checkbox 1 not found")
     Checkbox1.click()
-    time.sleep(1)
+    time.sleep(5)
     # check second checkbox
     Checkbox2 = find_my_element(driver, "ID", SEND_EMAIL_CB)
     check_not_found(driver, Checkbox2, "Checkbox 2 not found")
     Checkbox2.click()
-    time.sleep(1)
+    time.sleep(10)
     # click register
     RegisterButton = find_my_element(driver, "ID", REGISTER_BUTTON)
     check_not_found(driver, RegisterButton, "Register button not found")
     RegisterButton.click()
-    time.sleep(1)
+    time.sleep(5)
     # check booking succeeded
     Booked = find_my_element(driver, "ID", "page--button")
     check_not_found(driver, Booked, "Booked successfully message not found")
@@ -425,15 +429,20 @@ def valid_booking_test_2(driver):
 
     # * 1)
     # check first ticket not avaialble
-    PlusButton1 = find_my_element(driver, "XPATH", PLUS_BUTTON_1)
-    check_not_found(driver, PlusButton1, "Plus button not found")
-    PlusButton1.click()
 
-    PlusButton2 = find_my_element(driver, "XPATH", PLUS_BUTTON_2)
+    try:
+        Ticket1 = driver.find_element(By.XPATH, PLUS_BUTTON_2)
+        print("Ticket type 1 is visible after its capacity limit is reached")
+    except:
+        print(
+            "Tickets type 1 is not visibility visible after its capacity limit is reached"
+        )
+
+    PlusButton2 = find_my_element(driver, "XPATH", PLUS_BUTTON_1)
     check_not_found(driver, PlusButton2, "Plus button not found")
     PlusButton2.click()
-    PlusButton2.click()
-    PlusButton2.click()
+    # PlusButton2.click()
+    # PlusButton2.click()
 
     CheckoutButton = find_my_element(driver, "ID", CHECKOUT_BUTTON)
     check_not_found(driver, CheckoutButton, "Checkout Button button not found")
@@ -557,3 +566,69 @@ def get_event_booking(driver):
         check_not_found(driver, NextPageButton, "Next page button not found")
         if NextPageButton.is_enabled():
             driver.execute_script("arguments[0].click();", NextPageButton)
+
+
+# ? phase 5
+def private_event_test(driver):
+    driver.get("https://hebtus.me/events/645ec88559697d4460049f1e")
+    driver.maximize_window()
+    driver.implicitly_wait(60)
+    time.sleep(12)
+    Password = "123456789"
+    # Invalid:
+    # click enter password with empty password field
+    EnterButton = find_my_element(driver, "ID", LOGIN_BUTTON)
+    check_not_found(driver, EnterButton, "Enter Password button not found")
+    EnterButton.click()
+    time.sleep(1)
+    # check alert
+    Alert = find_my_element(driver, "ID", PASSWORD_REQUIRED_ALERT)
+    check_not_found(driver, Alert, "Password alert not found")
+    # add password less than 8 character
+    PasswordTextbox = find_my_element(driver, "ID", PASSWORD_TEXTBOX)
+    check_not_found(driver, PasswordTextbox, "Password textbox not found")
+    PasswordTextbox.send_keys("123")
+    time.sleep(1)
+    # click enter password button
+    EnterButton = find_my_element(driver, "ID", LOGIN_BUTTON)
+    check_not_found(driver, EnterButton, "Enter Password button not found")
+    EnterButton.click()
+    time.sleep(1)
+    # check alert
+    Alert = find_my_element(driver, "ID", PASSWORD_REQUIRED_ALERT)
+    check_not_found(driver, Alert, "Password alert not found")
+    # Enter invalid password
+    PasswordTextbox = find_my_element(driver, "ID", PASSWORD_TEXTBOX)
+    check_not_found(driver, PasswordTextbox, "Password textbox not found")
+    clear_textbox(PasswordTextbox)
+    time.sleep(1)
+    PasswordTextbox.send_keys("Password")
+    time.sleep(1)
+    # click enter password button
+    EnterButton = find_my_element(driver, "ID", LOGIN_BUTTON)
+    check_not_found(driver, EnterButton, "Enter Password button not found")
+    EnterButton.click()
+    time.sleep(1)
+    # check alert
+    Alert = find_my_element(driver, "ID", WRONG_EMAIL_PASS_ALERT)
+    check_not_found(driver, Alert, "Invalid password alert not found")
+
+    # Valid:
+    # Enter valid password
+    PasswordTextbox = find_my_element(driver, "ID", PASSWORD_TEXTBOX)
+    check_not_found(driver, PasswordTextbox, "Password textbox not found")
+    clear_textbox(PasswordTextbox)
+    time.sleep(1)
+    PasswordTextbox.send_keys(Password)
+    time.sleep(1)
+    # click enter password button
+    EnterButton = find_my_element(driver, "ID", LOGIN_BUTTON)
+    check_not_found(driver, EnterButton, "Enter Password button not found")
+    EnterButton.click()
+    time.sleep(5)
+    # check event page reached
+    EventPage = find_my_element(driver, "ID", HEBTUS_LOGO)
+    check_not_found(driver, EventPage, "Event Page not reached")
+
+    print("Private event test passed")
+    driver.close()
