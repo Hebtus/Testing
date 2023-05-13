@@ -181,7 +181,7 @@ def tickets(driver, mode = 0):
         def Go_To_Publish(driver):
             PublishButton = find_my_element(driver,"XPATH",GO_TO_PUBLISH)
             PublishButton.click()
-            time.sleep(2)
+            time.sleep(4)
 
         Navigation_Test(driver)
         Add_Ticket_Button_Test(driver)

@@ -105,7 +105,6 @@ def basic_info(driver, mode = 0):
         def Upload_Image(driver):
             Image = find_my_element(driver,"XPATH",UPLOAD_IMAGE_HEBTUS)
             Image.send_keys("C:/Users/MALAK/Desktop/testing photos/istockphoto-952939688-640x640.jpg")
-            UploadedImage = find_my_element(driver,"XPATH",UPLOADED_IMAGE_HEBTUS)
             time.sleep(3)
 
         def Decription(driver):
@@ -365,7 +364,7 @@ def basic_info(driver, mode = 0):
             #RemoveImage.click()
             #time.sleep(7)
             #Removed = find_my_element(driver,"XPATH",REMOVED_IMAGE)
-            # Check if it was removed
+            ## Check if it was removed
             #if(Removed == None):
             #    print("Error! Unable to remove image")
             #time.sleep(7)
@@ -393,12 +392,12 @@ def basic_info(driver, mode = 0):
 
         Event_Title_Test(driver)
         Type_Category_SubCategory_Test(driver)
-        #Dates_Test(driver)
+        Dates_Test(driver)
         # Scroll to date field
         DateAndTimeTitle=find_my_element(driver,"XPATH",DATE_AND_TIME_TITLE)
         driver.execute_script("arguments[0].scrollIntoView();",DateAndTimeTitle)
         time.sleep(2)
         Save_And_Continue(driver)
-        #Image_Test(driver)
+        Image_Test(driver)
         Decription_Test(driver)
         Save_And_Continue2(driver)

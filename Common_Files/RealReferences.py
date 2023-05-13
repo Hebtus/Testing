@@ -90,14 +90,20 @@ FIRST_EVENT_TICKET_COUNT = "ticket-card-capacity-0"
 FIRST_EVENT_TICKET_EDIT = "ticket-card-edit-0"
 
 # Publish
-GO_TO_PUBLISH = "/html/body/div/div/div[2]/div/div[2]/ul/li[4]/a/div/svg"
+HEBTUS_LOGO = "/html/body/div/div/div[1]/div/nav/a/h3"
+MY_EVENT_NAME = "This is an event for cancer children"
+GO_TO_PUBLISH = "/html/body/div/div/div[2]/div[1]/div[2]/ul/li[4]/a/div/span"
 PUBLISH_TITLE = "/html/body/div/div/div[2]/div[2]/h1"
 PUBLISH_EVENT_TITLE = "/html/body/div/div/div[2]/div[2]/div[1]/div[2]/span[1]"
 PUBLISH_DATE_TITLE = "/html/body/div/div/div[2]/div[2]/div[1]/div[2]/span[2]"
 PUBLIC_RADIOBUTTON = "Public"
 PRIVATE_RADIOBUTTON = "Private"
-PUBLISH_NOW_RADIOBUTTON = "now"
+PUBLISH_NOW_RADIOBUTTON = "0"
 SCHEDULE_LATER_RADIOBUTTON ="schedule"
+SAVE_AND_CONTINUE_PUBLISH = "/html/body/div/div/div[3]/div/div"
+ACCOUNT_NAVBAR = "/html/body/div/div/div[1]/nav/div[2]/a/div"
+MANAGE_MY_EVENTS_PUBLISH = "/html/body/div/div/div[1]/nav/div[2]/ul/li[1]/a"
+FIRST_EVENT_EVENTLIST = "/html/body/div/div/div[2]/div[3]/table/tr[2]/td[1]/div/div[2]/div/p[1]"
 
 #Dashboard
 DASHBOARD_TITLE = "/html/body/div/div/div[3]/div/div[1]/div[1]/h1"

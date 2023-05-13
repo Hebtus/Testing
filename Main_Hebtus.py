@@ -11,6 +11,7 @@ from Creators_View.EventList import event_list
 from Creators_View.Tickets import tickets
 from Creators_View.Publish import publish
 from Creators_View.Dashboard import dashboard
+from Creators_View.Publish import publish
 
 Coptions = Options()
 Coptions.add_experimental_option("detach", True)
@@ -28,6 +29,7 @@ s = Service(PATH)
 driver.maximize_window()
 creator_view(driver)  # temporary
 #event_list(driver)
-dashboard(driver)
-#basic_info(driver, 1)
-#tickets(driver,1)
+#dashboard(driver)
+basic_info(driver, 1)
+tickets(driver,1)
+publish(driver,1)

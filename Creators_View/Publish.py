@@ -33,20 +33,50 @@ def publish(driver, mode = 0):
             print("DateTitle value: ",DateTitle.get_attribute("value"))
             print("DateTitle text: ",DateTitle.text)
 
-        def Radiobuttons_Enabled_Test(driver):
+        def Public_And_Publish_Now(driver):
             PublicRadio = find_my_element(driver,"ID",PUBLIC_RADIOBUTTON)
-            PrivateRadio = find_my_element(driver,"ID",PRIVATE_RADIOBUTTON)
             PublishNowRadio = find_my_element(driver,"ID",PUBLISH_NOW_RADIOBUTTON)
-            ScheduleLaterRadio = find_my_element(driver,"ID",SCHEDULE_LATER_RADIOBUTTON)
             if(PublicRadio.is_enabled == False):
                 print("Error: Public radio button is not enabled")
-            if(PrivateRadio.is_enabled == False):
-                print("Error: Private radio button is not enabled")
+            else:
+                PublicRadio.click()
+                time.sleep(1)
             if(PublishNowRadio.is_enabled == False):
                 print("Error: Publish now radio button is not enabled")
-            if(ScheduleLaterRadio.is_enabled == False):
-                print("Error: Schedule later radio button is not enabled")
+            else:
+                PublishNowRadio.click()
+                time.sleep(2)
+            # Save and continue
+            Btn = find_my_element(driver,"XPATH",SAVE_AND_CONTINUE_PUBLISH)
+            driver.execute_script("arguments[0].scrollIntoView();",Btn)
+            time.sleep(2)
+            Btn.click()
+            time.sleep(2)
+            # Navigate to event list to check if it was added
+            # Account from navbar
+            Element=find_my_element(driver,"XPATH",ACCOUNT_NAVBAR)
+            driver.execute_script("arguments[0].scrollIntoView();",Element)
+            time.sleep(2)
+            Element.click()
+            Element=find_my_element(driver,"XPATH",MANAGE_MY_EVENTS_PUBLISH)
+            time.sleep(2)
+            Element.click()
+            time.sleep(3)
+            # Check in EventList
+            Element=find_my_element(driver,"XPATH",FIRST_EVENT_EVENTLIST)
+            print(Element.get_attribute("innerHTML"))
+            if(Element.get_attribute("innerHTML") != MY_EVENT_NAME):
+                print("Error! Event not present in eventlist")
+             # Check in Landing page
+            Element=find_my_element(driver,"XPATH",HEBTUS_LOGO)
+            print(Element.get_attribute("innerHTML"))
+            if(Element.get_attribute("innerHTML") != MY_EVENT_NAME):
+                print("Error! Event not present in eventlist")
+            
+
+        # PrivateRadio = find_my_element(driver,"ID",PRIVATE_RADIOBUTTON)
+        # ScheduleLaterRadio = find_my_element(driver,"ID",SCHEDULE_LATER_RADIOBUTTON)
 
         Navigation_Test(driver)
         Validate_Event_Details(driver)
-        Radiobuttons_Enabled_Test(driver)
+        Public_And_Publish_Now(driver)
