@@ -34,7 +34,7 @@ def dashboard(driver):
     TestEvent=find_my_element(driver,"XPATH",TEST_EVENT_PROFIT_EVENTLIST)
     PriceInEventlist = TestEvent.get_attribute("innerHTML")
     PriceInEventlistList=PriceInEventlist.split("$")
-    print(PriceInEventlistList[0])
+    EventListPrice = PriceInEventlistList[1].split(".")
     TestEvent = find_my_element(driver,"ID",EVENT_TO_TEST_EDIT)
     TestEvent.click()
     time.sleep(4)
@@ -43,8 +43,9 @@ def dashboard(driver):
     time.sleep(4)
 
     # Event URL Copy
-    CopyURLChoice=find_my_element(driver,"XPATH",DASHBOARD_URL)
+    CopyURLChoice=find_my_element(driver,"ID",DASHBOARD_URL)
     CopyURLChoice.click()
+    time.sleep(3)
     URL = pyperclip.paste()
     # Check if copied URL is a valid URL:
     if "https://hebtus.me/events" not in  URL:
@@ -54,7 +55,7 @@ def dashboard(driver):
     Element = find_my_element(driver,"ID",PUBLISH_HYPERLINK)
     Element.click()
     time.sleep(4)
-    Element = find_my_element(driver,"ID",PUBLISH_YOUR_EVENT_TITLE)
+    Element = find_my_element(driver,"XPATH",PUBLISH_YOUR_EVENT_IDENTIFIER)
     if(Element == None):
         print("Error! Did not navigate to publish settings when clicking Review your publish settings")
     else: # go back
@@ -82,12 +83,10 @@ def dashboard(driver):
 
     TestEvent=find_my_element(driver,"XPATH",RECENT_ORDERS_PRICE)
     PriceOneTicket = TestEvent.get_attribute("innerHTML")
-    print(PriceOneTicket)
     TestEvent=find_my_element(driver,"XPATH",RECENT_ORDERS_QUANTITY)
     AmountOfTickets = TestEvent.get_attribute("innerHTML")
-    print(AmountOfTickets)
 
-    if((int(PriceOneTicket)*int(AmountOfTickets)) != int(PriceInEventlistList[0])):
+    if((int(PriceOneTicket)*int(AmountOfTickets)) != int(EventListPrice[0])):
         print("Error! Amount of sold tickets in eventlist does not match the one in dashboard")
 
 
