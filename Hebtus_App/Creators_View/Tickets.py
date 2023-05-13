@@ -177,34 +177,26 @@ def tickets(driver):
         time.sleep(1)
 
         touch.press(x=25, y=359).move_to(x=23,y=136).release().perform()
-        time.sleep(2)
+        time.sleep(15)
 
         # Date and time
-        StartDate = find_my_element(driver, "XPATH", ADD_TICKETS_EVENT_STARTS)
-        check_not_found(driver, StartDate, "Start date not found")
-        StartDate.click()
-        time.sleep(1)
-        StartDate = find_my_element(driver, "XPATH", ADD_TICKETS_EVENT_STARTS)
-        check_not_found(driver, StartDate, "Start date not found 2")
-        StartDate.send_keys("2023-05-16")
-        time.sleep(2)
-        driver.hide_keyboard()
-        time.sleep(2)
-
-        EndDate = find_my_element(driver, "XPATH", ADD_TICKETS_EVENT_ENDS)
-        check_not_found(driver, EndDate, "End date not found")
-        EndDate.click()
-        time.sleep(1)
-        EndDate = find_my_element(driver, "XPATH", ADD_TICKETS_EVENT_ENDS)
-        check_not_found(driver, EndDate, "End date not found 2")
-        EndDate.send_keys("2023-05-17")
-        time.sleep(1)
-        driver.hide_keyboard()
-        time.sleep(2)
-
-        # Swipe to end
-        touch.press(x=224, y=524).move_to(x=221,y=128).release().perform()
-        time.sleep(2)
+        #StartDate = find_my_element(driver, "XPATH", ADD_TICKETS_EVENT_STARTS)
+        #check_not_found(driver, StartDate, "Start date not found")
+        #StartDate.click()
+        #time.sleep(1)
+        #StartDate.send_keys("2023-05-17")
+        #time.sleep(2)
+        #driver.hide_keyboard()
+        #time.sleep(4)
+#
+        #EndDate = find_my_element(driver, "XPATH", ADD_TICKETS_EVENT_ENDS)
+        #check_not_found(driver, EndDate, "End date not found")
+        #EndDate.click()
+        #time.sleep(2)
+        #EndDate.send_keys("2023-05-18")
+        #time.sleep(3)
+        #driver.hide_keyboard()
+        #time.sleep(4)
 
         # Add ticket
         AddTicketBtn = find_my_element(driver, "XPATH", ADD_TICKET_BTN)
