@@ -45,6 +45,9 @@ BACK_TO_LOGIN_BUTTON = "message--button-login"
 EVENT_ELEMENT = "card Events_event-card__4cxKy"
 EVENT_LIST_1 = "/html/body/div/div/div[3]/div/div/div/div["
 EVENT_LIST_2 = "]/div"
+
+EVENT_NAME_1 = "/html/body/div/div/div[3]/div[1]/div/div/div["
+EVENT_NAME_2 = "]/div/div/h4"
 # Tabs:
 TODAY_TAB = "today-link"
 THIS_WEEKEND_TAB = "this-weekend-tab"
@@ -69,7 +72,38 @@ DATE_TIME = "/html/body/div/div/div[2]/div/div[2]/div[3]/div/div[1]/div[2]/p"
 LOCATION = "/html/body/div/div/div[2]/div/div[2]/div[3]/div/div[2]/div[2]/p"
 EVENTS_DETAILS = "/html/body/div/div/div[2]/div/div[2]/div[4]/p"
 TICKETS_INFO = "/html/body/div/div/div[2]/div/div[3]/div"
-GET_TICKET_BUTTON = "/html/body/div/div/div[2]/div/div[3]/div/div"
+
+# Booking
+PLUS_BUTTON_1 = "/html/body/div/div/div/div[2]/div/div[3]/div/div/div[2]/div/div[1]/div[2]/div/div[1]/div/div[1]/div[2]/button[2]"
+MINUS_BUTTON_1 = "/html/body/div/div/div/div[2]/div/div[3]/div/div/div[2]/div/div[1]/div[2]/div/div[1]/div/div[1]/div[2]/button[1]"
+
+PLUS_BUTTON_2 = "/html/body/div/div/div/div[2]/div/div[3]/div/div/div[2]/div/div[1]/div[2]/div/div[2]/div/div[1]/div[2]/button[2]"
+MINUS_BUTTON_2 = "/html/body/div/div/div/div[2]/div/div[3]/div/div/div[2]/div/div[1]/div[2]/div/div[2]/div/div[1]/div[2]/button[1]"
+
+TICKETS_INFO_1 = "/html/body/div/div/div/div[2]/div/div[3]/div/div/div[2]/div/div[2]/div[2]/div/div/div/div[1]/p[1]"
+TICKETS_INFO_2 = "/html/body/div/div/div/div[2]/div/div[3]/div/div/div[2]/div/div[2]/div[2]/div/div/div/div[1]/p[1]"
+
+CHECKOUT_BUTTON = "footer--checkout-btn"
+CHECKOUT_ALERT = "error-empty"
+
+TICKET_QUANTITY_1 = "/html/body/div/div/div/div[2]/div/div[3]/div/div/div[2]/div/div[1]/div[2]/div/div[1]/div/div[1]/div[2]/div/span"
+
+CONFIRM_EMAIL = "confirmEmail"
+PHONE_TEXTBOX = "phone"
+FEMALE_RADIO_BUTTON = "/html/body/div/div/div/div[2]/div/div[3]/div/div/div[2]/div/div[1]/div[2]/div/div[1]/form/div[3]/div/div/label[1]/span[1]/input"
+MALE_RADIO_BUTTON = "/html/body/div/div/div/div[2]/div/div[3]/div/div/div[2]/div/div[1]/div[2]/div/div[1]/form/div[3]/div/div/label[2]/span[1]/input"
+
+BE_INFORMED_CB = "keep-me-informed"
+SEND_EMAIL_CB = "send-email"
+
+REGISTER_BUTTON = "Register-btn"
+GET_TICKET_BUTTON = "ep-event-tickets-action-button"
+CLOSE_BUTTON = "close-button"
+
+LEAVE_BUTTON = "button-leave"
+STAY_BUTTON = "button-stay"
+
+TIMER_ALERT = "page--button"
 
 # categories:
 HEADER_TEXT = "events-filter-header"
@@ -140,14 +174,6 @@ ORGANIZER_INFO = "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div
 OTHER_EVENTS_YOU_MAY_LIKE = "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div/main/div/div[2]/section/div/div[1]/section/div/div/div/div[1]"
 # RESERVE_SPOT_BUTTON = "/html/body/div[1]/div/section/button"
 RESERVE_SPOT_BUTTON = "//*[@id='root']/div/section/button"
-
-CHECKOUT_BUTTON = "/html/body/div[1]/div/div/div/div/div[1]/div[1]/div/main/div/div[2]/div/div/div[3]/button"
-TICKETS_BUTTON = "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div[2]/div[3]/div/div[2]/button"
-ADD_TICKET_BUTTON = "/html/body/div[1]/div/section/form/div/div/div/ul/li/div/div/div[1]/div[2]/div/button[2]"
-LIKE_BUTTON = "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div[2]/div[2]/div[2]/section[2]/div[1]/section/div/div[2]/div[3]/div/article/div[2]/div/span[2]/span/button"
-SHARE_BUTTON = "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div[2]/div[2]/div[2]/section[2]/div[1]/section/div/div[2]/div[3]/div/article/div[2]/div/span[1]/span/button"
-FOLLOW_BUTTTON = "/html/body/div[1]/div[1]/div/div/div[2]/div/div/div/div[1]/div/main/div/div[1]/div[2]/div[2]/div[1]/section/div[2]/button"
-REGISTER_PAGE = "/html/body/div[1]/div/div/div/div/div[1]"
 
 
 LOCATION_PICKER = "location-text"
