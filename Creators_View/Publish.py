@@ -8,6 +8,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 import sys
 sys.path.append(".") # To access modules in sibling directories
+# import Action chains
+from selenium.webdriver.common.action_chains import ActionChains
 
 from Common_Files.Utilities import *
 from Common_Files.RealReferences import *
