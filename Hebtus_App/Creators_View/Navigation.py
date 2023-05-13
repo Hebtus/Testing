@@ -56,6 +56,12 @@ def Skip_Location(driver):
     print("signed in successfuly")
     time.sleep(8)
 
+def Main_Menu_Button(driver):
+    # Choose only once:
+    MainMenuBtn = find_my_element(driver,"XPATH",BASIC_INFO_MAIN_MENU_BTN)
+    check_not_found(driver, MainMenuBtn, "MainMenuBtn not found")
+    MainMenuBtn.click()
+    time.sleep(4)
 
 def To_Event_List(driver):
     # Click on account icon:
@@ -85,15 +91,21 @@ def To_Main_Menu_First_Event(driver):
     MainMenu.click()
     time.sleep(3)
 
-def Main_Menu_First_Event_Tickets(driver):
+def Main_Menu_Tickets(driver):
     # This gets the main menu of an event
     MainMenuChoice = find_my_element(driver,"XPATH",MAIN_MENU_TICKETS)
     MainMenuChoice.click()
     time.sleep(3)
 
-def Main_Menu_First_Event_Publish(driver):
+def Main_Menu_Publish(driver):
     # This gets the main menu of an event
     MainMenuChoice = find_my_element(driver,"XPATH",MAIN_MENU_PUBLISH)
+    MainMenuChoice.click()
+    time.sleep(3)
+
+def Main_Menu_Dashboard(driver):
+    # This gets the main menu of an event
+    MainMenuChoice = find_my_element(driver,"XPATH",DASHBOARD_MENU_CHOICE)
     MainMenuChoice.click()
     time.sleep(3)
 

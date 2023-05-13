@@ -14,6 +14,10 @@ from Attendees_View.LandingPageTest import landing_page
 
 from Creators_View.Navigation import *
 from Creators_View.BasicInfo import basic_info
+from Creators_View.Tickets import *
+from Creators_View.Publish import *
+from Creators_View.Dashboard import *
+
 
 import time
 
@@ -41,10 +45,22 @@ driver.implicitly_wait(120)
 # creator_view(driver)  # temporary
 log_in(driver, "ayausamakhalifa@gmail.com", "123456789")
 Skip_Location(driver)
-To_Event_List(driver)
-To_Dashboard_Second_Event(driver)
-To_Main_Menu_First_Event(driver)
-Main_Menu_First_Event_Tickets(driver)
+basic_info(driver)
+Main_Menu_Button(driver)
+Main_Menu_Tickets(driver)
+tickets(driver)
+Main_Menu_Button(driver)
+Main_Menu_Publish(driver)
+publish(driver)
+Main_Menu_Button(driver)
+Main_Menu_Dashboard(driver)
+dashboard(driver)
+
+
+
+#To_Event_List(driver)
+#To_Dashboard_Second_Event(driver)
+#To_Main_Menu_First_Event(driver)
 
 
 #basic_info(driver)

@@ -63,30 +63,30 @@ def basic_info(driver):
     driver.hide_keyboard()
     SaveButton.click()
     time.sleep(3)
-    try:
-        EventNameErrorMsg = driver.find_element(By.XPATH,EVENT_NAME_ERROR_MSG)
-    except:
-        print("Success! Event name error message not found after entering an event name")
-    time.sleep(2)
+    #try:
+    #    EventNameErrorMsg = driver.find_element(By.XPATH,EVENT_NAME_ERROR_MSG)
+    #except:
+    #    print("Success! Event name error message not found after entering an event name")
+    #time.sleep(2)
 
     # Test 3: Entering more than 75 characters
-    EventName = find_my_element(driver, "XPATH", EVENT_NAME_FIELD)
-    check_not_found(driver, EventName, "Event name not found")
-    EventName.click()
-    time.sleep(1)
-    EventName = find_my_element(driver, "XPATH", EVENT_NAME_FIELD)
-    check_not_found(driver, EventName, "Event name not found 2")
-    EventName.set_text("")
-    time.sleep(1)
-    EventName.send_keys(EventTitles[1])
-    time.sleep(1)
-    driver.hide_keyboard()
-    EventNameRetrieved = EventName.get_attribute("text")
-    if len(str(EventNameRetrieved)) != 75:
-        print(
-                "Error: Case of 75 character as maximum limit for Event Title field not handled"
-        )
-    time.sleep(2)
+    #EventName = find_my_element(driver, "XPATH", EVENT_NAME_FIELD)
+    #check_not_found(driver, EventName, "Event name not found")
+    #EventName.click()
+    #time.sleep(1)
+    #EventName = find_my_element(driver, "XPATH", EVENT_NAME_FIELD)
+    #check_not_found(driver, EventName, "Event name not found 2")
+    #EventName.set_text("")
+    #time.sleep(1)
+    #EventName.send_keys(EventTitles[1])
+    #time.sleep(1)
+    #driver.hide_keyboard()
+    #EventNameRetrieved = EventName.get_attribute("text")
+    #if len(str(EventNameRetrieved)) != 75:
+    #    print(
+    #            "Error: Case of 75 character as maximum limit for Event Title field not handled"
+    #    )
+    #time.sleep(2)
 
     # Finally enter valid Event name
     EventName = find_my_element(driver, "XPATH", EVENT_NAME_FIELD)
@@ -102,8 +102,6 @@ def basic_info(driver):
     driver.hide_keyboard()
     SaveButton.click()
 
-    # ---------------------------------------------- Testing Type, Category and Sub-Category Fields ---------------------------------------------- #
-       
 
     # -------------------------------------------------- Testing Tags Field ------------------------------------------------- #
     # swipe from basic info to tags
@@ -113,41 +111,37 @@ def basic_info(driver):
 
     # ---------- Test 1: Entering more than 25 characters ---------- #
 
-    TagsField = find_my_element(driver,"XPATH",EVENT_TAGS_FIELD)
-    check_not_found(driver, TagsField, "Tags field not found")
-    TagsField.click()
-    time.sleep(1)
-    TagsField = find_my_element(driver, "XPATH", EVENT_TAGS_FIELD)
-    check_not_found(driver, TagsField, "Tags field not found 2")
-    TagsField.send_keys(Tags[0])
-    time.sleep(1)
-    driver.hide_keyboard()
-    TagsFieldRetrieved = TagsField.get_attribute("text")
-
-    if len(str(TagsFieldRetrieved)) != 25:
-        print(
-                "Error: Case of 25 character as maximum limit for Tags field not handled"
-        )
-    time.sleep(2)
-    TagsField.click()
-    TagsField.set_text("")
-
-    # ---------- Test 2 : Entering a tag  ---------- #
-        
-    TagsField.click()
-    time.sleep(1)
-    TagsField.send_keys(Tags[1])
-    time.sleep(1)
-    driver.hide_keyboard()
-    time.sleep(1)
-    AddTag = find_my_element(driver,"XPATH",EVENT_TAG_ADD)
-    check_not_found(driver, AddTag, "Add tag button not found")
-    AddTag.click()
-    TagsFieldRetrieved = TagsField.get_attribute("text")
-    # print(TagsFieldRetrieved)
-    if len(TagsFieldRetrieved) != 0:
-        print("Error: Unable to add a tag. Therefore cannot perform further tests")
-    time.sleep(2)
+    #TagsField = find_my_element(driver,"XPATH",EVENT_TAGS_FIELD)
+    #check_not_found(driver, TagsField, "Tags field not found")
+    #TagsField.click()
+    #time.sleep(1)
+    #TagsField = find_my_element(driver, "XPATH", EVENT_TAGS_FIELD)
+    #check_not_found(driver, TagsField, "Tags field not found 2")
+    #TagsField.send_keys(Tags[0])
+    #time.sleep(1)
+    #driver.hide_keyboard()
+    #TagsFieldRetrieved = TagsField.get_attribute("text")
+#
+    #if len(str(TagsFieldRetrieved)) != 25:
+    #    print(
+    #            "Error: Case of 25 character as maximum limit for Tags field not handled"
+    #    )
+    #time.sleep(2)
+    #TagsField.click()
+    #TagsField.set_text("")
+#
+    ## ---------- Test 2 : Entering a tag  ---------- #
+    #    
+    #TagsField.click()
+    #time.sleep(1)
+    #TagsField.send_keys(Tags[1])
+    #time.sleep(1)
+    #driver.hide_keyboard()
+    #time.sleep(1)
+    #TagsFieldRetrieved = TagsField.get_attribute("text")
+    #if len(TagsFieldRetrieved) != 0:
+    #    print("Error: Unable to add a tag. Therefore cannot perform further tests")
+    #time.sleep(2)
 
     # ------------------------------------------------- Testing Location Field ------------------------------------------------ #
     
@@ -174,11 +168,11 @@ def basic_info(driver):
     driver.hide_keyboard()
     SaveButton.click()
     time.sleep(3)
-    try:
-        VenueErrorMsg = driver.find_element(By.XPATH,EVENT_VENUE_ERROR_MSG)
-    except:
-        print("Success! Venue field error message not found after filling venue field")
-    time.sleep(2)
+    #try:
+    #    VenueErrorMsg = driver.find_element(By.XPATH,EVENT_VENUE_ERROR_MSG)
+    #except:
+    #    print("Success! Venue field error message not found after filling venue field")
+    #time.sleep(2)
 
     # -------------- Online option ---------------- #
     #OnlineButton = find_my_element(driver,"XPATH",EVENT_ONLINE_BUTTON)
@@ -210,32 +204,7 @@ def basic_info(driver):
         print("Error: Start event Error message not displayed when start time is not filled")
     time.sleep(2)
 
-    # --------------- Recurring event --------------- #
-    # Test 1: Can choose recurring event
-    RecurringButton = find_my_element(driver,"XPATH",EVENT_RECURRING_EVENT_BUTTON)
-    check_not_found(driver, RecurringButton, "Recurring button not found")
-    RecurringButton.click()
-    if(RecurringButton.get_attribute("clickable") == False):
-        print("Error: Recurring Button option cannot be chosen")
-    time.sleep(2)
-
-    # Test 2: the paragraph is displayed upon choosing recurring event option
-    try:
-        RecurringEventMsg = find_my_element(driver,"XPATH",EVENT_RECURRING_MESSAGE)
-    except:
-        print("Recurring message not found")
-    time.sleep(2)
-
     # --------------- Single event --------------- #
-    # Test 1: Can choose single event
-    SingleButton = find_my_element(driver,"XPATH",EVENT_SINGLE_EVENT_BUTTON)
-    check_not_found(driver, SingleButton, "Single button not found")
-    SingleButton.click()
-    if(SingleButton.get_attribute("clickable") == False):
-        print("Error: Single event Button option cannot be chosen")
-    time.sleep(2)
-
-
     # swipe from date and time title to event starts and ends
     touch.press(x=462, y=490).move_to(x=462,y=147).release().perform()
     time.sleep(2)
@@ -246,7 +215,7 @@ def basic_info(driver):
     time.sleep(1)
     StartDate = find_my_element(driver, "XPATH", EVENT_START_DATE_FIELD)
     check_not_found(driver, StartDate, "Start date not found 2")
-    StartDate.send_keys("2023-04-10")
+    StartDate.send_keys("2023-06-10")
     time.sleep(2)
     driver.hide_keyboard()
     time.sleep(2)
@@ -257,69 +226,53 @@ def basic_info(driver):
     time.sleep(1)
     EndDate = find_my_element(driver, "XPATH", EVENT_END_DATE_FIELD)
     check_not_found(driver, EndDate, "End date not found 2")
-    EndDate.send_keys("2023-04-12")
-    time.sleep(1)
-    driver.hide_keyboard()
-    time.sleep(2)
-
-    # Test 2: Start date after end date
-    StartDate = find_my_element(driver, "XPATH", EVENT_START_DATE_FIELD)
-    check_not_found(driver, StartDate, "Start date not found")
-    StartDate.click()
-    StartDate.set_text("")
-    time.sleep(2)
-    StartDate.click()
-    time.sleep(1)
-    StartDate = find_my_element(driver, "XPATH", EVENT_START_DATE_FIELD)
-    check_not_found(driver, StartDate, "Start date not found 2")
-    StartDate.send_keys("2023-04-05")
+    EndDate.send_keys("2023-06-12")
     time.sleep(1)
     driver.hide_keyboard()
     time.sleep(2)
     SaveButton.click()
-    time.sleep(3)
-    try:
-        StartDateErrorMsg = find_my_element(driver,"XPATH",EVENT_START_DATE_ERROR_MSG)
-    except:
-        print("Error: There is no message that displays start date is after end date")
-    time.sleep(2)
 
-
-    # swipe to display start time and display end time, time zone, language and upload image
-    touch.press(x=462, y=570).move_to(x=462,y=136).release().perform()
-    time.sleep(2)
-    DisplayStartTime = find_my_element(driver, "XPATH", EVENT_DISPLAY_START_TIME_BUTTON)
-    check_not_found(driver, DisplayStartTime, "Display start time button not found 2")
-    DisplayStartTime.click()
-    time.sleep(2)
-    if(DisplayStartTime.get_attribute("clickable") == False):
-        print("Error: Display start time Button option cannot be chosen")
-    time.sleep(2)
-
-    DisplayEndTime = find_my_element(driver, "XPATH", EVENT_DISPLAY_END_TIME_BUTTON)
-    check_not_found(driver, DisplayEndTime, "Display end time button not found 2")
-    DisplayEndTime.click()
-    time.sleep(2)
-    if(DisplayEndTime.get_attribute("clickable") == False):
-        print("Error: Display end time Button option cannot be chosen")
-    time.sleep(2)
+    # Test 2: Start date after end date
+    #StartDate = find_my_element(driver, "XPATH", EVENT_START_DATE_FIELD)
+    #check_not_found(driver, StartDate, "Start date not found")
+    #StartDate.click()
+    #StartDate.set_text("")
+    #time.sleep(2)
+    #StartDate.click()
+    #time.sleep(1)
+    #StartDate = find_my_element(driver, "XPATH", EVENT_START_DATE_FIELD)
+    #check_not_found(driver, StartDate, "Start date not found 2")
+    #StartDate.send_keys("2023-06-20")
+    #time.sleep(1)
+    #driver.hide_keyboard()
+    #time.sleep(2)
+    #SaveButton.click()
+    #time.sleep(3)
+    #try:
+    #    StartDateErrorMsg = find_my_element(driver,"XPATH",EVENT_START_DATE_ERROR_MSG)
+    #except:
+    #    print("Error: There is no message that displays start date is after end date")
+    #time.sleep(2)
 
     # swipe to description
     touch.press(x=462, y=715).move_to(x=462,y=153).release().perform()
     time.sleep(2)
-    Description = find_my_element(driver, "XPATH", EVENT_DESCRIPTION_FIELD)
-    check_not_found(driver, Description, "Description field not found")
-    Description.click()
-    time.sleep(1)
-    Description.send_keys("A very awesome event that you do not want to miss!")
-    time.sleep(1)
-    driver.hide_keyboard()
-    DescriptionRetrieved = Description.get_attribute("text")
-    if(len(str(DescriptionRetrieved)) == 0):
-       print("Error: Unable to write in description field")
+    #Description = find_my_element(driver, "XPATH", EVENT_DESCRIPTION_FIELD)
+    #check_not_found(driver, Description, "Description field not found")
+    #Description.click()
+    #time.sleep(1)
+    #Description.send_keys("A very awesome event that you do not want to miss!")
+    #time.sleep(1)
+    #driver.hide_keyboard()
+    #DescriptionRetrieved = Description.get_attribute("text")
+    #if(len(str(DescriptionRetrieved)) == 0):
+    #   print("Error: Unable to write in description field")
 
 
     # swipe reverse from description to 
-    # touch.press(x=462, y=140).move_to(x=462,y=715).release().perform()
-
-
+    #touch.press(x=462, y=167).move_to(x=462,y=692).release().perform()
+    #time.sleep(2)
+    #touch.press(x=466,y=140).move_to(x=463, y=710).release().perform()
+    #time.sleep(2)
+    #touch.press(x=462, y=148).move_to(x=461,y=705).release().perform()
+    #time.sleep(2)

@@ -200,7 +200,6 @@ EVENT_RECURRING_MESSAGE = "	//android.view.View[@content-desc='You’ll be able 
 EVENT_START_DATE_FIELD = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText[1]"
 EVENT_END_DATE_FIELD = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText[2]"
 EVENT_START_DATE_ERROR_MSG = "//android.view.View[@content-desc='Please enter event start date ']"
-EVENT_START_DATE_CALENDAR = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText[1]/android.widget.Button"
 EVENT_END_DATE_CALENDAR = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText[2]/android.widget.Button"
 EVENT_DATE_CHOOSE_CALENDAR_PART1 = "//android.view.View[@content-desc='" # 12, Wednesday, April 12, 2023
 EVENT_DATE_CHOOSE_CALENDAR_PART2 = "']"
@@ -218,7 +217,10 @@ EVENT_DISPLAY_END_TIME_BUTTON = "//android.widget.CheckBox[@content-desc='Displa
 EVENT_IMAGE_TITLE = "//android.view.View[@content-desc='Image upload']"
 EVENT_IMAGE_UPLOAD_BUTTON = "//android.widget.Button[@content-desc='Upload Photo']"
 EVENT_DESCRIPTION_TITLE = "//android.view.View[@content-desc='Description']"
-EVENT_DESCRIPTION_FIELD = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText[3]"
+EVENT_DESCRIPTION_FIELD = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText"
+
+# Basic info to rest
+BASIC_INFO_MAIN_MENU_BTN = "//android.widget.Button[@content-desc='press']"
 
 # Event List
 EVENT_LIST_TITLE = "//android.view.View[@content-desc='hey there!']"
@@ -261,8 +263,8 @@ ADD_TICKETS_DATE_AND_TIME = "//android.widget.Button[@content-desc='Date & time'
 ADD_TICKETS_DATE_AND_TIME_ID = "Date & time"
 ADD_TICKETS_WHEN_SALES_END = "//android.view.View[@content-desc='When sales end']"
 ADD_TICKETS_WHEN_SALES_END_ID = "When sales end"
-ADD_TICKETS_EVENT_STARTS = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.Button[2]"
-ADD_TICKETS_EVENT_ENDS = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.Button[4]"
+ADD_TICKETS_EVENT_STARTS = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText[3]"
+ADD_TICKETS_EVENT_ENDS = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText[4]"
 ADD_TICKETS_EVENT_START_TIME = "(//android.widget.Button[@content-desc='02:00'])[1]"
 ADD_TICKETS_EVENT_END_TIME= "(//android.widget.Button[@content-desc='02:00'])[2]"
 ADD_TICKET_BTN = "//android.widget.Button[@content-desc='Add']"
@@ -275,8 +277,51 @@ THREE_DOTS = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/
 TICKET_NAMES = "//android.widget.ScrollView//android.view.View//android.view.View//android.view.View//android.view.View[1]"
 TICKET_PRICES = "//android.widget.ScrollView//android.view.View//android.view.View//android.view.View//android.view.View[3]"
 TICKET_QUANTITIES = "//android.widget.ScrollView//android.view.View//android.view.View//android.view.View//android.view.View[5]"
+# Promo code:
+PROMO_CODE = "//android.widget.Button[@content-desc='Promo code']"
+ADD_A_CODE = "//android.widget.Button[@content-desc='Add a code']"
+CODE_NAME = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.EditText[1]"
+NUMBER_OF_USES = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.EditText[2]"
+PROMO_PRICE_BTN = "//android.widget.Button[@content-desc='Price']"
+PROMO_PRICE = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.EditText[3]"
+PROMO_PERCENTAGE_BTN = "//android.widget.Button[@content-desc='Percentage']"
+PROMO_PERCENTAGE = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.EditText[3]"
+ADD_PROMO = "//android.widget.Button[@content-desc='Add']"
+PROMO_BACK = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.Button"
+PROMO_REFRESH = "//android.widget.Button[@content-desc='Refresh']"
+PROMO_ADDED_NAME = "//android.widget.HorizontalScrollView//android.view.View[@index='3']"
+PROMO_CODE_TYPE = "//android.widget.HorizontalScrollView//android.view.View[@index='4']" #percantage
+#actions.w3c_actions.pointer_action.move_to_location(353, 666)
+#actions.w3c_actions.pointer_action.pointer_down()
+#actions.w3c_actions.pointer_action.move_to_location(25, 666)
+PROMO_CODE_DISCOUNT = "//android.widget.HorizontalScrollView//android.view.View[@index='1']" #65.0
+PROMO_CODE_USES = "//android.widget.HorizontalScrollView//android.view.View[@index='5']"
+#actions.w3c_actions.pointer_action.move_to_location(418, 662)
+#actions.w3c_actions.pointer_action.pointer_down()
+#actions.w3c_actions.pointer_action.move_to_location(24, 658)
+PROMO_CODE_OPTIONS = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.HorizontalScrollView/android.widget.Button"
+PROMO_CODE_EDIT = "//android.widget.Button[@content-desc='edit']"
+PROMO_CODE_DELETE = "//android.widget.Button[@content-desc='delete']"
 
+# Publish
+PUBLISH_THE_EVENT = "//android.widget.Button[@content-desc='Publish The event']"
+EVENT_PUBLISHED = "//android.view.View[@content-desc='The event is now published']"
+MAKE_EVENT_PUBLIC = "//android.widget.Button[@content-desc='Make the event public']"
+MAKE_EVENT_PRIVATE = "//android.widget.Button[@content-desc='Make The event private']"
 
-
-
-
+# Dashboard
+DASHBOARD_MENU_CHOICE = "//android.view.View[@content-desc='dashboard']"
+DASHBOARD_REFRESH = "//android.widget.Button[@content-desc='refresh']"
+ADD_ATTENDEE = "//android.widget.Button[@content-desc='add attendee']"
+DASHBOARD_DELETE = "//android.widget.Button[@content-desc='Delete event']"
+#Add attendee
+ATTENDEE_FIRST_NAME = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText[1]"
+ATTENDEE_LAST_NAME = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText[2]"
+ATTENDEE_PHONE_NUMBER = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText[3]"
+ATTENDEE_GENDER = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText[4]"
+ATTENDEE_EMAIL = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText[5]"
+ATTENDEE_PRICE = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText[6]"
+ATTENDEE_QUANTITY = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText[6]"
+ADD_ATTENDEE_END_BTN = "//android.widget.Button[@content-desc='add']"
+TICKETS_SOLD = "//android.widget.HorizontalScrollView//android.view.View//android.view.View[@index='1']" 
+TICKET_ADDED_TABLE = "(//android.view.View[@content-desc='Regular'])[1]"
