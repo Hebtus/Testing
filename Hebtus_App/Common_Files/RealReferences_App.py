@@ -221,7 +221,7 @@ EVENT_DESCRIPTION_TITLE = "//android.view.View[@content-desc='Description']"
 EVENT_DESCRIPTION_FIELD = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText[3]"
 
 # Event List
-EVENT_LIST_TITLE = "//android.view.View[@content-desc="hey there!"]"
+EVENT_LIST_TITLE = "//android.view.View[@content-desc='hey there!']"
 EXPORT_TO_CSV = "//android.widget.Button[@content-desc='Export to CSV']"
 EVENT_LIST_FILTER = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.Button[1]"
 
@@ -271,7 +271,10 @@ TICKET_ADDED_SUCCESSFULLY = "//android.view.View[@content-desc='The ticket was a
 ADD_TICKETS_GO_BACK = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.Button"
 TICKET_CARDS = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.view.View/android.view.View"
 THREE_DOTS = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.view.View/android.view.View[2]/android.view.View/android.widget.Button"
-
+# view added tickets
+TICKET_NAMES = "//android.widget.ScrollView//android.view.View//android.view.View//android.view.View//android.view.View[1]"
+TICKET_PRICES = "//android.widget.ScrollView//android.view.View//android.view.View//android.view.View//android.view.View[3]"
+TICKET_QUANTITIES = "//android.widget.ScrollView//android.view.View//android.view.View//android.view.View//android.view.View[5]"
 
 
 

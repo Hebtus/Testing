@@ -105,16 +105,16 @@ def tickets(driver):
     time.sleep(2)
 
     # retrieve data for all ticket cards
-    # outer loop that swipes
+    Names = []
+    Quantities = []
+    Prices = []
+    # outer loop that swipes infinitely until it finds that refresh button has appeared
+    # 470, 711)
+    #(469, 145) 
     while(True):
         # retrieve cards
-        Cards = find_my_elements(driver,"XPATH",TICKET_CARDS)
+        pass
         
-    
-    # Check if a ticket card has been added
-
-    Card = find_my_element(driver, "XPATH", TICKET_CARD)
-    check_not_found(driver, Card, "Failed to add ticket! No ticket card has been added.")
 
 
 
