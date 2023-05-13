@@ -16,6 +16,11 @@ from Common_Files.Utilities import *
 from Common_Files.RealReferences import *
 
 def event_list(driver, mode=0):
+    # Go to event list
+    Btn = find_my_element(driver,"XPATH",GO_TO_EVENTLIST)
+    Btn.click()
+    time.sleep(4)
+
     # ---------------------------------------------------- Testing Filters --------------------------------------------------- #
     FilterButton = find_my_element(driver,"ID",FILTER_EVENTS_BUTTON) 
     # Test : Choose filter "All events", count each type and then use filter for every type to check if count matches.

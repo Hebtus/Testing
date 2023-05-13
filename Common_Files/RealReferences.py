@@ -14,18 +14,20 @@ LOG_IN_BUTTON = "form--button-login"
 MANAGE_MY_EVENTS = "/html/body/div/div/div[1]/div/nav/div[1]/a" # FULL XPATH
 
 # Event list
+GO_TO_EVENTLIST = "/html/body/div/div/div/span"
 EVENT_HEADER = "event-list-header" # ID
 FILTER_EVENTS_BUTTON = "choices-menu" # ID
 FILTER_ALL_EVENTS = "choices-menu-all" # ID
 FILTER_UPCOMING_EVENTS = "choices-menu-upcoming" # ID
 FILTER_PAST_EVENTS = "choices-menu-past" # ID
-EVENTS_LIST = "/html/body/div/div/div[3]/table/tr" # XPATH
-EVENT_PART1 = "/html/body/div/div/div[3]/table/tr[" # partial XPATH
+EVENTS_LIST = "/html/body/div/div/div[2]/div[3]/table/tr" # XPATH
+EVENT_PART1 = "/html/body/div/div/div[2]/div[3]/table/tr[" # partial XPATH
 EVENT_TITLE_PART2 = "]/td[1]/div/div[2]/div/p[1]" # Rest of XPATH
 EVENT_DATE_PART2 = "]/td[1]/div/div[2]/div/p[3]" # Rest of XPATH
-EVENT_DRAFT_ONSALE_ENDED_STATUS_PART2 = "]/td[4]/div/div[2]" # Rest of XPATH
-EVENT_SOLD_PART2 = "]/td[2]/div/p" # Rest of XPATH
+EVENT_DRAFT_ONSALE_ENDED_STATUS_PART2 = "]/td[3]/div/div[2]" # Rest of XPATH
+EVENT_SOLD_PART2 = "]/td[2]" # Rest of XPATH
 EVENTS_SEARCH_BAR = "search-bar" # ID
+
 # Basic info
 CREATE_EVENT_BUTTON = "create-event-button" #ID
 EVENT_TITLE_FIELD = "input-field-Event Title"  # ID
@@ -88,7 +90,7 @@ FIRST_EVENT_TICKET_COUNT = "ticket-card-capacity-0"
 FIRST_EVENT_TICKET_EDIT = "ticket-card-edit-0"
 
 # Publish
-GO_TO_PUBLISH = "/html/body/div/div/div[2]/div/div[2]/ul/li[4]/a/div/svg/path"
+GO_TO_PUBLISH = "/html/body/div/div/div[2]/div/div[2]/ul/li[4]/a/div/svg"
 PUBLISH_TITLE = "/html/body/div/div/div[2]/div[2]/h1"
 PUBLISH_EVENT_TITLE = "/html/body/div/div/div[2]/div[2]/div[1]/div[2]/span[1]"
 PUBLISH_DATE_TITLE = "/html/body/div/div/div[2]/div[2]/div[1]/div[2]/span[2]"
@@ -97,9 +99,22 @@ PRIVATE_RADIOBUTTON = "Private"
 PUBLISH_NOW_RADIOBUTTON = "now"
 SCHEDULE_LATER_RADIOBUTTON ="schedule"
 
-
-
-
+#Dashboard
+DASHBOARD_TITLE = "/html/body/div/div/div[3]/div/div[1]/div[1]/h1"
+EVENT_TO_TEST_EDIT = "64513144c879ea38608901d7"
+EVENT_TO_TEST = "event-64513144c879ea38608901d7-growth"
+GO_TO_DASHBOARD = "/html/body/div/div/div[2]/div[1]/div[2]/ul/li[5]/a/div/span"
+DASHBOARD_URL = "/html/body/div/div/div[3]/div/div[1]/div[4]/div/div/div[2]/div/svg"
+TEST_EVENT_PROFIT_EVENTLIST = "/html/body/div/div/div[2]/div[3]/table/tr[11]/td[2]"
+DASHBOARD_RECENT_ORDER = "report-table-header-Recent orders"
+RECENT_ORDERS_ROWS = "/html/body/div/div/div[3]/div/div[3]/div[2]/div/div[2]/table/tbody/tr"
+RECENT_ORDERS_QUANTITY = "/html/body/div/div/div[3]/div/div[3]/div[2]/div/div[2]/table/tbody/tr/td[3]"
+RECENT_ORDERS_PRICE = "/html/body/div/div/div[3]/div/div[3]/div[2]/div/div[2]/table/tbody/tr/td[4]"
+ALL_TICKETS_HYPERLINK = "report-table-footer-tickets"
+PUBLISH_HYPERLINK = "publish-event-task"
+ATTENDEE_SUMMARY_REPORT_HYPERLINK = "/html/body/div/div/div[3]/div/div[3]/div[3]/div/div[2]/div/div[2]/div/a"
+PAGE_VIEW_REPORTS_HYPERLINK = "/html/body/div/div/div[3]/div/div[1]/div[2]/div[2]/div/div[3]/p/a"
+PUBLISH_YOUR_EVENT_TITLE = "/html/body/div/div/div[2]/div[2]/h1"
 # ---------------- Creator's View ----------------#
 # Navigation to creator's view
 AD_EXIT_BUTTON = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/div/div/div/div/div/div[2]/span/button"

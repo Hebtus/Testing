@@ -20,10 +20,10 @@ def creator_view(driver):
     time.sleep(3)
 
     Email = find_my_element(driver,"ID",EMAIL_FIELD)
-    Email.send_keys("malak.mokhtar@gmail.com")
+    Email.send_keys("khalidmamdou7@gmail.com")
 
     Password = find_my_element(driver,"ID",PASSWORD_FIELD)
-    Password.send_keys("Tom&Jerry")
+    Password.send_keys("12345678")
 
     time.sleep(1)
 
