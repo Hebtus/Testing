@@ -111,6 +111,5 @@ def dashboard(driver):
     Text = find_my_element(driver,"XPATH",TICKETS_SOLD).get_attribute('content-desc')
     if(Text == '0'):
         print("Error! Sold tickets are 0 after adding attendee")
-
     time.sleep(2)
     

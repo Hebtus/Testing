@@ -70,23 +70,23 @@ def basic_info(driver):
     #time.sleep(2)
 
     # Test 3: Entering more than 75 characters
-    #EventName = find_my_element(driver, "XPATH", EVENT_NAME_FIELD)
-    #check_not_found(driver, EventName, "Event name not found")
-    #EventName.click()
-    #time.sleep(1)
-    #EventName = find_my_element(driver, "XPATH", EVENT_NAME_FIELD)
-    #check_not_found(driver, EventName, "Event name not found 2")
-    #EventName.set_text("")
-    #time.sleep(1)
-    #EventName.send_keys(EventTitles[1])
-    #time.sleep(1)
-    #driver.hide_keyboard()
-    #EventNameRetrieved = EventName.get_attribute("text")
-    #if len(str(EventNameRetrieved)) != 75:
-    #    print(
-    #            "Error: Case of 75 character as maximum limit for Event Title field not handled"
-    #    )
-    #time.sleep(2)
+    EventName = find_my_element(driver, "XPATH", EVENT_NAME_FIELD)
+    check_not_found(driver, EventName, "Event name not found")
+    EventName.click()
+    time.sleep(1)
+    EventName = find_my_element(driver, "XPATH", EVENT_NAME_FIELD)
+    check_not_found(driver, EventName, "Event name not found 2")
+    EventName.set_text("")
+    time.sleep(1)
+    EventName.send_keys(EventTitles[1])
+    time.sleep(1)
+    driver.hide_keyboard()
+    EventNameRetrieved = EventName.get_attribute("text")
+    if len(str(EventNameRetrieved)) != 75:
+        print(
+                "Error: Case of 75 character as maximum limit for Event Title field not handled"
+        )
+    time.sleep(2)
 
     # Finally enter valid Event name
     EventName = find_my_element(driver, "XPATH", EVENT_NAME_FIELD)
@@ -111,37 +111,37 @@ def basic_info(driver):
 
     # ---------- Test 1: Entering more than 25 characters ---------- #
 
-    #TagsField = find_my_element(driver,"XPATH",EVENT_TAGS_FIELD)
-    #check_not_found(driver, TagsField, "Tags field not found")
-    #TagsField.click()
-    #time.sleep(1)
-    #TagsField = find_my_element(driver, "XPATH", EVENT_TAGS_FIELD)
-    #check_not_found(driver, TagsField, "Tags field not found 2")
-    #TagsField.send_keys(Tags[0])
-    #time.sleep(1)
-    #driver.hide_keyboard()
-    #TagsFieldRetrieved = TagsField.get_attribute("text")
-#
-    #if len(str(TagsFieldRetrieved)) != 25:
-    #    print(
-    #            "Error: Case of 25 character as maximum limit for Tags field not handled"
-    #    )
-    #time.sleep(2)
-    #TagsField.click()
-    #TagsField.set_text("")
+    TagsField = find_my_element(driver,"XPATH",EVENT_TAGS_FIELD)
+    check_not_found(driver, TagsField, "Tags field not found")
+    TagsField.click()
+    time.sleep(1)
+    TagsField = find_my_element(driver, "XPATH", EVENT_TAGS_FIELD)
+    check_not_found(driver, TagsField, "Tags field not found 2")
+    TagsField.send_keys(Tags[0])
+    time.sleep(1)
+    driver.hide_keyboard()
+    TagsFieldRetrieved = TagsField.get_attribute("text")
+
+    if len(str(TagsFieldRetrieved)) != 25:
+        print(
+                "Error: Case of 25 character as maximum limit for Tags field not handled"
+        )
+    time.sleep(2)
+    TagsField.click()
+    TagsField.set_text("")
 #
     ## ---------- Test 2 : Entering a tag  ---------- #
     #    
-    #TagsField.click()
-    #time.sleep(1)
-    #TagsField.send_keys(Tags[1])
-    #time.sleep(1)
-    #driver.hide_keyboard()
-    #time.sleep(1)
-    #TagsFieldRetrieved = TagsField.get_attribute("text")
-    #if len(TagsFieldRetrieved) != 0:
-    #    print("Error: Unable to add a tag. Therefore cannot perform further tests")
-    #time.sleep(2)
+    TagsField.click()
+    time.sleep(1)
+    TagsField.send_keys(Tags[1])
+    time.sleep(1)
+    driver.hide_keyboard()
+    time.sleep(1)
+    TagsFieldRetrieved = TagsField.get_attribute("text")
+    if len(TagsFieldRetrieved) != 0:
+        print("Error: Unable to add a tag. Therefore cannot perform further tests")
+    time.sleep(2)
 
     # ------------------------------------------------- Testing Location Field ------------------------------------------------ #
     
@@ -230,7 +230,6 @@ def basic_info(driver):
     time.sleep(1)
     driver.hide_keyboard()
     time.sleep(2)
-    SaveButton.click()
 
     # Test 2: Start date after end date
     #StartDate = find_my_element(driver, "XPATH", EVENT_START_DATE_FIELD)
@@ -257,22 +256,14 @@ def basic_info(driver):
     # swipe to description
     touch.press(x=462, y=715).move_to(x=462,y=153).release().perform()
     time.sleep(2)
-    #Description = find_my_element(driver, "XPATH", EVENT_DESCRIPTION_FIELD)
-    #check_not_found(driver, Description, "Description field not found")
-    #Description.click()
-    #time.sleep(1)
-    #Description.send_keys("A very awesome event that you do not want to miss!")
-    #time.sleep(1)
-    #driver.hide_keyboard()
-    #DescriptionRetrieved = Description.get_attribute("text")
-    #if(len(str(DescriptionRetrieved)) == 0):
-    #   print("Error: Unable to write in description field")
-
-
-    # swipe reverse from description to 
-    #touch.press(x=462, y=167).move_to(x=462,y=692).release().perform()
-    #time.sleep(2)
-    #touch.press(x=466,y=140).move_to(x=463, y=710).release().perform()
-    #time.sleep(2)
-    #touch.press(x=462, y=148).move_to(x=461,y=705).release().perform()
-    #time.sleep(2)
+    Description = find_my_element(driver, "XPATH", EVENT_DESCRIPTION_FIELD)
+    check_not_found(driver, Description, "Description field not found")
+    Description.click()
+    time.sleep(1)
+    Description.send_keys("A very awesome event that you do not want to miss!")
+    time.sleep(1)
+    driver.hide_keyboard()
+    DescriptionRetrieved = Description.get_attribute("text")
+    if(len(str(DescriptionRetrieved)) == 0):
+       print("Error: Unable to write in description field")
+    SaveButton.click()

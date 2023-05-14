@@ -177,7 +177,7 @@ def tickets(driver):
         time.sleep(1)
 
         touch.press(x=25, y=359).move_to(x=23,y=136).release().perform()
-        time.sleep(15)
+        time.sleep(20)
 
         # Date and time
         #StartDate = find_my_element(driver, "XPATH", ADD_TICKETS_EVENT_STARTS)
