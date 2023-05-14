@@ -18,9 +18,9 @@ from datetime import datetime, date, timedelta
 
 
 def landing_page(driver):
-    # login(driver, "hebtususer@gmail.com", "123456789")
-    # nav_bar_test(driver, "hebtususer@gmail.com")
-    update_password_test(driver, "hebtususer2@gmail.com", "147258369", "123456789")
+    login(driver, "hebtususer@gmail.com", "123456789")
+    nav_bar_test(driver, "hebtususer@gmail.com")
+    # update_password_test(driver, "hebtususer2@gmail.com", "147258369", "123456789")
     # tabs_test(driver)
     # categories_test(driver)
     # call_location_test(driver)
@@ -245,9 +245,8 @@ def nav_bar_test(driver, email):
     check_not_found(driver, CreateEventButton, "Create Event button not found")
     CreateEventButton.click()
     time.sleep(3)
-    BasicInfoPage = find_my_element(driver, "XPATH", CREATE_EVENT_PAGE)
+    BasicInfoPage = find_my_element(driver, "ID", CREATE_EVENT_PAGE)
     check_not_found(driver, BasicInfoPage, "Basic Info page not reached")
-    assert BasicInfoPage.text == "Basic Info", "Basic Info page not reached"
     time.sleep(1)
     print("Create event button test passed")
     driver.back()

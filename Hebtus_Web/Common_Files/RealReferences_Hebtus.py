@@ -25,7 +25,7 @@ DROP_DOWN_LOGIN = "login-link"
 DROP_DOWN_SIGNUP = "signup-link"
 DROP_DOWN_MANAGE_EVENTS = "manage-my-events-link"
 DROP_DOWN_UPDATE_PASSWORD = "update-password-link"
-CREATE_EVENT_PAGE = "/html/body/div/div/div[1]/div[2]/h1"
+CREATE_EVENT_PAGE = "input-field-Event Title"
 MANGE_EVENTS_PAGE = "event-list-header"
 
 # Update password page

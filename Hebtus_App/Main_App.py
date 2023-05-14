@@ -32,8 +32,8 @@ time.sleep(20)
 # ------------- Attendee's view web pages testing ------------- #
 # sign_up(driver)
 # sign_in(driver)
-event_page(driver)
-# landing_page(driver)
+# event_page(driver)
+landing_page(driver)
 # ----- Navigation from Attendee's view to Creator's view ----- #
 
 # ------------- Creator's view web pages testing -------------- #

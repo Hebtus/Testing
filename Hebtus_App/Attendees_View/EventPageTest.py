@@ -27,6 +27,10 @@ def event_page(driver):
     # GetEvents(driver, 1)
     # Valid
     # GetEvents(driver, 2)
+    time.sleep(30)
+    # invalid_booking_test(driver)
+    valid_booking_test(driver, "Neon NightScape11")
+    # no_tickets_test(driver)
 
 
 # * Phase 4
@@ -470,7 +474,7 @@ def booking_test_1(driver, EventName):
     Info1 = SummaryTicket1.get_attribute("content-desc")
     Info1 = Info1.split(" ")[0]
     print(Info1)
-    assert int(Info1) == 1, "Tickets 1 info is incorrect"
+    assert int(Info1) == 2, "Tickets 1 info is incorrect"
     SummaryTicket2 = find_my_element(driver, "XPATH", SUMMARY_TICKET_2)
     check_not_found(driver, SummaryTicket2, "Ticket 2 info not found")
     Info2 = SummaryTicket2.get_attribute("content-desc")

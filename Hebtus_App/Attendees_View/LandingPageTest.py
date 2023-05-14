@@ -35,6 +35,7 @@ def landing_page(driver):
 
     free_tab_test(driver)
 
+
     # categories_test(driver)
 
 
@@ -492,14 +493,7 @@ def free_tab_test(driver):
         ).release().perform()
         time.sleep(3)
         count = 6
-        if find_my_element(driver, "XPATH", CHARITY_CATEGORY) != None:
-            # There is no more than 2 events
-            count = 2
-            end = True
-        elif find_my_element(driver, "XPATH", LOCATION_TEXT) != None:
-            # There is no more than 2 events
-            count = 4
-            end = True
+        end = True
         for i in range(count):
             EVENT = EVENT_1 + str(i) + EVENT_2
             Event = WebDriverWait(driver, 2).until(

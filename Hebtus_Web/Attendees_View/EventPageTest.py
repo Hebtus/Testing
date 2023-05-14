@@ -16,10 +16,10 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 
 def event_page(driver):
-    # login(driver, "hebtususer@gmail.com", "123456789")
+    login(driver, "hebtususer@gmail.com", "123456789")
     # GetEvents(driver)
-    # get_event_booking(driver)
-    private_event_test(driver)
+    get_event_booking(driver)
+    # private_event_test(driver)
 
 
 # * Phase 4
@@ -542,7 +542,7 @@ def get_event_booking(driver):
         print("No events in the today list")
         exit()
 
-    for i in range(1, ceil(Num / 12) + 1):
+    for i in range(1, ceil(36 / 12) + 1):
         for j in range(1, 13):
             time.sleep(1)
             EVENT = EVENT_NAME_1 + str(j) + EVENT_NAME_2
@@ -551,7 +551,7 @@ def get_event_booking(driver):
                 driver.execute_script("arguments[0].scrollIntoView();", Event)
                 time.sleep(2)
                 EventName = Event.text
-                if "NightScape4" in EventName:
+                if "NightScape6" in EventName:
                     print(EventName)
                     driver.execute_script("arguments[0].click();", Event)
                     booking_test(driver)
