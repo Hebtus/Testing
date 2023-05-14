@@ -42,7 +42,7 @@ def publish(driver, mode = 0):
                 print("Error! Public later button is not enabled")
 
         # function taken from attendee's view
-        def GetEvents(driver,Name):
+        def GetEvents(driver):
             try:
                 for i in range(1, math.ceil(96 / 12) + 1):
                     for j in range(1, 13):
@@ -53,7 +53,7 @@ def publish(driver, mode = 0):
                             driver.execute_script("arguments[0].scrollIntoView();", Event)
                             time.sleep(2)
                             EventName = Event.text
-                            if Name in EventName:
+                            if MY_EVENT_NAME in EventName:
                                 return True
                             # break
                     # check if more pages
@@ -124,14 +124,14 @@ def publish(driver, mode = 0):
             Element=find_my_element(driver,"XPATH",HEBTUS_LOGO)
             Element.click()
             time.sleep(5)
-            if(not GetEvents(driver,MY_EVENT_NAME)):
+            if(not GetEvents(driver)):
                 print("Error! Public Event is not present in Landing page")
             
             
         def Private_Event(driver):
             SearchBar = find_my_element(driver,"ID",EVENTS_SEARCH_BAR)
             SearchBar.clear()
-            SearchBar.send_keys("Test 2")
+            SearchBar.send_keys(MY_EVENT_NAME)
             time.sleep(4)
             Btn = find_my_element(driver,"XPATH",EDIT_FIRST_EVENTLIST)
             Btn.click()
@@ -141,12 +141,6 @@ def publish(driver, mode = 0):
             time.sleep(4)
             PrivateRadio = find_my_element(driver,"ID",PRIVATE_RADIOBUTTON)
             PrivateRadio.click()
-            time.sleep(1)
-            # Save and continue
-            Btn = find_my_element(driver,"XPATH",SAVE_AND_CONTINUE_PUBLISH)
-            driver.execute_script("arguments[0].scrollIntoView();",Btn)
-            time.sleep(2)
-            Btn.click()
             time.sleep(2)
             # Check in Landing page
             Element=find_my_element(driver,"XPATH",HEBTUS_LOGO)
@@ -154,7 +148,7 @@ def publish(driver, mode = 0):
             time.sleep(2)
             Element.click()
             time.sleep(5)
-            if(GetEvents(driver,"Test 2")):
+            if(GetEvents(driver)):
                 print("Error! Private event is present in Landing page")
 
         # ScheduleLaterRadio = find_my_element(driver,"ID",SCHEDULE_LATER_RADIOBUTTON)
