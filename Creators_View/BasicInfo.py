@@ -132,16 +132,16 @@ def basic_info(driver, mode = 0):
         # ---------------------------------------------- Testing Event Title Field ---------------------------------------------- #
             EventTitleField = find_my_element(driver, "ID", EVENT_TITLE_FIELD)
             # Test 1: Entering more than 75 characters
-            #EventTitleField.click()
-            #EventTitleField.send_keys(EventTitles[1])
+            EventTitleField.click()
+            EventTitleField.send_keys(EventTitles[1])
             # Retrieve the text inside the textbox to check that only 75 characters were wrtten
-            #if len(EventTitleField.get_attribute("value")) != 75:
-            #    print(
-            #        "Error: Case of 75 character as maximum limit for Event Title field not handled"
-            #    )
-            #time.sleep(3)
-            #my_clear(EventTitleField)
-            EventTitleField.send_keys("This is an event for cancer children")
+            if len(EventTitleField.get_attribute("value")) != 75:
+                print(
+                    "Error: Case of 75 character as maximum limit for Event Title field not handled"
+                )
+            time.sleep(3)
+            my_clear(EventTitleField)
+            EventTitleField.send_keys(MY_EVENT_NAME)
 
         def Type_Category_SubCategory_Test(driver):
             # ---------------------------------------------- Testing Type, Category and Sub-Category Fields ---------------------------------------------- #
@@ -175,7 +175,6 @@ def basic_info(driver, mode = 0):
             drp.select_by_visible_text("Music")
             time.sleep(1)
 
-        
         
         def Tags_Test(driver):
             # -------------------------------------------------- Testing Tags Field ------------------------------------------------- #
@@ -351,9 +350,9 @@ def basic_info(driver, mode = 0):
                 Languages.click()
 
         def Image_Test(driver):
-            # Test 1 : Upload a png image
+            # Test 1 : Upload a jpg image
             Image = find_my_element(driver,"XPATH",UPLOAD_IMAGE_HEBTUS)
-            Image.send_keys("C:/Users/MALAK/Desktop/testing photos/png-clipart-childhood-cancer-children-s-hospital-cancer-purple-child.png")
+            Image.send_keys("C:/Users/MALAK/Desktop/testing photos/1483727.jpg")
             UploadedImage = find_my_element(driver,"XPATH",UPLOADED_IMAGE_HEBTUS)
             # Check if it was uploaded
             if(UploadedImage == None):
@@ -368,9 +367,9 @@ def basic_info(driver, mode = 0):
             #if(Removed == None):
             #    print("Error! Unable to remove image")
             #time.sleep(7)
-            # Test 2: uploading a .jpg image (also testing uploading a second photo)
+            # Test 2: uploading a .png image (also testing uploading a second photo)
             #Image = find_my_element(driver,"XPATH",UPLOAD_IMAGE_HEBTUS)
-            #Image.send_keys("C:/Users/MALAK/Desktop/testing photos/young-cancer-patients-mc-inline-210810-02.jpg")
+            #Image.send_keys("C:/Users/MALAK/Desktop/testing photos/png-clipart-childhood-cancer-children-s-hospital-cancer-purple-child.png")
             #UploadedImage = find_my_element(driver,"XPATH",UPLOADED_IMAGE_HEBTUS)
             # Check if it was uploaded
             #if(UploadedImage == None):
@@ -386,12 +385,14 @@ def basic_info(driver, mode = 0):
             if(Description.is_enabled() == False):
                 print("Error! Description field is not enabled")
             else:
-                Description.send_keys("An event to come and play with cancer children and spread love.")
+                Description.send_keys("An event to observe the stars.")
             time.sleep(2)
 
 
         Event_Title_Test(driver)
         Type_Category_SubCategory_Test(driver)
+        Tags_Test(driver)
+        Location_Test(driver)
         Dates_Test(driver)
         # Scroll to date field
         DateAndTimeTitle=find_my_element(driver,"XPATH",DATE_AND_TIME_TITLE)

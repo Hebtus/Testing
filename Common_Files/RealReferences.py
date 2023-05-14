@@ -27,6 +27,7 @@ EVENT_DATE_PART2 = "]/td[1]/div/div[2]/div/p[3]" # Rest of XPATH
 EVENT_DRAFT_ONSALE_ENDED_STATUS_PART2 = "]/td[3]/div/div[2]" # Rest of XPATH
 EVENT_SOLD_PART2 = "]/td[2]" # Rest of XPATH
 EVENTS_SEARCH_BAR = "search-bar" # ID
+DOWNLOAD_CSV = "/html/body/div/div/div[2]/div[4]"
 
 # Basic info
 CREATE_EVENT_BUTTON = "create-event-button" #ID
@@ -90,8 +91,11 @@ FIRST_EVENT_TICKET_COUNT = "ticket-card-capacity-0"
 FIRST_EVENT_TICKET_EDIT = "ticket-card-edit-0"
 
 # Publish
+EVENT_NAME_1 = "/html/body/div/div/div[3]/div[1]/div/div/div["
+EVENT_NAME_2 = "]/div/div/h4"
+NEXT_PAGE_BUTTON = "next-page-button"
 HEBTUS_LOGO = "/html/body/div/div/div[1]/div/nav/a/h3"
-MY_EVENT_NAME = "This is an event for cancer children"
+MY_EVENT_NAME = "NightGazing"
 GO_TO_PUBLISH = "/html/body/div/div/div[2]/div[1]/div[2]/ul/li[4]/a/div/span"
 PUBLISH_TITLE = "/html/body/div/div/div[2]/div[2]/h1"
 PUBLISH_EVENT_TITLE = "/html/body/div/div/div[2]/div[2]/div[1]/div[2]/span[1]"
@@ -99,12 +103,14 @@ PUBLISH_DATE_TITLE = "/html/body/div/div/div[2]/div[2]/div[1]/div[2]/span[2]"
 PUBLIC_RADIOBUTTON = "Public"
 PRIVATE_RADIOBUTTON = "Private"
 PUBLISH_NOW_RADIOBUTTON = "0"
-SCHEDULE_LATER_RADIOBUTTON ="schedule"
+SCHEDULE_LATER_RADIOBUTTON ="1"
 SAVE_AND_CONTINUE_PUBLISH = "/html/body/div/div/div[3]/div/div"
 ACCOUNT_NAVBAR = "/html/body/div/div/div[1]/nav/div[2]/a/div"
 MANAGE_MY_EVENTS_PUBLISH = "/html/body/div/div/div[1]/nav/div[2]/ul/li[1]/a"
 FIRST_EVENT_EVENTLIST = "/html/body/div/div/div[2]/div[3]/table/tr[2]/td[1]/div/div[2]/div/p[1]"
-
+EDIT_FIRST_EVENTLIST = "/html/body/div/div/div[2]/div[3]/table/tr[2]/td[4]/div[1]"
+ACCOUNT_NAVBAR2 = "navbar-dropdown-container"
+MANAGE_MY_EVENTS2 = "/html/body/div/div/div[1]/div/nav/div[2]/ul/li[1]/a"
 #Dashboard
 DASHBOARD_TITLE = "/html/body/div/div/div[3]/div/div[1]/div[1]/h1"
 EVENT_TO_TEST_EDIT = "64513144c879ea38608901d7"
@@ -121,6 +127,7 @@ PUBLISH_HYPERLINK = "publish-event-task"
 ATTENDEE_SUMMARY_REPORT_HYPERLINK = "/html/body/div/div/div[3]/div/div[3]/div[3]/div/div[2]/div/div[2]/div/a"
 PAGE_VIEW_REPORTS_HYPERLINK = "/html/body/div/div/div[3]/div/div[1]/div[2]/div[2]/div/div[3]/p/a"
 PUBLISH_YOUR_EVENT_IDENTIFIER = "/html/body/div/div/div[2]/div[2]/div[2]/p"
+
 # ---------------- Creator's View ----------------#
 # Navigation to creator's view
 AD_EXIT_BUTTON = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/main/div/div/div/div/div/div[2]/span/button"
