@@ -352,7 +352,7 @@ def basic_info(driver, mode = 0):
         def Image_Test(driver):
             # Test 1 : Upload a jpg image
             Image = find_my_element(driver,"XPATH",UPLOAD_IMAGE_HEBTUS)
-            Image.send_keys("C:/Users/MALAK/Desktop/testing photos/1483727.jpg")
+            Image.send_keys("C:/Users/MALAK/Desktop/testing photos/39625.jpg")
             UploadedImage = find_my_element(driver,"XPATH",UPLOADED_IMAGE_HEBTUS)
             # Check if it was uploaded
             if(UploadedImage == None):
