@@ -9,6 +9,17 @@ from Attendees_View.SignInTest import sign_in
 from Attendees_View.EventPageTest import event_page
 from Attendees_View.LandingPageTest import landing_page
 
+# ----- Includes for Creator's view web pages ----- #
+from Creators_View.LogInToCreatorView import creator_view
+from Creators_View.BasicInfo import basic_info
+from Creators_View.EventList import event_list
+from Creators_View.Tickets import tickets
+from Creators_View.Publish import publish
+from Creators_View.Dashboard import dashboard
+from Creators_View.Publish import publish
+import time
+
+choice = int(input("Enter \n (1) For Attendee's View \n (2) For Creator's View \n"))
 
 Coptions = Options()
 Coptions.add_experimental_option("detach", True)
@@ -28,13 +39,25 @@ chrome_options.add_argument("--disable-dev-shm-usage")
 
 
 # ---------------------------------------------------------------- Start ---------------------------------------------------------------- #
-# ------------- Attendee's view web pages testing ------------- #
-# sign_up(driver)
-# sign_in(driver)
-event_page(driver)
-# landing_page(driver)
-# ----- Navigation from Attendee's view to Creator's view ----- #
+if(choice == 1):
+    # ------------- Attendee's view web pages testing ------------- #
+    # sign_up(driver)
+    # sign_in(driver)
+    event_page(driver)
+    # landing_page(driver)
 
-# ------------- Creator's view web pages testing -------------- #
-# creator_view(driver)  # temporary
-# basic_info(driver)
+elif(choice == 2):
+    # ------------- Creator's view web pages testing -------------- #
+    choice = int(input("Enter \n (1) For Event List Test \n (2) For Dashboard Test \n (3) For Basic Info Tickets and Publish Test \n"))
+    driver.maximize_window()
+    creator_view(driver,choice)
+    time.sleep(10)
+
+    if(choice == 1):
+        event_list(driver)
+    elif(choice == 2):
+        dashboard(driver)
+    elif(choice == 3):
+        basic_info(driver, 1)
+        tickets(driver,1)
+        publish(driver,1)

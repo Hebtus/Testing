@@ -1,6 +1,4 @@
-# ---------------- This file is used to easily map references for elements to the ones already used ----------------#
 
-# ---------------- Attendee's View ----------------#
 # ---------------- This file is used to easily map references for elements to the ones already used ----------------#
 
 # ---------------- Attendee's View ----------------#
@@ -219,6 +217,126 @@ HEALTH_CATEGORY = "Health"
 SPORTS_CATEGORY = "Sports & Fitness"
 
 # ---------------- Creator's View ----------------#
-# Basic Info Web Page
-EVENT_TITLE_FIELD = "event-basicInfo-title"  # ID
-TAGS_FIELD = "tagging-form-field"  # ID
+# Log in and to creator's view
+NAV_BAR_DROP_DOWN = "navbar-dropdown-container" # ID
+DROPDOWN_LOGIN_CHOICE = "/html/body/div/div/div[1]/div/nav/div[2]/ul/li[1]/a"
+EMAIL_FIELD = "email"
+PASSWORD_FIELD = "password"
+LOG_IN_BUTTON = "form--button-login"
+MANAGE_MY_EVENTS = "/html/body/div/div/div[1]/div/nav/div[1]/a" # FULL XPATH
+
+# Event list
+GO_TO_EVENTLIST = "/html/body/div/div/div/span"
+EVENT_HEADER = "event-list-header" # ID
+FILTER_EVENTS_BUTTON = "choices-menu" # ID
+FILTER_ALL_EVENTS = "choices-menu-all" # ID
+FILTER_UPCOMING_EVENTS = "choices-menu-upcoming" # ID
+FILTER_PAST_EVENTS = "choices-menu-past" # ID
+EVENTS_LIST = "/html/body/div/div/div[2]/div[3]/table/tr" # XPATH
+EVENT_PART1 = "/html/body/div/div/div[2]/div[3]/table/tr[" # partial XPATH
+EVENT_TITLE_PART2 = "]/td[1]/div/div[2]/div/p[1]" # Rest of XPATH
+EVENT_DATE_PART2 = "]/td[1]/div/div[2]/div/p[3]" # Rest of XPATH
+EVENT_DRAFT_ONSALE_ENDED_STATUS_PART2 = "]/td[3]/div/div[2]" # Rest of XPATH
+EVENT_SOLD_PART2 = "]/td[2]" # Rest of XPATH
+EVENTS_SEARCH_BAR = "search-bar" # ID
+DOWNLOAD_CSV = "/html/body/div/div/div[2]/div[4]"
+
+# Basic info
+CREATE_EVENT_BUTTON = "create-event-button" #ID
+EVENT_TITLE_FIELD = "input-field-Event Title"  # ID
+TAGS_FIELD = ":r0:"  # ID
+EVENT_TYPE_DROPDOWN_FIELD = "select-type" # ID
+EVENT_CATEGORY_DROPDOWN_FIELD = "select-category" # ID
+EVENT_SUBCATEGORY_DROPDOWN_FIELD = "select-subcategory" # ID
+EVENT_START_DATE_FIELD = ":r2:" # ID
+EVENT_END_DATE_FIELD = ":r6:" # ID
+EVENT_START_TIME_FIELD = ":r4:" # ID
+EVENT_END_TIME_FIELD = ":r8:" # ID
+TYPE_OPTIONS = "/html/body/div/div/div/div[2]/div[1]/div[2]/div[2]/select[1]/option"
+CATEGORY_OPTIONS = "/html/body/div/div/div/div[2]/div[1]/div[2]/div[2]/select[2]/option"
+SUBCATEGORY_OPTIONS = "/html/body/div/div/div/div[2]/div[1]/div[2]/div[2]/select[3]/option"
+ADD_TAG = "add-tag-btn"
+ALL_TAGS = "/html/body/div/div/div/div[2]/div[1]/div[2]/div[5]/div"
+TAG_ERROR_MSG = "/html/body/div/div/div/div[2]/div[1]/div[2]/div[4]/div/div[2]/p[1]" # XPATH
+LOCATION_TITLE = "/html/body/div/div/div/div[2]/div[2]/div[2]/h1"
+VENUE_BUTTON = "/html/body/div/div/div/div[2]/div[2]/div[2]/div/div[1]" # XPATH
+ONLINE_BUTTON = "/html/body/div/div/div/div[2]/div[2]/div[2]/div/div[2]" # XPATH
+TO_BE_ANNOUNCED_BUTTON = "/html/body/div/div/div/div[2]/div[2]/div[2]/div/div[3]" # XPATH
+SINGLE_EVENT = "single-event-panel"
+DATE_AND_TIME_TITLE = "/html/body/div/div/div/div[2]/div[3]/div[2]/h1" # XPATH 
+EVENT_START_DATE_MSG = "/html/body/div/div/div/div[2]/div[3]/div[2]/div[2]/div[1]/p[2]"
+EVENT_END_DATE_MSG = "/html/body/div/div/div/div[2]/div[3]/div[2]/div[3]/div[1]/p[2]"
+EVENT_TIME_ZONE_DROPDOWN = "/html/body/div/div/div/div[2]/div[3]/div[2]/div[4]/select"
+EVENT_LANGUAGES_DROPDOWN = "select-event-page-lang"
+SAVE_AND_CONTINUE_BUTTON = "/html/body/div/div/div/div[2]/div[4]/div/div"
+SAVE_AND_CONTINUE_BUTTON2 = "/html/body/div/div/div[3]/div/div"
+UPLOADED_IMAGE_HEBTUS = "/html/body/div/div/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/img"
+UPLOAD_IMAGE_HEBTUS = "/html/body/div/div/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/input"
+REMOVE_IMAGE = "/html/body/div/div/div[2]/div[2]/div[1]/div/div[2]/div/div[2]"
+REMOVED_IMAGE = "/html/body/div/div/div[2]/div[2]/div[1]/div/div[2]/div/div[1]/div"
+EVENT_DESCRIPTION = "/html/body/div/div/div[2]/div[2]/div[2]/div/div[2]/h1"
+DESCRIPTON_TEXTAREA = "/html/body/div/div/div[2]/div[2]/div[2]/div/div[2]/div/textarea"
+
+# Tickets
+TICKETS_TITLE = "/html/body/div/div/div[3]/div[1]/div[1]/h1"
+ADD_TICKET_OUTER = "add-ticket--card"
+TICKET_TITLE_TAB = "offcanvasRightLabel"
+CLOSE_TICKET_FORM = "form-close"
+PAID_TICKET = "paid-panel-changer"
+FREE_TICKET = "free-panel-changer"
+DONATION = "donation-panel-changer"
+NAME_TICKET_FIELD = "input-field-Name"
+QUANTITY_TICKET_FIELD = "input-field-Available Quantity"
+PRICE_TICKET_FIELD = "input-field-Price"
+SELECT_TICKET_TYPE = "select-ticket-type-dropdown"
+START_DATE_TICKET = "start-date"
+END_DATE_TICKET = "end-date"
+START_TIME_TICKET = "start-time"
+END_TIME_TICKET = "end-time"
+ADD_TICKET_INNER = "form-save-ticket-btn"
+CANCEL_BUTTON = "form-cancel-btn"
+TICKETS_ERROR_MSG = "form-message-text"
+FIRST_TICKET_CARD = "ticket--card-0"
+FIRST_EVENT_TITLE = "ticket-card-title-0"
+FIRST_EVENT_START_DATE = "ticket-card-start-date-0"
+FIRST_EVENT_TICKET_COUNT = "ticket-card-capacity-0"
+FIRST_EVENT_TICKET_EDIT = "ticket-card-edit-0"
+
+# Publish
+EVENT_NAME_1 = "/html/body/div/div/div[3]/div[1]/div/div/div["
+EVENT_NAME_2 = "]/div/div/h4"
+NEXT_PAGE_BUTTON = "next-page-button"
+HEBTUS_LOGO = "/html/body/div/div/div[1]/div/nav/a/h3"
+MY_EVENT_NAME = "StarGazing"
+GO_TO_PUBLISH = "/html/body/div/div/div[2]/div[1]/div[2]/ul/li[4]/a/div/span"
+PUBLISH_TITLE = "/html/body/div/div/div[2]/div[2]/h1"
+PUBLISH_EVENT_TITLE = "/html/body/div/div/div[2]/div[2]/div[1]/div[2]/span[1]"
+PUBLISH_DATE_TITLE = "/html/body/div/div/div[2]/div[2]/div[1]/div[2]/span[2]"
+PUBLIC_RADIOBUTTON = "Public"
+PRIVATE_RADIOBUTTON = "Private"
+PUBLISH_NOW_RADIOBUTTON = "0"
+SCHEDULE_LATER_RADIOBUTTON ="1"
+SAVE_AND_CONTINUE_PUBLISH = "/html/body/div/div/div[3]/div/div"
+ACCOUNT_NAVBAR = "/html/body/div/div/div[1]/nav/div[2]/a/div"
+MANAGE_MY_EVENTS_PUBLISH = "/html/body/div/div/div[1]/nav/div[2]/ul/li[1]/a"
+FIRST_EVENT_EVENTLIST = "/html/body/div/div/div[2]/div[3]/table/tr[2]/td[1]/div/div[2]/div/p[1]"
+EDIT_FIRST_EVENTLIST = "/html/body/div/div/div[2]/div[3]/table/tr[2]/td[4]/div[1]"
+ACCOUNT_NAVBAR2 = "navbar-dropdown-container"
+MANAGE_MY_EVENTS2 = "/html/body/div/div/div[1]/div/nav/div[2]/ul/li[1]/a"
+
+#Dashboard
+DASHBOARD_TITLE = "/html/body/div/div/div[3]/div/div[1]/div[1]/h1"
+EVENT_TO_TEST_EDIT = "64513144c879ea38608901d7"
+EVENT_TO_TEST = "event-64513144c879ea38608901d7-growth"
+GO_TO_DASHBOARD = "/html/body/div/div/div[2]/div[1]/div[2]/ul/li[5]/a/div/span"
+DASHBOARD_URL = "copy-icon"
+TEST_EVENT_PROFIT_EVENTLIST = "/html/body/div/div/div[2]/div[3]/table/tr[11]/td[2]"
+DASHBOARD_RECENT_ORDER = "report-table-header-Recent orders"
+RECENT_ORDERS_ROWS = "/html/body/div/div/div[3]/div/div[3]/div[2]/div/div[2]/table/tbody/tr"
+RECENT_ORDERS_QUANTITY = "/html/body/div/div/div[3]/div/div[3]/div[2]/div/div[2]/table/tbody/tr/td[3]"
+RECENT_ORDERS_PRICE = "/html/body/div/div/div[3]/div/div[3]/div[2]/div/div[2]/table/tbody/tr/td[4]"
+ALL_TICKETS_HYPERLINK = "report-table-footer-tickets"
+PUBLISH_HYPERLINK = "publish-event-task"
+ATTENDEE_SUMMARY_REPORT_HYPERLINK = "/html/body/div/div/div[3]/div/div[3]/div[3]/div/div[2]/div/div[2]/div/a"
+PAGE_VIEW_REPORTS_HYPERLINK = "/html/body/div/div/div[3]/div/div[1]/div[2]/div[2]/div/div[3]/p/a"
+PUBLISH_YOUR_EVENT_IDENTIFIER = "/html/body/div/div/div[2]/div[2]/div[2]/p"

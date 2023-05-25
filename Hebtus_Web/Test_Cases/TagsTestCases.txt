@@ -1,0 +1,18 @@
+this_is_a_27character_tag_bla_bla
+music
+rock
+fun
+singing
+bass_guitar
+band22
+live_music
+talents
+drums
+electric_guitar
+extra_tag
+music
+to test if spaces allowed
+totest-special_characters
+$random_special_character
+random_special_character=
+random_special_character)
